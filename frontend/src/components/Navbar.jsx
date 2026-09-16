@@ -21,11 +21,9 @@ export default function Navbar() {
     <header className="navbar">
       <div className="container navbar__inner">
         <Link to="/" className="navbar__logo">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <path d="M20 4c2 5 6 8 6 13a6 6 0 1 1-12 0c0-5 4-8 6-13Z" stroke="#B8894A" strokeWidth="1.4" />
-            <path d="M8 22c3-2 8-3 12-3s9 1 12 3" stroke="#B8894A" strokeWidth="1.4" />
-            <path d="M14 27c2-1.5 4-2 6-2s4 .5 6 2" stroke="#B8894A" strokeWidth="1.4" />
-          </svg>
+          <img   src="/logo.png"
+          alt="Bridal jewellery" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"/>
+            
           <span className="navbar__logo-text">
             <strong>PANKAJ</strong>
             <em>Jewellers</em>
