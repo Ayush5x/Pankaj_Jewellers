@@ -1,11 +1,12 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import { formatPrice } from '../data/products';
+import { useWishlist } from '../context/WishlistContext';
 import './productCard.css';
 
 export default function ProductCard({ product }) {
-  const [liked, setLiked] = useState(false);
+  const { isLiked, toggleLike } = useWishlist();
+  const liked = isLiked(product.id);
 
   return (
     <article className="product-card">
@@ -13,8 +14,12 @@ export default function ProductCard({ product }) {
         {product.isNew && <span className="product-card__tag">New</span>}
         <button
           className={`product-card__like ${liked ? 'is-liked' : ''}`}
-          aria-label="Add to wishlist"
-          onClick={(e) => { e.preventDefault(); setLiked((v) => !v); }}
+          aria-label={liked ? 'Remove from wishlist' : 'Add to wishlist'}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleLike(product.id);
+          }}
         >
           <Heart size={16} fill={liked ? 'currentColor' : 'none'} />
         </button>

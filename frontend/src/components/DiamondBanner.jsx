@@ -8,7 +8,7 @@ export default function DiamondBanner() {
       <div className="diamond">
         <img
           className="diamond__bg"
-          src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=1600&auto=format&fit=crop"
+          src="https://i.pinimg.com/1200x/1b/0d/e1/1b0de13ac5e76759ac7fd05e6cb1372d.jpg"
           alt="Diamond ring on embroidered fabric"
         />
         <div className="diamond__overlay" />

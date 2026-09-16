@@ -1,20 +1,16 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-<<<<<<< HEAD
-=======
 import { BrowserRouter } from 'react-router-dom'
->>>>>>> 86e4999 (Foundation Setup)
 import './index.css'
 import App from './App.jsx'
+import { WishlistProvider } from './context/WishlistContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-<<<<<<< HEAD
-    <App />
-=======
     <BrowserRouter>
-      <App />
+      <WishlistProvider>
+        <App />
+      </WishlistProvider>
     </BrowserRouter>
->>>>>>> 86e4999 (Foundation Setup)
   </StrictMode>,
 )

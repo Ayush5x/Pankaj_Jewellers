@@ -12,7 +12,7 @@ export default function TopBar() {
             <MapPin size={14} strokeWidth={1.6} /> Visit Our Store
           </span>
           <span className="topbar__item">
-            <Phone size={14} strokeWidth={1.6} /> +91 88067 49782
+            <Phone size={14} strokeWidth={1.6} /> +91 77963 74853
           </span>
           <span className="topbar__socials">
             <a href="#" aria-label="Instagram"><InstagramIcon size={15} /></a>
