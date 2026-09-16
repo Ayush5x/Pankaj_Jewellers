@@ -146,6 +146,7 @@ export const PRODUCTS = [
     img: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=700&auto=format&fit=crop',
     description: 'Traditional bell-shaped jhumkas with fine filigree work, a festive favourite.',
   },
+  
 ];
 
 export function getProductsByCategory(slug) {
