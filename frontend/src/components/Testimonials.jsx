@@ -262,32 +262,6 @@ export default function Testimonials() {
 
       </div>
 
-
-      {/* Compact Stats */}
-      <div className="testimonials__stats">
-
-        <div>
-          <strong>10K+</strong>
-          <span>Happy Customers</span>
-        </div>
-
-        <div>
-          <strong>4.8★</strong>
-          <span>Average Rating</span>
-        </div>
-
-        <div>
-          <strong>25+</strong>
-          <span>Years of Trust</span>
-        </div>
-
-        <div>
-          <strong>∞</strong>
-          <span>Generations</span>
-        </div>
-
-      </div>
-
     </section>
   );
 }
