@@ -495,60 +495,16 @@
       135deg,
       rgba(184, 137, 74, 0.11),
       rgba(184, 137, 74, 0.035)
-    ),
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--gold),
-      transparent
     );
 
-  background-repeat: no-repeat, no-repeat;
+  background-repeat: no-repeat;
 
-  background-position: center, center calc(100% - 7px);
+  background-position: center;
 
-  background-size: 100% 100%, 52% 1px;
+  background-size: 100% 100%;
 
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.85);
-}
-
-
-/* Active Dot */
-
-.navbar__link.is-active::after {
-  content: "";
-
-  position: absolute;
-
-  bottom: 4px;
-  left: 50%;
-
-  width: 4px;
-  height: 4px;
-
-  border-radius: 50%;
-
-  background: var(--wine);
-
-  transform:
-    translateX(-50%)
-    scale(0);
-
-  box-shadow:
-    0 0 0 rgba(184, 137, 74, 0);
-
-  animation:
-    activeDot
-    0.6s
-    cubic-bezier(.16, 1, .3, 1)
-    forwards;
-}
-
-
-.navbar__link.is-active:hover::after {
-  box-shadow:
-    0 0 10px rgba(184, 137, 74, 0.7);
 }
 
 
@@ -1128,26 +1084,6 @@
   }
 
 
-  .navbar__link.is-active::after {
-
-    left: auto;
-
-    right: 15px;
-
-    bottom: 50%;
-
-    transform:
-      translateY(50%)
-      scale(0);
-
-    animation:
-      mobileActiveDot
-      0.6s
-      cubic-bezier(.16, 1, .3, 1)
-      forwards;
-  }
-
-
   /* Hide actions */
 
   .navbar__icon-btn,
@@ -1246,31 +1182,6 @@
 
     transform:
       translateX(0);
-  }
-}
-
-
-@keyframes mobileActiveDot {
-
-  from {
-
-    transform:
-      translateY(50%)
-      scale(0);
-  }
-
-  70% {
-
-    transform:
-      translateY(50%)
-      scale(1.4);
-  }
-
-  to {
-
-    transform:
-      translateY(50%)
-      scale(1);
   }
 }
 
@@ -2291,12 +2202,6 @@
   to   { opacity: 1; transform: scaleY(1); }
 }
 
-@keyframes activeDot {
-  0%   { transform: translateX(-50%) scale(0); }
-  70%  { transform: translateX(-50%) scale(1.5); }
-  100% { transform: translateX(-50%) scale(1); }
-}
-
 @keyframes badgePop {
   0%   { transform: scale(0); }
   60%  { transform: scale(1.25); }
@@ -2344,36 +2249,6 @@
 
 .navbar.is-scrolled .navbar__logo svg {
   transform: scale(0.94);
-}
-
-
-/* ---- 2. Logo: a fine gold thread draws itself under "PANKAJ" once, on load ---- */
-
-.navbar__logo-text strong {
-  position: relative;
-}
-
-.navbar__logo-text strong::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: -4px;
-
-  width: 100%;
-  height: 1px;
-
-  background: linear-gradient(90deg, var(--gold), transparent);
-
-  transform: scaleX(0);
-  transform-origin: left;
-
-  animation: logoTrace 1s cubic-bezier(.16, 1, .3, 1) 0.9s both;
-}
-
-@keyframes logoTrace {
-  to { transform: scaleX(1); }
 }
 
 
@@ -2498,7 +2373,6 @@
 
 @media (prefers-reduced-motion: reduce) {
 
-  .navbar__logo-text strong::after,
   .navbar__cta-halo,
   .navbar__cta::after,
   .navbar__badge--live::before {
