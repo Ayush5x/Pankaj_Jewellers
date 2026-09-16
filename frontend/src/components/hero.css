@@ -4,12 +4,14 @@
 
 .hero {
   position: relative;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   min-height: 620px;
 
   overflow: hidden;
 
   background: var(--color-cream);
+  padding-top: 80px;
 }
 
 /* =========================================
@@ -69,7 +71,7 @@
 .hero__script {
   position: absolute;
 
-  top: 65px;
+  top: 150px;
   right: 55px;
 
   z-index: 2;
@@ -114,7 +116,8 @@
 .hero__copy {
   max-width: 560px;
 
-  padding: 40px 0 100px;
+  /* Content slightly higher */
+  padding: 10px 0 100px;
 }
 
 /* =========================================
@@ -340,7 +343,7 @@
   .hero__copy {
     max-width: 500px;
 
-    padding-top: 40px;
+    padding-top: 20px;
   }
 
   .hero__title {
@@ -376,6 +379,8 @@
 
 @media (max-width: 600px) {
   .hero {
+    margin-top: 70px;
+
     min-height: 680px;
   }
 
@@ -449,21 +454,24 @@
 
     gap: 15px;
 
-    padding: 15px 0 20px;
+    padding: 15px 20px 20px;
   }
 
   .hero__badge {
     font-size: 11px;
   }
 }
+
 /* =========================================
-   RED MARKED LEFT SPACE - REDUCE IT
+   RED MARKED LEFT SPACE
 ========================================= */
 
 .hero__content,
 .hero__badges-container {
-  width: calc(100% - 100px);
-  max-width: 1450px;
-  margin-left: auto;
-  margin-right: auto;
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+  width: 100%;
 }

@@ -44,7 +44,7 @@ export default function Hero() {
         aria-label="Model wearing bridal jewellery"
       >
         <img
-          src="/hero.png"
+          src="/heroo.png"
           alt="Bridal jewellery"
         />
 
@@ -95,6 +95,7 @@ export default function Hero() {
                 size={13}
                 fill="currentColor"
               />
+            
               Watch Video
             </button>
 
