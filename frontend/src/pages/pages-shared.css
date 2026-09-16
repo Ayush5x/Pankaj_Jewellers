@@ -1,0 +1,39 @@
+.page-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-maroon);
+  margin: 0 0 10px;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--color-maroon-dark);
+  margin: 0 0 14px;
+}
+
+.page-lead {
+  font-size: 16px;
+  color: var(--color-ink-soft);
+  max-width: 600px;
+  margin: 0 0 40px;
+  line-height: 1.6;
+}
+
+.page-hero {
+  padding: 64px 0 20px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  margin: 0 0 22px;
+}
+.breadcrumb a { color: var(--color-ink-soft); }
+.breadcrumb a:hover { color: var(--color-maroon); }
+.breadcrumb span.current { color: var(--color-maroon-dark); }

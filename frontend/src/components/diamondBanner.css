@@ -1,0 +1,91 @@
+.diamond {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 44px 56px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.diamond__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.diamond__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(29,16,10,0.88) 10%, rgba(29,16,10,0.55) 48%, rgba(29,16,10,0.25) 75%);
+}
+
+.diamond__copy {
+  position: relative;
+  color: #fff;
+  max-width: 420px;
+}
+
+.diamond__eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+  margin: 0 0 14px;
+  line-height: 1.5;
+}
+
+.diamond__title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.diamond__desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  margin: 0 0 26px;
+}
+
+.diamond__btn {
+  background: var(--color-maroon-dark);
+  color: #fff;
+  font-size: 14px;
+  padding: 14px 24px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.diamond__btn:hover { background: var(--color-maroon); }
+
+.diamond__features {
+  position: relative;
+  display: flex;
+  gap: 40px;
+  color: #fff;
+}
+
+.diamond__feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.diamond__feature svg { color: var(--color-gold-light); }
+
+@media (max-width: 720px) {
+  .diamond { padding: 34px 26px; }
+  .diamond__title { font-size: 32px; }
+  .diamond__features { gap: 22px; }
+}

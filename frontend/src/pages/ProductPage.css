@@ -1,0 +1,119 @@
+@import '../pages/pages-shared.css';
+
+.product-page {
+  padding: 44px 0 90px;
+}
+
+.product-page__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  margin-bottom: 70px;
+}
+
+.product-page__media {
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-cream-dark);
+  aspect-ratio: 1 / 1;
+}
+.product-page__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-page__category {
+  display: inline-block;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-maroon);
+  margin-bottom: 12px;
+}
+.product-page__category:hover { text-decoration: underline; }
+
+.product-page__name {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+}
+
+.product-page__price {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--color-maroon-dark);
+  margin: 0 0 22px;
+}
+
+.product-page__desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-ink-soft);
+  margin: 0 0 26px;
+}
+
+.product-page__specs {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 26px;
+}
+.product-page__specs tr { border-bottom: 1px solid rgba(43,30,26,0.08); }
+.product-page__specs tr:last-child { border-bottom: none; }
+.product-page__specs th, .product-page__specs td {
+  text-align: left;
+  padding: 10px 0;
+  font-size: 14px;
+}
+.product-page__specs th {
+  color: var(--color-ink-soft);
+  font-weight: 400;
+  width: 40%;
+}
+.product-page__specs td { color: var(--color-ink); font-weight: 500; }
+
+.product-page__trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+.product-page__trust span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+.product-page__trust svg { color: var(--color-gold); }
+
+.product-page__enquire {
+  display: inline-flex;
+  background: var(--color-maroon-dark);
+  color: #fff;
+  padding: 15px 26px;
+  border-radius: 3px;
+  font-size: 14.5px;
+}
+.product-page__enquire:hover { background: var(--color-maroon); }
+
+.product-page__related h2 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  color: var(--color-maroon-dark);
+  margin: 0 0 22px;
+}
+
+.product-page__related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .product-page__layout { grid-template-columns: 1fr; gap: 30px; }
+  .product-page__related-grid { grid-template-columns: repeat(2, 1fr); }
+}

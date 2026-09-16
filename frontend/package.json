@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "frontend",
+=======
+  "name": "pankaj-jewellers",
+>>>>>>> 86e4999 (Foundation Setup)
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +14,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
+=======
+    "lucide-react": "^1.46.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.4"
+>>>>>>> 86e4999 (Foundation Setup)
   },
   "devDependencies": {
     "@types/react": "^19.2.18",

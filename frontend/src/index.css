@@ -1,4 +1,5 @@
 :root {
+<<<<<<< HEAD
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -108,4 +109,54 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+=======
+  --color-cream: #FBF7F0;
+  --color-cream-dark: #F3EAD9;
+  --color-maroon: #6E1423;
+  --color-maroon-dark: #4A0D18;
+  --color-gold: #B8894A;
+  --color-gold-light: #D9B77C;
+  --color-ink: #2B1E1A;
+  --color-ink-soft: #6B5D53;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-label: 'Marcellus', serif;
+  --font-body: 'Jost', sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+::selection {
+  background: var(--color-gold-light);
+  color: var(--color-maroon-dark);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+>>>>>>> 86e4999 (Foundation Setup)
 }
