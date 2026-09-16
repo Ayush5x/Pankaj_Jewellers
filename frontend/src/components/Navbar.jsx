@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Search, Heart, ShoppingBag, Menu, X } from 'lucide-react';
+import { useWishlist } from '../context/WishlistContext';
 import './navbar.css';
 
 // Note: "Offers" is intentionally excluded from this list, per requirement.
@@ -14,6 +15,7 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { likedIds } = useWishlist();
 
   return (
     <header className="navbar">
@@ -47,10 +49,10 @@ export default function Navbar() {
 
         <div className="navbar__actions">
           <button className="navbar__icon-btn" aria-label="Search"><Search size={18} strokeWidth={1.6} /></button>
-          <button className="navbar__icon-btn" aria-label="Wishlist">
+          <Link to="/wishlist" className="navbar__icon-btn" aria-label="Wishlist">
             <Heart size={18} strokeWidth={1.6} />
-            <span className="navbar__badge">0</span>
-          </button>
+            <span className="navbar__badge">{likedIds.length}</span>
+          </Link>
           <button className="navbar__icon-btn" aria-label="Bag">
             <ShoppingBag size={18} strokeWidth={1.6} />
             <span className="navbar__badge">0</span>

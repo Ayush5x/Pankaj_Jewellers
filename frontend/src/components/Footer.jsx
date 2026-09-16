@@ -45,7 +45,7 @@ export default function Footer() {
           <h4>Get in Touch</h4>
           <ul className="footer__contact">
             <li><MapPin size={15} /> Pune, Maharashtra, India</li>
-            <li><Phone size={15} /> +91 88067 49782</li>
+            <li><Phone size={15} /> +91 77963 74853</li>
             <li><Mail size={15} /> hello@pankajjewellers.in</li>
           </ul>
         </div>
