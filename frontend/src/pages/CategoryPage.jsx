@@ -30,9 +30,10 @@ export default function CategoryPage() {
 
         {products.length > 0 ? (
           <div className="category-page__grid">
+             <HorizontalScrollSection>
             {products.map((p) => (
               <ProductCard product={p} key={p.id} />
-            ))}
+            ))}</HorizontalScrollSection>
           </div>
         ) : (
           <div className="category-page__empty">

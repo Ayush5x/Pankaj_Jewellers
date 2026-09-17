@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ProductCard from './ProductCard';
+import HorizontalScrollSection from './HorizontalScrollSection';
 import { PRODUCTS } from '../data/products';
 import './newArrivals.css';
 
@@ -19,7 +20,7 @@ function matchesFilter(product, filter) {
 
 export default function NewArrivals() {
   const [filter, setFilter] = useState('All');
-  const featured = PRODUCTS.filter((p) => p.isNew || PRODUCTS.indexOf(p) < 6).slice(0, 6);
+ const featured = PRODUCTS.filter((p) => p.isNew || PRODUCTS.indexOf(p) < 10).slice(0, 10);
   const visible = featured.filter((p) => matchesFilter(p, filter));
 
   return (
@@ -45,16 +46,16 @@ export default function NewArrivals() {
 
           <Link to="/shop" className="arrivals__viewall">View All <ArrowRight size={16} /></Link>
         </div>
-
-        <div className="arrivals__grid">
-          {visible.map((p) => (
-            <ProductCard product={p} key={p.id} />
-          ))}
-          {visible.length === 0 && (
-            <p className="arrivals__empty">No products match this filter yet.</p>
-          )}
-        </div>
       </div>
+
+      <HorizontalScrollSection>
+        {visible.map((p) => (
+          <ProductCard product={p} key={p.id} />
+        ))}
+        {visible.length === 0 && (
+          <p className="arrivals__empty">No products match this filter yet.</p>
+        )}
+      </HorizontalScrollSection>
     </section>
   );
 }

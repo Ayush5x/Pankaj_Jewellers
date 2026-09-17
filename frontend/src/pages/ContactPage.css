@@ -102,10 +102,13 @@
 ================================ */
 
 .contact-page__form {
-  background: #fffaf2;
-  padding: 40px;
-  border: 1px solid #dfc982;
-  box-shadow: 0 18px 45px rgba(74, 45, 15, 0.12);
+  position: relative;
+  background: linear-gradient(160deg, #5a0d18, #3a0910);
+  padding: 45px 40px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(74, 6, 16, 0.25);
+  overflow: hidden;
 }
 
 /* ================================
@@ -115,10 +118,10 @@
 .contact-page__form label,
 .contact-page__form legend {
   display: block;
-  color: #624c2b;
+  color: #e0bd60;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -134,27 +137,28 @@
 .contact-page__form select {
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid #ddca91;
-  background: #fffdf9;
-  color: #29231f;
-  padding: 16px 18px;
-  font-size: 16px;
+  border: 1px solid rgba(224, 189, 96, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5ece7;
+  padding: 15px 18px;
+  font-size: 15px;
   outline: none;
-  border-radius: 0;
+  border-radius: 10px;
   transition: all 0.25s ease;
   font-family: inherit;
 }
 
 .contact-page__form input::placeholder,
 .contact-page__form textarea::placeholder {
-  color: #a49a8f;
+  color: rgba(245, 236, 231, 0.4);
 }
 
 .contact-page__form input:focus,
 .contact-page__form textarea:focus,
 .contact-page__form select:focus {
-  border-color: #b58a2a;
-  box-shadow: 0 0 0 2px rgba(181, 138, 42, 0.12);
+  border-color: #d5af4a;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 2px rgba(213, 175, 74, 0.15);
 }
 
 /* ================================
@@ -164,6 +168,12 @@
 .contact-page__form select {
   appearance: auto;
   cursor: pointer;
+  color-scheme: dark;
+}
+
+.contact-page__form select option {
+  background: #3a0910;
+  color: #f5ece7;
 }
 
 /* ================================
@@ -209,25 +219,26 @@
 
 .contact-page__form fieldset label {
   margin: 0;
-  padding: 17px 14px;
-  border: 1px solid #ddca91;
-  background: #fffdf9;
-  color: #3d3028;
+  padding: 15px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(224, 189, 96, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+  color: #eee2d3;
   text-transform: none;
   letter-spacing: 0;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
 .contact-page__form fieldset label:hover {
-  border-color: #b58a2a;
-  background: #fcf5e7;
+  border-color: #d5af4a;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .contact-page__form fieldset input[type="radio"] {
-  accent-color: #9b7523;
+  accent-color: #d5af4a;
   margin: 0;
 }
 
@@ -240,9 +251,9 @@
   margin-top: 28px;
   padding: 17px 25px;
   border: none;
-  border-radius: 0;
-  background: linear-gradient(90deg, #a87d22, #d4af4d, #b68b2d);
-  color: white;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #e6c78a, #d4af4d, #e6c78a);
+  color: #3a0910;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -252,13 +263,13 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  box-shadow: 0 8px 20px rgba(157, 116, 30, 0.2);
+  box-shadow: 0 8px 20px rgba(157, 116, 30, 0.25);
   transition: all 0.25s ease;
 }
 
 .contact-page__submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 25px rgba(157, 116, 30, 0.3);
+  box-shadow: 0 12px 28px rgba(157, 116, 30, 0.35);
 }
 
 .contact-page__submit:disabled {
@@ -277,14 +288,14 @@
 }
 
 .contact-page__success h3 {
-  color: #4b0610;
+  color: #e0bd60;
   font-family: Georgia, serif;
   font-size: 28px;
   margin-bottom: 12px;
 }
 
 .contact-page__success p {
-  color: #75695e;
+  color: rgba(245, 236, 231, 0.7);
   line-height: 1.6;
 }
 

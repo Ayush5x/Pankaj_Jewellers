@@ -29,7 +29,7 @@
 
 .arrivals__filters {
   display: flex;
-  border: 1px solid rgba(43,30,26,0.14);
+  border: 1px solid rgba(43, 30, 26, 0.14);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -39,10 +39,14 @@
   color: var(--color-ink-soft);
   font-size: 13.5px;
   padding: 10px 18px;
-  border-right: 1px solid rgba(43,30,26,0.14);
-  transition: background 0.2s ease, color 0.2s ease;
+  border-right: 1px solid rgba(43, 30, 26, 0.14);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
-.arrivals__filter:last-child { border-right: none; }
+.arrivals__filter:last-child {
+  border-right: none;
+}
 .arrivals__filter.is-active {
   background: var(--color-maroon-dark);
   color: #fff;
@@ -56,7 +60,9 @@
   color: var(--color-ink);
   white-space: nowrap;
 }
-.arrivals__viewall:hover { color: var(--color-maroon); }
+.arrivals__viewall:hover {
+  color: var(--color-maroon);
+}
 
 .arrivals__grid {
   display: grid;
@@ -72,10 +78,68 @@
 }
 
 @media (max-width: 1100px) {
-  .arrivals__grid { grid-template-columns: repeat(3, 1fr); }
+  .arrivals__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media (max-width: 640px) {
-  .arrivals__grid { grid-template-columns: repeat(2, 1fr); }
-  .arrivals__filters { flex-wrap: wrap; }
-  .arrivals__filter { flex: 1 1 auto; }
+  .arrivals__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .arrivals__filters {
+    flex-wrap: wrap;
+  }
+  .arrivals__filter {
+    flex: 1 1 auto;
+  }
+}
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform, opacity;
+}
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.arrivals .h-section {
+  position: relative;
+  height: 250vh; /* cards jitne zyada, itna badhao */
+}
+
+.arrivals .h-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.arrivals .h-track {
+  display: flex;
+  gap: 24px;
+  padding: 0 6vw;
+  will-change: transform;
+}
+
+.arrivals .h-track > * {
+  flex: 0 0 240px; /* pehle 320px tha, ab chhota */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrivals .h-track {
+    transition: none;
+  }
 }

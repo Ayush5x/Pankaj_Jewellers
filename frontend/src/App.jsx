@@ -13,7 +13,7 @@ import ProductPage from './pages/ProductPage';
 import WishlistPage from './pages/WishlistPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
-import Testimonials from './components/Testimonials';
+
 
 function App() {
   return (
@@ -68,7 +68,7 @@ function App() {
 
       {/* Floating WhatsApp Button - visible on every page */}
       <WhatsAppButton />
-<Testimonials/>
+
       <Footer />
     </>
   );

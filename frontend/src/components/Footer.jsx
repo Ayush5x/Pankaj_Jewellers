@@ -57,6 +57,7 @@ export default function Footer() {
           <span>Trusted for Generations</span>
         </div>
       </div>
+      <div className="footer__watermark">PANKAJ JEWELLERS</div>
     </footer>
   );
 }
