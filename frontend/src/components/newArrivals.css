@@ -143,3 +143,395 @@
     transition: none;
   }
 }
+/* =========================================================
+   NEW ARRIVALS
+   ========================================================= */
+
+.arrivals {
+  padding: 42px 0 52px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.arrivals__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+
+  margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.arrivals__eyebrow {
+  margin: 0 0 6px;
+
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  color: var(--color-maroon);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.arrivals__title {
+  margin: 0;
+
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 600;
+
+  line-height: 1.05;
+
+  color: var(--color-maroon-dark);
+}
+
+
+/* =========================================================
+   FILTERS
+   ========================================================= */
+
+.arrivals__filters {
+  display: flex;
+
+  border: 1px solid rgba(43, 30, 26, 0.14);
+  border-radius: 4px;
+
+  overflow: hidden;
+}
+
+.arrivals__filter {
+  padding: 9px 16px;
+
+  background: #fff;
+
+  color: var(--color-ink-soft);
+
+  font-size: 13px;
+
+  border: none;
+  border-right: 1px solid rgba(43, 30, 26, 0.14);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.arrivals__filter:last-child {
+  border-right: none;
+}
+
+.arrivals__filter.is-active {
+  background: var(--color-maroon-dark);
+  color: #fff;
+}
+
+.arrivals__filter:hover:not(.is-active) {
+  background: var(--color-cream);
+  color: var(--color-maroon);
+}
+
+
+/* =========================================================
+   VIEW ALL
+   ========================================================= */
+
+.arrivals__viewall {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding-bottom: 4px;
+
+  color: var(--color-ink);
+
+  font-size: 13px;
+
+  white-space: nowrap;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid transparent;
+
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.arrivals__viewall:hover {
+  color: var(--color-maroon);
+
+  border-color: var(--color-maroon);
+}
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
+
+.arrivals__grid {
+  display: grid;
+
+  grid-template-columns: repeat(6, 1fr);
+
+  gap: 20px;
+}
+
+.arrivals__empty {
+  grid-column: 1 / -1;
+
+  padding: 32px 0;
+
+  color: var(--color-ink-soft);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   ========================================================= */
+
+.scroll-reveal {
+  opacity: 0;
+
+  transform: translateY(24px);
+
+  transition:
+    opacity 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  will-change: transform, opacity;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   HORIZONTAL SCROLL
+   ========================================================= */
+
+/*
+  Height is intentionally NOT fixed.
+
+  HorizontalScrollSection calculates the required height
+  according to the actual width of the product track.
+*/
+
+.arrivals .h-section {
+  position: relative;
+}
+
+.arrivals .h-sticky {
+  position: sticky;
+
+  top: 0;
+
+  display: flex;
+  align-items: center;
+
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+.arrivals .h-track {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  width: max-content;
+
+  padding: 0 6vw;
+
+  will-change: transform;
+
+  transform: translate3d(0, 0, 0);
+
+  backface-visibility: hidden;
+}
+
+.arrivals .h-track > * {
+  flex: 0 0 240px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .arrivals {
+    padding: 38px 0 46px;
+  }
+
+  .arrivals__head {
+    gap: 18px;
+
+    margin-bottom: 20px;
+  }
+
+  .arrivals__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .arrivals .h-track {
+    gap: 18px;
+
+    padding: 0 5vw;
+  }
+
+  .arrivals .h-track > * {
+    flex-basis: 260px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  .arrivals {
+    padding: 32px 0 38px;
+  }
+
+  .arrivals__head {
+    display: flex;
+
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin-bottom: 18px;
+  }
+
+  .arrivals__eyebrow {
+    margin-bottom: 5px;
+
+    font-size: 11px;
+  }
+
+  .arrivals__title {
+    font-size: 30px;
+  }
+
+
+  /* Filters remain one horizontal row */
+
+  .arrivals__filters {
+    width: 100%;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .arrivals__filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .arrivals__filter {
+    flex: 0 0 auto;
+
+    padding: 9px 14px;
+
+    font-size: 11px;
+  }
+
+
+  /* View all */
+
+  .arrivals__viewall {
+    font-size: 12px;
+  }
+
+
+  /* Grid */
+
+  .arrivals__grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+  }
+
+
+  /* Horizontal products */
+
+  .arrivals .h-sticky {
+    height: 85vh;
+  }
+
+  .arrivals .h-track {
+    gap: 16px;
+
+    padding: 0 20px;
+  }
+
+  .arrivals .h-track > * {
+    flex: 0 0 270px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .arrivals {
+    padding-top: 28px;
+  }
+
+  .arrivals__title {
+    font-size: 28px;
+  }
+
+  .arrivals .h-track > * {
+    flex-basis: 255px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .scroll-reveal {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+  .arrivals .h-track {
+    will-change: auto;
+  }
+}

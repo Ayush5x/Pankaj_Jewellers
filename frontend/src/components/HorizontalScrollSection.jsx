@@ -1,48 +1,156 @@
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export default function HorizontalScrollSection({ children }) {
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
 
+  const currentX = useRef(0);
+  const targetX = useRef(0);
+  const frameRef = useRef(null);
+
   useEffect(() => {
-    let ticking = false;
+    const section = sectionRef.current;
+    const track = trackRef.current;
 
-    function update() {
-      const section = sectionRef.current;
-      const track = trackRef.current;
-      if (!section || !track) return;
+    if (!section || !track) return;
 
+    const updateHeight = () => {
+      /*
+       * Actual width of all cards + gaps + padding
+       */
+      const trackWidth = track.scrollWidth;
+
+      /*
+       * How much the track needs to move
+       * before the LAST card reaches the viewport.
+       */
+      const horizontalDistance = Math.max(
+        0,
+        trackWidth - window.innerWidth
+      );
+
+      /*
+       * Sticky viewport + horizontal distance.
+       *
+       * This is the important part:
+       * the section cannot finish until the
+       * horizontal track has reached its end.
+       */
+      section.style.height =
+        `${horizontalDistance + window.innerHeight}px`;
+    };
+
+    const animate = () => {
       const rect = section.getBoundingClientRect();
-      const totalScrollable = section.offsetHeight - window.innerHeight;
-      let progress = -rect.top / totalScrollable;
-      progress = Math.min(Math.max(progress, 0), 1);
 
-      const maxTranslate = track.scrollWidth - window.innerWidth;
-      track.style.transform = `translateX(${-progress * Math.max(maxTranslate, 0)}px)`;
-      ticking = false;
-    }
+      const sectionHeight = section.offsetHeight;
+      const viewportHeight = window.innerHeight;
 
-    function onScroll() {
-      if (!ticking) {
-        requestAnimationFrame(update);
-        ticking = true;
+      const maxHorizontal =
+        Math.max(
+          0,
+          track.scrollWidth - window.innerWidth
+        );
+
+      /*
+       * How far we've travelled vertically
+       * inside the horizontal section.
+       */
+      const scrollDistance =
+        sectionHeight - viewportHeight;
+
+      const scrolled =
+        Math.min(
+          Math.max(-rect.top, 0),
+          scrollDistance
+        );
+
+      /*
+       * Horizontal target position
+       */
+      targetX.current =
+        Math.min(scrolled, maxHorizontal);
+
+      /*
+       * Smooth movement
+       */
+      currentX.current +=
+        (targetX.current - currentX.current) * 0.08;
+
+      /*
+       * Snap when extremely close
+       */
+      if (
+        Math.abs(
+          targetX.current - currentX.current
+        ) < 0.05
+      ) {
+        currentX.current =
+          targetX.current;
       }
-    }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    update();
+      track.style.transform =
+        `translate3d(${-currentX.current}px, 0, 0)`;
+
+      frameRef.current =
+        requestAnimationFrame(animate);
+    };
+
+    updateHeight();
+
+    /*
+     * Wait for images to load because image
+     * dimensions can change track width.
+     */
+    const images =
+      track.querySelectorAll('img');
+
+    images.forEach((img) => {
+      if (!img.complete) {
+        img.addEventListener(
+          'load',
+          updateHeight
+        );
+      }
+    });
+
+    window.addEventListener(
+      'resize',
+      updateHeight
+    );
+
+    frameRef.current =
+      requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      window.removeEventListener(
+        'resize',
+        updateHeight
+      );
+
+      images.forEach((img) => {
+        img.removeEventListener(
+          'load',
+          updateHeight
+        );
+      });
+
+      cancelAnimationFrame(
+        frameRef.current
+      );
     };
-  }, []);
+  }, [children]);
 
   return (
-    <section ref={sectionRef} className="h-section">
+    <section
+      ref={sectionRef}
+      className="h-section"
+    >
       <div className="h-sticky">
-        <div ref={trackRef} className="h-track">
+        <div
+          ref={trackRef}
+          className="h-track"
+        >
           {children}
         </div>
       </div>
