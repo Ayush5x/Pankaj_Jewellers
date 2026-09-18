@@ -723,20 +723,49 @@ export default function ContactPage() {
         </div>
 
         {/* =====================================================
-            EDITORIAL CRAFT CIRCLE
+            STATIC BRAND MARK — SAME LOGO, PLACED HIGHER UP
         ====================================================== */}
-        <div className="cta-craft-circle" aria-hidden="true">
-
-          <div className="cta-craft-circle__orbit">
-            <span>
-              CRAFTED FOR GENERATIONS
-            </span>
-          </div>
-
-          <div className="cta-craft-circle__inner">
-            <span className="cta-craft-circle__dot"></span>
-          </div>
-
+        <div className="cta-brand-mark" aria-hidden="true">
+          <svg
+            className="cta-brand-mark__svg"
+            viewBox="0 0 220 220"
+            aria-label="Atelier made by hand"
+          >
+            <defs>
+              <path
+                id="ctaBrandTextPath"
+                d="M 110,110 m -82,0 a 82,82 0 1,1 164,0 a 82,82 0 1,1 -164,0"
+              />
+            </defs>
+            <g className="cta-brand-mark__ring">
+              <text
+                className="cta-brand-mark__text"
+                textLength="515"
+                lengthAdjust="spacing"
+              >
+                <textPath href="#ctaBrandTextPath" startOffset="0%">
+                  ATELIER • MADE BY HAND • EST. 2014 • SOLEMNE • ATELIER • MADE BY HAND • EST. 2014 •
+                </textPath>
+              </text>
+              <circle
+                cx="110"
+                cy="110"
+                r="82"
+                className="cta-brand-mark__circle"
+              />
+            </g>
+            <g className="cta-brand-mark__center">
+              <text x="110" y="102" textAnchor="middle">✧</text>
+              <text
+                x="110"
+                y="127"
+                textAnchor="middle"
+                className="cta-brand-mark__initials"
+              >
+                PJ
+              </text>
+            </g>
+          </svg>
         </div>
 
       </section>

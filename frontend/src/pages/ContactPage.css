@@ -30,7 +30,7 @@
   min-width: 260px;
   min-height: 260px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(185,149,89,.10), transparent 68%);
+  background: radial-gradient(circle, rgba(185, 149, 89, 0.1), transparent 68%);
   pointer-events: none;
   animation: cpAmbientGlow 12s ease-in-out infinite;
 }
@@ -46,7 +46,7 @@
   min-width: 240px;
   min-height: 240px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(111,0,23,.055), transparent 70%);
+  background: radial-gradient(circle, rgba(111, 0, 23, 0.055), transparent 70%);
   pointer-events: none;
   animation: cpAmbientGlow 15s 1.5s ease-in-out infinite reverse;
 }
@@ -78,8 +78,12 @@
 }
 
 @keyframes cpFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes cpLine {
@@ -105,34 +109,44 @@
 }
 
 @keyframes cpFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 @keyframes cpShimmer {
-  0% { transform: translateX(-150%) skewX(-18deg); }
-  100% { transform: translateX(300%) skewX(-18deg); }
+  0% {
+    transform: translateX(-150%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(300%) skewX(-18deg);
+  }
 }
 
 @keyframes cpRing {
-  0%, 100% {
-    opacity: .22;
-    transform: translate(-50%, -50%) scale(.96);
+  0%,
+  100% {
+    opacity: 0.22;
+    transform: translate(-50%, -50%) scale(0.96);
   }
   50% {
-    opacity: .5;
+    opacity: 0.5;
     transform: translate(-50%, -50%) scale(1.02);
   }
 }
 
-
 @keyframes cpAmbientGlow {
-  0%, 100% {
-    opacity: .28;
+  0%,
+  100% {
+    opacity: 0.28;
     transform: translate3d(-4%, 0, 0) scale(1);
   }
   50% {
-    opacity: .55;
+    opacity: 0.55;
     transform: translate3d(4%, -2%, 0) scale(1.05);
   }
 }
@@ -149,8 +163,13 @@
 }
 
 @keyframes cpSoftFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-7px) rotate(.4deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(0.4deg);
+  }
 }
 
 @keyframes cpStoreReveal {
@@ -184,20 +203,22 @@
   margin: 10px auto 58px;
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid rgba(111, 0, 23, .08);
+  border: 1px solid rgba(111, 0, 23, 0.08);
   border-radius: 20px;
   background: var(--beige-deep);
   box-shadow:
-    0 18px 42px rgba(66, 11, 19, .075),
-    0 2px 0 rgba(255,255,255,.45) inset;
-  transition: transform .8s cubic-bezier(.16,1,.3,1), box-shadow .8s ease;
+    0 18px 42px rgba(66, 11, 19, 0.075),
+    0 2px 0 rgba(255, 255, 255, 0.45) inset;
+  transition:
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.8s ease;
 }
 
 .contact-hero:hover {
   transform: translateY(-3px);
   box-shadow:
-    0 24px 55px rgba(66, 11, 19, .11),
-    0 2px 0 rgba(255,255,255,.5) inset;
+    0 24px 55px rgba(66, 11, 19, 0.11),
+    0 2px 0 rgba(255, 255, 255, 0.5) inset;
 }
 
 .contact-hero::before {
@@ -206,7 +227,7 @@
   z-index: 6;
   top: 22px;
   right: 26px;
-  color: rgba(111, 0, 23, .45);
+  color: rgba(111, 0, 23, 0.45);
   font-family: Georgia, serif;
   font-size: 9px;
   letter-spacing: 2px;
@@ -221,7 +242,7 @@
   width: 25px;
   height: 1px;
   background: var(--gold);
-  animation: cpLine .8s .3s both;
+  animation: cpLine 0.8s 0.3s both;
 }
 
 .contact-hero__image {
@@ -236,15 +257,17 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: saturate(.84);
+  filter: saturate(0.84);
   transform: scale(1.02);
-  animation: cpImageIn 1.4s cubic-bezier(.16, 1, .3, 1) both;
-  transition: transform 1.4s cubic-bezier(.16, 1, .3, 1), filter .6s ease;
+  animation: cpImageIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition:
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.6s ease;
 }
 
 .contact-hero:hover .contact-hero__image img {
   transform: scale(1.055);
-  filter: saturate(.96);
+  filter: saturate(0.96);
 }
 
 .contact-hero__overlay {
@@ -253,10 +276,10 @@
   z-index: -1;
   background: linear-gradient(
     90deg,
-    rgba(248, 241, 229, .98) 0%,
-    rgba(248, 241, 229, .94) 27%,
-    rgba(248, 241, 229, .68) 48%,
-    rgba(248, 241, 229, .12) 72%,
+    rgba(248, 241, 229, 0.98) 0%,
+    rgba(248, 241, 229, 0.94) 27%,
+    rgba(248, 241, 229, 0.68) 48%,
+    rgba(248, 241, 229, 0.12) 72%,
     transparent 100%
   );
 }
@@ -280,7 +303,7 @@
   line-height: 1;
   letter-spacing: 3px;
   text-transform: uppercase;
-  animation: cpFadeUp .7s .08s both;
+  animation: cpFadeUp 0.7s 0.08s both;
 }
 
 .contact-hero__eyebrow::before {
@@ -290,7 +313,7 @@
   height: 1px;
   margin: 0 9px 3px 0;
   background: var(--gold);
-  animation: cpLine .8s .2s both;
+  animation: cpLine 0.8s 0.2s both;
 }
 
 .contact-hero__content h1 {
@@ -300,9 +323,9 @@
   font-size: clamp(51px, 4.8vw, 68px);
   font-weight: 400;
   font-style: italic;
-  line-height: .91;
-  letter-spacing: -.05em;
-  animation: cpFadeUp .8s .16s both;
+  line-height: 0.91;
+  letter-spacing: -0.05em;
+  animation: cpFadeUp 0.8s 0.16s both;
 }
 
 .contact-hero__text {
@@ -311,8 +334,8 @@
   color: #66534c;
   font-size: 14px;
   line-height: 1.7;
-  letter-spacing: .015em;
-  animation: cpFadeUp .8s .28s both;
+  letter-spacing: 0.015em;
+  animation: cpFadeUp 0.8s 0.28s both;
 }
 
 .contact-hero__features {
@@ -324,14 +347,16 @@
   line-height: 1.45;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  animation: cpFadeUp .8s .4s both;
+  animation: cpFadeUp 0.8s 0.4s both;
 }
 
 .contact-hero__features > span {
   display: flex;
   align-items: flex-start;
   gap: 5px;
-  transition: transform .35s ease, color .35s ease;
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease;
 }
 
 .contact-hero__features > span:hover {
@@ -356,14 +381,14 @@
   z-index: 4;
   right: 25px;
   bottom: 24px;
-  color: rgba(255, 250, 242, .92);
+  color: rgba(255, 250, 242, 0.92);
   font-family: Georgia, serif;
   font-size: 9px;
   font-style: italic;
   line-height: 1.45;
   text-align: right;
-  text-shadow: 0 2px 12px rgba(0,0,0,.25);
-  animation: cpFadeIn 1s .65s both;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+  animation: cpFadeIn 1s 0.65s both;
 }
 
 /* =========================================================
@@ -377,7 +402,7 @@
 
 .contact-main__layout {
   display: grid;
-  grid-template-columns: minmax(270px, .82fr) minmax(390px, 1.18fr);
+  grid-template-columns: minmax(270px, 0.82fr) minmax(390px, 1.18fr);
   gap: clamp(45px, 6vw, 85px);
   align-items: start;
 }
@@ -396,7 +421,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  color: rgba(111, 0, 23, .16);
+  color: rgba(111, 0, 23, 0.16);
   font-family: Georgia, serif;
   font-size: 7px;
   letter-spacing: 2px;
@@ -419,8 +444,8 @@
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(37px, 3.45vw, 51px);
   font-weight: 400;
-  line-height: .96;
-  letter-spacing: -.045em;
+  line-height: 0.96;
+  letter-spacing: -0.045em;
 }
 
 .contact-page__row {
@@ -428,13 +453,21 @@
   padding: 0 0 16px;
   margin: 0 0 16px;
   border-bottom: 1px solid var(--line);
-  animation: cpFadeUp .7s both;
+  animation: cpFadeUp 0.7s both;
 }
 
-.contact-page__row:nth-of-type(1) { animation-delay: .08s; }
-.contact-page__row:nth-of-type(2) { animation-delay: .14s; }
-.contact-page__row:nth-of-type(3) { animation-delay: .2s; }
-.contact-page__row:nth-of-type(4) { animation-delay: .26s; }
+.contact-page__row:nth-of-type(1) {
+  animation-delay: 0.08s;
+}
+.contact-page__row:nth-of-type(2) {
+  animation-delay: 0.14s;
+}
+.contact-page__row:nth-of-type(3) {
+  animation-delay: 0.2s;
+}
+.contact-page__row:nth-of-type(4) {
+  animation-delay: 0.26s;
+}
 
 .contact-page__row::after {
   content: "";
@@ -446,7 +479,7 @@
   background: var(--gold);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform .45s cubic-bezier(.16, 1, .3, 1);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .contact-page__row:hover::after {
@@ -530,22 +563,28 @@
   min-width: 0;
   padding: 32px 34px 22px;
   overflow: hidden;
-  border: 1px solid rgba(210, 178, 119, .13);
+  border: 1px solid rgba(210, 178, 119, 0.13);
   border-radius: 16px;
   background:
-    radial-gradient(circle at 95% 95%, rgba(210, 174, 103, .12), transparent 25%),
+    radial-gradient(
+      circle at 95% 95%,
+      rgba(210, 174, 103, 0.12),
+      transparent 25%
+    ),
     linear-gradient(145deg, #720018, #53000f);
   color: var(--paper);
-  box-shadow: 8px 11px 0 rgba(111, 0, 23, .055);
-  animation: cpFadeUp .8s .15s both;
-  transition: transform .7s cubic-bezier(.16,1,.3,1), box-shadow .7s ease;
+  box-shadow: 8px 11px 0 rgba(111, 0, 23, 0.055);
+  animation: cpFadeUp 0.8s 0.15s both;
+  transition:
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.7s ease;
 }
 
 .contact-page__form:hover {
   transform: translateY(-4px);
   box-shadow:
-    10px 17px 0 rgba(111, 0, 23, .045),
-    0 24px 55px rgba(66, 11, 19, .12);
+    10px 17px 0 rgba(111, 0, 23, 0.045),
+    0 24px 55px rgba(66, 11, 19, 0.12);
 }
 
 .contact-page__form::before {
@@ -553,7 +592,7 @@
   position: absolute;
   top: 19px;
   right: 21px;
-  color: rgba(220, 184, 111, .7);
+  color: rgba(220, 184, 111, 0.7);
   font-size: 6px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -566,7 +605,7 @@
   bottom: -115px;
   width: 250px;
   height: 250px;
-  border: 1px solid rgba(215, 177, 100, .12);
+  border: 1px solid rgba(215, 177, 100, 0.12);
   border-radius: 50%;
   pointer-events: none;
   animation: cpRing 6s ease-in-out infinite;
@@ -592,17 +631,17 @@
   font-family: Georgia, serif;
   font-size: clamp(30px, 3vw, 42px);
   font-weight: 400;
-  line-height: .98;
-  letter-spacing: -.04em;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
 }
 
 .contact-page__form-dashline {
   display: block;
   margin-top: 6px;
-  color: rgba(255,250,242,.52);
+  color: rgba(255, 250, 242, 0.52);
   font-size: 8.5px;
   line-height: 1.5;
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
 }
 
 /* =========================================================
@@ -616,14 +655,16 @@
 }
 
 .contact-page__field {
-  min-height: 39px;
+  min-height: 43px;
   display: flex;
   align-items: center;
   margin-bottom: 13px;
   border: 0;
-  border-bottom: 1px solid rgba(255,250,242,.22);
+  border-bottom: 1px solid rgba(255, 250, 242, 0.22);
   background: transparent;
-  transition: border-color .3s ease, transform .3s ease;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .contact-page__field:focus-within {
@@ -643,19 +684,19 @@
   outline: 0;
   background: transparent;
   color: var(--paper);
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.4;
-  letter-spacing: .025em;
+  letter-spacing: 0.025em;
 }
 
 .contact-page__field input,
 .contact-page__field select {
-  height: 38px;
+  height: 41px;
 }
 
 .contact-page__field input::placeholder,
 .contact-page__field textarea::placeholder {
-  color: rgba(255,250,242,.6);
+  color: rgba(255, 250, 242, 0.6);
   opacity: 1;
 }
 
@@ -680,13 +721,13 @@
 
 .contact-page__field--textarea {
   align-items: flex-start;
-  min-height: 84px;
+  min-height: 88px;
   margin-top: 3px;
   padding-top: 8px;
 }
 
 .contact-page__field textarea {
-  height: 73px;
+  height: 77px;
   resize: none;
   line-height: 1.55;
 }
@@ -701,7 +742,7 @@
 
 .contact-page__radio-label {
   margin: 0 0 7px;
-  color: rgba(255,250,242,.5);
+  color: rgba(255, 250, 242, 0.5);
   font-size: 6px;
   font-weight: 700;
   letter-spacing: 1.8px;
@@ -710,8 +751,8 @@
 .contact-page__radio-options {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(255,250,242,.17);
-  border-bottom: 1px solid rgba(255,250,242,.17);
+  border-top: 1px solid rgba(255, 250, 242, 0.17);
+  border-bottom: 1px solid rgba(255, 250, 242, 0.17);
 }
 
 .contact-page__radio-option {
@@ -721,11 +762,13 @@
   justify-content: center;
   gap: 5px;
   padding: 0 4px;
-  border-right: 1px solid rgba(255,250,242,.17);
-  color: rgba(255,250,242,.6);
+  border-right: 1px solid rgba(255, 250, 242, 0.17);
+  color: rgba(255, 250, 242, 0.6);
   font-size: 6.5px;
   cursor: pointer;
-  transition: background .3s ease, color .3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .contact-page__radio-option:last-child {
@@ -740,7 +783,7 @@
   width: 11px;
   height: 11px;
   color: var(--gold-light);
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 
 .contact-page__radio-option:hover svg {
@@ -748,7 +791,7 @@
 }
 
 .contact-page__radio-option.is-active {
-  background: rgba(210,178,119,.1);
+  background: rgba(210, 178, 119, 0.1);
   color: var(--paper);
 }
 
@@ -781,7 +824,10 @@
   letter-spacing: 2.2px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: transform .3s ease, background .3s ease, letter-spacing .3s ease;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    letter-spacing 0.3s ease;
 }
 
 .contact-page__submit::before {
@@ -791,12 +837,12 @@
   bottom: 0;
   left: 0;
   width: 25%;
-  background: rgba(255,255,255,.22);
+  background: rgba(255, 255, 255, 0.22);
   transform: translateX(-150%) skewX(-18deg);
 }
 
 .contact-page__submit:hover::before {
-  animation: cpShimmer .8s ease;
+  animation: cpShimmer 0.8s ease;
 }
 
 .contact-page__submit:hover {
@@ -808,7 +854,7 @@
 .contact-page__submit svg {
   width: 13px;
   height: 13px;
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 
 .contact-page__submit:hover svg {
@@ -821,14 +867,14 @@
   justify-content: center;
   gap: 4px;
   margin: 7px 0 0;
-  color: rgba(255,250,242,.35);
+  color: rgba(255, 250, 242, 0.35);
   font-size: 6px;
 }
 
 .contact-page__privacy svg {
   width: 9px;
   height: 9px;
-  color: rgba(210,178,119,.7);
+  color: rgba(210, 178, 119, 0.7);
 }
 
 /* =========================================================
@@ -851,7 +897,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 13px;
-  border: 1px solid rgba(210,178,119,.7);
+  border: 1px solid rgba(210, 178, 119, 0.7);
   border-radius: 50%;
   color: var(--gold-light);
   animation: cpFloat 4s ease-in-out infinite;
@@ -868,7 +914,7 @@
 .contact-page__success p {
   max-width: 290px;
   margin: 0;
-  color: rgba(255,250,242,.6);
+  color: rgba(255, 250, 242, 0.6);
   font-size: 9px;
   line-height: 1.6;
 }
@@ -886,7 +932,7 @@
 .contact-section-heading {
   position: relative;
   display: grid;
-  grid-template-columns: .7fr 1fr;
+  grid-template-columns: 0.7fr 1fr;
   gap: 8px clamp(35px, 6vw, 80px);
   align-items: end;
   max-width: 1000px;
@@ -898,7 +944,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  color: rgba(111,0,23,.28);
+  color: rgba(111, 0, 23, 0.28);
   font-family: Georgia, serif;
   font-size: 8px;
   letter-spacing: 2px;
@@ -920,8 +966,8 @@
   font-family: Georgia, serif;
   font-size: clamp(39px, 4.2vw, 56px);
   font-weight: 400;
-  line-height: .94;
-  letter-spacing: -.045em;
+  line-height: 0.94;
+  letter-spacing: -0.045em;
 }
 
 .contact-section-heading span {
@@ -945,22 +991,26 @@
 .store-card {
   position: relative;
   display: grid;
-  grid-template-columns: 1.12fr .88fr;
+  grid-template-columns: 1.12fr 0.88fr;
   min-height: 270px;
   overflow: visible;
-  animation: cpStoreReveal .8s both;
-  transition: transform .7s cubic-bezier(.16,1,.3,1);
+  animation: cpStoreReveal 0.8s both;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.store-card:nth-child(1) { animation-delay: .05s; }
-.store-card:nth-child(2) { animation-delay: .16s; }
+.store-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.store-card:nth-child(2) {
+  animation-delay: 0.16s;
+}
 
 .store-card:hover {
   transform: translateY(-5px);
 }
 
 .store-card:nth-child(even) {
-  grid-template-columns: .88fr 1.12fr;
+  grid-template-columns: 0.88fr 1.12fr;
 }
 
 .store-card:nth-child(even) .store-card__image {
@@ -976,7 +1026,7 @@
   position: absolute;
   top: -17px;
   left: 0;
-  color: rgba(111,0,23,.3);
+  color: rgba(111, 0, 23, 0.3);
   font-family: Georgia, serif;
   font-size: 7px;
   letter-spacing: 2px;
@@ -997,9 +1047,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(.84);
+  filter: saturate(0.84);
   transform: scale(1.01);
-  transition: transform 1.15s cubic-bezier(.16,1,.3,1), filter .7s ease;
+  transition:
+    transform 1.15s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.7s ease;
 }
 
 .store-card:hover .store-card__image img {
@@ -1024,11 +1076,11 @@
   height: 1px;
   background: var(--line);
   transform-origin: left;
-  transition: transform .6s cubic-bezier(.16,1,.3,1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .store-card:hover .store-card__content::before {
-  transform: scaleX(.4);
+  transform: scaleX(0.4);
 }
 
 .store-card__label {
@@ -1045,8 +1097,8 @@
   font-family: Georgia, serif;
   font-size: clamp(34px, 3.2vw, 47px);
   font-weight: 400;
-  line-height: .96;
-  letter-spacing: -.04em;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
 }
 
 .store-card__address {
@@ -1103,19 +1155,19 @@
   bottom: 0;
   left: 0;
   height: 1px;
-  background: rgba(111,0,23,.28);
+  background: rgba(111, 0, 23, 0.28);
   transform-origin: left;
-  transition: transform .4s ease;
+  transition: transform 0.4s ease;
 }
 
 .store-card__direction:hover::after {
-  transform: scaleX(.28);
+  transform: scaleX(0.28);
 }
 
 .store-card__direction svg {
   width: 12px;
   height: 12px;
-  transition: transform .3s ease;
+  transition: transform 0.3s ease;
 }
 
 .store-card__direction:hover svg {
@@ -1144,7 +1196,7 @@
   top: 50%;
   left: 50%;
   aspect-ratio: 1;
-  border: 1px solid rgba(210,178,119,.12);
+  border: 1px solid rgba(210, 178, 119, 0.12);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -1161,42 +1213,6 @@
 
 .contact-final-cta__image {
   display: none;
-}
-
-.contact-final-cta__content {
-  position: relative;
-  z-index: 2;
-  width: min(700px, calc(100% - 40px));
-  padding: 55px 20px;
-  text-align: center;
-}
-
-.contact-final-cta__content > p {
-  margin: 0 0 12px;
-  color: var(--gold-light);
-  font-size: 7px;
-  font-weight: 700;
-  letter-spacing: 2.8px;
-}
-
-.contact-final-cta__content h2 {
-  margin: 0;
-  color: var(--paper);
-  font-family: Georgia, serif;
-  font-size: clamp(39px, 5vw, 62px);
-  font-weight: 400;
-  font-style: italic;
-  line-height: .93;
-  letter-spacing: -.05em;
-}
-
-.contact-final-cta__content > span {
-  display: block;
-  max-width: 390px;
-  margin: 14px auto 0;
-  color: rgba(255,250,242,.58);
-  font-size: 11px;
-  line-height: 1.7;
 }
 
 .contact-final-cta__buttons {
@@ -1219,7 +1235,11 @@
   letter-spacing: 1.8px;
   text-decoration: none;
   text-transform: uppercase;
-  transition: transform .3s ease, background .3s ease, color .3s ease, border-color .3s ease;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .contact-final-cta__buttons a:hover {
@@ -1236,7 +1256,7 @@
 }
 
 .cta-call {
-  border: 1px solid rgba(255,250,242,.28);
+  border: 1px solid rgba(255, 250, 242, 0.28);
   color: var(--paper);
 }
 
@@ -1283,7 +1303,7 @@ nav,
 
   .store-card,
   .store-card:nth-child(even) {
-    grid-template-columns: 1fr .9fr;
+    grid-template-columns: 1fr 0.9fr;
   }
 
   .store-card__image {
@@ -1323,9 +1343,9 @@ nav,
   .contact-hero__overlay {
     background: linear-gradient(
       180deg,
-      rgba(248,241,229,.98) 0%,
-      rgba(248,241,229,.95) 46%,
-      rgba(248,241,229,.3) 76%,
+      rgba(248, 241, 229, 0.98) 0%,
+      rgba(248, 241, 229, 0.95) 46%,
+      rgba(248, 241, 229, 0.3) 76%,
       transparent 100%
     );
   }
@@ -1361,9 +1381,9 @@ nav,
     bottom: 17px;
     left: 18px;
     gap: 7px;
-    color: rgba(255,250,242,.92);
+    color: rgba(255, 250, 242, 0.92);
     font-size: 5.5px;
-    text-shadow: 0 2px 10px rgba(0,0,0,.35);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   }
 
   .contact-hero__features svg {
@@ -1468,23 +1488,23 @@ nav,
   }
 
   .contact-page__field {
-    min-height: 37px;
+    min-height: 40px;
     margin-bottom: 11px;
   }
 
   .contact-page__field input,
   .contact-page__field select {
-    height: 36px;
-    font-size: 10px;
+    height: 39px;
+    font-size: 12.5px;
   }
 
   .contact-page__field--textarea {
-    min-height: 78px;
+    min-height: 84px;
   }
 
   .contact-page__field textarea {
-    height: 67px;
-    font-size: 10px;
+    height: 72px;
+    font-size: 12.5px;
   }
 
   .contact-page__radio-group {
@@ -1500,7 +1520,7 @@ nav,
     justify-content: flex-start;
     padding-left: 9px;
     border-right: 0;
-    border-bottom: 1px solid rgba(255,250,242,.15);
+    border-bottom: 1px solid rgba(255, 250, 242, 0.15);
     font-size: 6px;
   }
 
@@ -1616,26 +1636,6 @@ nav,
     width: 285px;
   }
 
-  .contact-final-cta__content {
-    width: 100%;
-    padding: 48px 20px;
-  }
-
-  .contact-final-cta__content > p {
-    margin-bottom: 10px;
-    font-size: 6.5px;
-  }
-
-  .contact-final-cta__content h2 {
-    font-size: 42px;
-  }
-
-  .contact-final-cta__content > span {
-    max-width: 300px;
-    margin-top: 11px;
-    font-size: 10px;
-  }
-
   .contact-final-cta__buttons {
     width: 100%;
     flex-direction: column;
@@ -1700,12 +1700,11 @@ nav,
   .contact-page *,
   .contact-page *::before,
   .contact-page *::after {
-    animation-duration: .01ms !important;
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
-
 
 /* =========================================================
    PREMIUM MICRO-INTERACTIONS
@@ -1723,7 +1722,7 @@ nav,
   background: linear-gradient(
     105deg,
     transparent 0%,
-    rgba(255,255,255,.16) 48%,
+    rgba(255, 255, 255, 0.16) 48%,
     transparent 100%
   );
   transform: translateX(-150%) skewX(-18deg);
@@ -1731,12 +1730,12 @@ nav,
 }
 
 .store-card:hover .store-card__image::after {
-  animation: cpLuxuryShine 1s cubic-bezier(.16,1,.3,1);
+  animation: cpLuxuryShine 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .contact-section-heading h2,
 .contact-page__heading {
-  transition: transform .6s cubic-bezier(.16,1,.3,1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .contact-section-heading:hover h2,
@@ -1756,12 +1755,12 @@ nav,
   bottom: -20%;
   left: 0;
   width: 22%;
-  background: rgba(255,255,255,.18);
+  background: rgba(255, 255, 255, 0.18);
   transform: translateX(-180%) skewX(-18deg);
 }
 
 .contact-final-cta__buttons a:hover::after {
-  animation: cpLuxuryShine .9s ease;
+  animation: cpLuxuryShine 0.9s ease;
 }
 
 .contact-final-cta__content h2 {
@@ -1775,7 +1774,6 @@ nav,
     animation: none !important;
   }
 }
-
 
 /* =========================================================
    EDITORIAL OVERLAY DETAILS — ADDED DECORATIVE LAYER
@@ -1791,18 +1789,18 @@ nav,
   top: 50%;
   transform: translateY(-50%);
   white-space: nowrap;
-  color: rgba(111, 0, 23, .055);
+  color: rgba(111, 0, 23, 0.055);
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(88px, 11.5vw, 176px);
   font-weight: 400;
-  line-height: .8;
-  letter-spacing: -.075em;
+  line-height: 0.8;
+  letter-spacing: -0.075em;
   pointer-events: none;
   user-select: none;
   transition:
-    transform 1.2s cubic-bezier(.16, 1, .3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
     opacity 1s ease,
-    letter-spacing 1s cubic-bezier(.16, 1, .3, 1);
+    letter-spacing 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Give the second card its own editorial word */
@@ -1810,7 +1808,7 @@ nav,
   content: "ATELIER";
   left: auto;
   right: -2%;
-  color: rgba(111, 0, 23, .05);
+  color: rgba(111, 0, 23, 0.05);
 }
 
 /* Keep real content and imagery above the oversized typography */
@@ -1822,8 +1820,8 @@ nav,
 /* Subtle movement of the oversized background typography */
 .store-card:hover::after {
   transform: translateY(-50%) translateX(2.5%);
-  opacity: .82;
-  letter-spacing: -.065em;
+  opacity: 0.82;
+  letter-spacing: -0.065em;
 }
 
 .store-card:nth-child(2):hover::after {
@@ -1849,21 +1847,21 @@ nav,
   background:
     radial-gradient(
       circle at 35% 30%,
-      rgba(255,255,255,.045),
+      rgba(255, 255, 255, 0.045),
       transparent 42%
     ),
     var(--burgundy);
   box-shadow:
-    0 14px 30px rgba(66, 11, 19, .13),
-    0 0 0 1px rgba(210,178,119,.18) inset,
-    0 0 0 7px rgba(111,0,23,.025);
-  transform: translateY(-50%) scale(.94);
+    0 14px 30px rgba(66, 11, 19, 0.13),
+    0 0 0 1px rgba(210, 178, 119, 0.18) inset,
+    0 0 0 7px rgba(111, 0, 23, 0.025);
+  transform: translateY(-50%) scale(0.94);
   opacity: 0;
   pointer-events: none;
   transition:
-    transform .9s cubic-bezier(.16, 1, .3, 1),
-    opacity .7s ease,
-    box-shadow .9s ease;
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.7s ease,
+    box-shadow 0.9s ease;
 }
 
 /* Inner badge typography using a second pseudo-layer */
@@ -1874,14 +1872,14 @@ nav,
   text-align: center;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 26px;
-  line-height: .95;
-  letter-spacing: -.025em;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
   padding-top: 1px;
 }
 
 /* Small uppercase line is created with a background label illusion */
 .store-card:first-child .store-card__content {
-  --craft-badge-shadow: 0 14px 30px rgba(66,11,19,.13);
+  --craft-badge-shadow: 0 14px 30px rgba(66, 11, 19, 0.13);
 }
 
 /* Second badge stays quieter so the section doesn't feel repetitive */
@@ -1893,7 +1891,7 @@ nav,
   font-family: Georgia, "Times New Roman", serif;
   font-size: 23px;
   line-height: 1;
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
 }
 
 /* Reveal badge gently as the card becomes interactive */
@@ -1901,14 +1899,15 @@ nav,
   opacity: 1;
   transform: translateY(-50%) scale(1);
   box-shadow:
-    0 18px 38px rgba(66, 11, 19, .17),
-    0 0 0 1px rgba(210,178,119,.24) inset,
-    0 0 0 8px rgba(111,0,23,.025);
+    0 18px 38px rgba(66, 11, 19, 0.17),
+    0 0 0 1px rgba(210, 178, 119, 0.24) inset,
+    0 0 0 8px rgba(111, 0, 23, 0.025);
 }
 
 /* Slow breathing motion after reveal */
 @keyframes cpBadgeFloat {
-  0%, 100% {
+  0%,
+  100% {
     margin-top: 0;
   }
   50% {
@@ -1917,7 +1916,7 @@ nav,
 }
 
 .store-card:hover .store-card__content::after {
-  animation: cpBadgeFloat 4.5s ease-in-out .25s infinite;
+  animation: cpBadgeFloat 4.5s ease-in-out 0.25s infinite;
 }
 
 /* Fine circular highlight traveling around the badge */
@@ -1929,12 +1928,12 @@ nav,
   background:
     radial-gradient(
       circle at 34% 28%,
-      rgba(255,255,255,.075),
+      rgba(255, 255, 255, 0.075),
       transparent 30%
     ),
     radial-gradient(
       circle at 65% 72%,
-      rgba(210,178,119,.12),
+      rgba(210, 178, 119, 0.12),
       transparent 38%
     ),
     var(--burgundy);
@@ -1945,16 +1944,16 @@ nav,
    ========================================================= */
 
 .store-card__image {
-  box-shadow: 0 0 0 1px rgba(111,0,23,.08);
+  box-shadow: 0 0 0 1px rgba(111, 0, 23, 0.08);
   transition:
-    box-shadow .8s ease,
-    transform .9s cubic-bezier(.16,1,.3,1);
+    box-shadow 0.8s ease,
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .store-card:hover .store-card__image {
   box-shadow:
-    0 0 0 1px rgba(111,0,23,.11),
-    0 18px 42px rgba(66,11,19,.055);
+    0 0 0 1px rgba(111, 0, 23, 0.11),
+    0 18px 42px rgba(66, 11, 19, 0.055);
 }
 
 /* Delicate image edge reveal */
@@ -1963,13 +1962,13 @@ nav,
   position: absolute;
   z-index: 2;
   inset: 10px;
-  border: 1px solid rgba(255,250,242,.22);
+  border: 1px solid rgba(255, 250, 242, 0.22);
   pointer-events: none;
   opacity: 0;
-  transform: scale(.985);
+  transform: scale(0.985);
   transition:
-    opacity .8s ease,
-    transform 1s cubic-bezier(.16,1,.3,1);
+    opacity 0.8s ease,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .store-card:hover .store-card__image::before {
@@ -1990,19 +1989,19 @@ nav,
 }
 
 .contact-section-heading:hover h2 {
-  transform: translateX(5px) skewX(-.3deg);
+  transform: translateX(5px) skewX(-0.3deg);
 }
 
 /* Slow ambient movement for the editorial section number */
 .contact-section-heading::before {
   transition:
-    transform .8s cubic-bezier(.16,1,.3,1),
-    opacity .8s ease;
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.8s ease;
 }
 
 .contact-section-heading:hover::before {
   transform: translateX(-4px);
-  opacity: .72;
+  opacity: 0.72;
 }
 
 /* =========================================================
@@ -2037,8 +2036,8 @@ nav,
     top: 23%;
     left: -2%;
     font-size: clamp(68px, 20vw, 105px);
-    letter-spacing: -.07em;
-    opacity: .72;
+    letter-spacing: -0.07em;
+    opacity: 0.72;
   }
 
   .store-card:nth-child(2)::after {
@@ -2112,7 +2111,6 @@ nav,
   }
 }
 
-
 /* =========================================================
    BADGE REFINEMENT — TEXT STAYS INSIDE THE CIRCLE
    ========================================================= */
@@ -2131,7 +2129,7 @@ nav,
   overflow: hidden;
   line-height: 1;
   box-sizing: border-box;
-  transform: translateY(-50%) scale(.94);
+  transform: translateY(-50%) scale(0.94);
 }
 
 /* First store: 10 / YEARS OF CRAFT */
@@ -2141,13 +2139,13 @@ nav,
   font-size: 15px;
   font-weight: 400;
   line-height: 1.08;
-  letter-spacing: -.025em;
+  letter-spacing: -0.025em;
   padding: 0 10px;
 }
 
 /* Keep the badge copy visually contained */
 .store-card:first-child .store-card__content::after {
-  text-shadow: 0 1px 8px rgba(0,0,0,.08);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Second store keeps its own editorial badge */
@@ -2157,7 +2155,7 @@ nav,
   font-size: 21px;
   font-weight: 400;
   line-height: 1.08;
-  letter-spacing: -.02em;
+  letter-spacing: -0.02em;
   padding: 0 10px;
 }
 
@@ -2167,10 +2165,10 @@ nav,
 
 .store-card__content::after {
   transition:
-    transform .9s cubic-bezier(.16,1,.3,1),
-    opacity .6s ease,
-    box-shadow .9s ease,
-    filter .7s ease;
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.6s ease,
+    box-shadow 0.9s ease,
+    filter 0.7s ease;
   will-change: transform, filter;
 }
 
@@ -2193,12 +2191,12 @@ nav,
   background:
     radial-gradient(
       circle at 30% 24%,
-      rgba(255,255,255,.10),
+      rgba(255, 255, 255, 0.1),
       transparent 24%
     ),
     radial-gradient(
       circle at 70% 78%,
-      rgba(210,178,119,.12),
+      rgba(210, 178, 119, 0.12),
       transparent 34%
     ),
     var(--burgundy);
@@ -2207,15 +2205,15 @@ nav,
 /* Editorial text gently drifts behind the image */
 .store-card::after {
   transition:
-    transform 1.25s cubic-bezier(.16,1,.3,1),
-    opacity .9s ease,
-    letter-spacing 1.1s cubic-bezier(.16,1,.3,1);
+    transform 1.25s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.9s ease,
+    letter-spacing 1.1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .store-card:hover::after {
   transform: translateY(-50%) translateX(3%) scale(1.015);
-  opacity: .9;
-  letter-spacing: -.055em;
+  opacity: 0.9;
+  letter-spacing: -0.055em;
 }
 
 .store-card:nth-child(2):hover::after {
@@ -2225,18 +2223,18 @@ nav,
 /* Image frame softly appears on hover */
 .store-card__image::before {
   transition:
-    opacity .8s ease,
-    transform 1s cubic-bezier(.16,1,.3,1),
-    border-color .8s ease;
+    opacity 0.8s ease,
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.8s ease;
 }
 
 .store-card:hover .store-card__image::before {
-  border-color: rgba(255,250,242,.34);
+  border-color: rgba(255, 250, 242, 0.34);
 }
 
 /* Subtle content lift */
 .store-card__content {
-  transition: transform .75s cubic-bezier(.16,1,.3,1);
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .store-card:hover .store-card__content {
@@ -2246,8 +2244,8 @@ nav,
 /* Direction link gets a smoother magnetic-style movement */
 .store-card__direction {
   transition:
-    transform .45s cubic-bezier(.16,1,.3,1),
-    letter-spacing .45s ease;
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    letter-spacing 0.45s ease;
 }
 
 .store-card__direction:hover {
@@ -2321,7 +2319,6 @@ nav,
   }
 }
 
-
 /* =========================================================
    DESKTOP TYPOGRAPHY SCALE
    Text only — layout, spacing, image heights and mobile
@@ -2329,7 +2326,6 @@ nav,
    ========================================================= */
 
 @media (min-width: 651px) {
-
   /* Hero */
   .contact-hero__eyebrow {
     font-size: 10px;
@@ -2392,7 +2388,7 @@ nav,
   .contact-page__field input,
   .contact-page__field select,
   .contact-page__field textarea {
-    font-size: 11px;
+    font-size: 14px;
   }
 
   .contact-page__radio-label {
@@ -2469,50 +2465,116 @@ nav,
 
 /* Keep the compact mobile typography exactly as designed */
 @media (max-width: 650px) {
-  .contact-hero__eyebrow { font-size: 6.5px; }
-  .contact-hero__text { font-size: 10.5px; }
-  .contact-hero__features { font-size: 5.5px; }
-  .contact-page__eyebrow { font-size: 6.5px; }
-  .contact-page__heading { font-size: 34px; }
-  .contact-page__row h4 { font-size: 6.5px; }
-  .contact-page__row-main { font-size: 15px; }
-  .contact-page__row-sub { font-size: 9.5px; }
-  .contact-page__quote p { font-size: 12.5px; }
-  .contact-page__form-eyebrow { font-size: 6.5px; }
-  .contact-page__form-heading-row h2 { font-size: 29px; }
-  .contact-page__form-dashline { font-size: 6.5px; }
+  .contact-hero__eyebrow {
+    font-size: 6.5px;
+  }
+  .contact-hero__text {
+    font-size: 10.5px;
+  }
+  .contact-hero__features {
+    font-size: 5.5px;
+  }
+  .contact-page__eyebrow {
+    font-size: 6.5px;
+  }
+  .contact-page__heading {
+    font-size: 34px;
+  }
+  .contact-page__row h4 {
+    font-size: 6.5px;
+  }
+  .contact-page__row-main {
+    font-size: 15px;
+  }
+  .contact-page__row-sub {
+    font-size: 9.5px;
+  }
+  .contact-page__quote p {
+    font-size: 12.5px;
+  }
+  .contact-page__form-eyebrow {
+    font-size: 6.5px;
+  }
+  .contact-page__form-heading-row h2 {
+    font-size: 29px;
+  }
+  .contact-page__form-dashline {
+    font-size: 6.5px;
+  }
   .contact-page__field input,
   .contact-page__field select,
-  .contact-page__field textarea { font-size: 10px; }
-  .contact-page__radio-label { font-size: 6px; }
-  .contact-page__radio-option { font-size: 6px; }
-  .contact-page__submit { font-size: 7px; }
-  .contact-page__privacy { font-size: 5.5px; }
-  .contact-section-heading p { font-size: 6.5px; }
-  .contact-section-heading h2 { font-size: 40px; }
-  .contact-section-heading span { font-size: 8.5px; }
-  .store-card__label { font-size: 6.5px; }
-  .store-card__content h3 { font-size: 35px; }
-  .store-card__address { font-size: 10px; }
-  .store-card__info span { font-size: 6.5px; }
-  .store-card__direction { font-size: 7px; }
-  .contact-final-cta__content > p { font-size: 6.5px; }
-  .contact-final-cta__content h2 { font-size: 42px; }
-  .contact-final-cta__content > span { font-size: 10px; }
-  .contact-final-cta__buttons a { font-size: 7px; }
+  .contact-page__field textarea {
+    font-size: 12.5px;
+  }
+  .contact-page__radio-label {
+    font-size: 6px;
+  }
+  .contact-page__radio-option {
+    font-size: 6px;
+  }
+  .contact-page__submit {
+    font-size: 7px;
+  }
+  .contact-page__privacy {
+    font-size: 5.5px;
+  }
+  .contact-section-heading p {
+    font-size: 6.5px;
+  }
+  .contact-section-heading h2 {
+    font-size: 40px;
+  }
+  .contact-section-heading span {
+    font-size: 8.5px;
+  }
+  .store-card__label {
+    font-size: 6.5px;
+  }
+  .store-card__content h3 {
+    font-size: 35px;
+  }
+  .store-card__address {
+    font-size: 10px;
+  }
+  .store-card__info span {
+    font-size: 6.5px;
+  }
+  .store-card__direction {
+    font-size: 7px;
+  }
+  .contact-final-cta__content > p {
+    font-size: 6.5px;
+  }
+  .contact-final-cta__content h2 {
+    font-size: 42px;
+  }
+  .contact-final-cta__content > span {
+    font-size: 10px;
+  }
+  .contact-final-cta__buttons a {
+    font-size: 7px;
+  }
 }
 
 @media (max-width: 380px) {
-  .contact-hero__content h1 { font-size: 45px; }
-  .contact-page__heading { font-size: 34px; }
-  .store-card__content h3 { font-size: 33px; }
-  .contact-final-cta__content h2 { font-size: 39px; }
+  .contact-hero__content h1 {
+    font-size: 45px;
+  }
+  .contact-page__heading {
+    font-size: 34px;
+  }
+  .store-card__content h3 {
+    font-size: 33px;
+  }
+  .contact-final-cta__content h2 {
+    font-size: 39px;
+  }
 }
 
-
 /* =========================================================
-   HERO TYPOGRAPHY — RETURN TO PREVIOUS COMPACT SCALE
+   HERO TYPOGRAPHY — REDUCED, FINER SCALE
    Hero only. No other section is changed.
+   Text made a touch smaller / finer per feedback.
    ========================================================= */
 
 @media (min-width: 651px) {
@@ -2521,7 +2583,7 @@ nav,
   }
 
   .contact-hero__content h1 {
-    font-size: clamp(51px, 4.8vw, 68px);
+    font-size: clamp(38px, 3.6vw, 52px);
   }
 
   .contact-hero__text {
@@ -2543,7 +2605,7 @@ nav,
   }
 
   .contact-hero__content h1 {
-    font-size: 49px;
+    font-size: 36px;
   }
 
   .contact-hero__text {
@@ -2557,14 +2619,12 @@ nav,
 
 @media (max-width: 380px) {
   .contact-hero__content h1 {
-    font-size: 45px;
+    font-size: 33px;
   }
 }
 
-
 /* =========================================================
-   FINAL CTA — LUXURY EDITORIAL
-   Pankaj Jewellers
+   FINAL CTA — EDITORIAL BEIGE + BURGUNDY
    ========================================================= */
 
 .contact-final-cta {
@@ -2575,120 +2635,142 @@ nav,
   justify-content: center;
   overflow: hidden;
   isolation: isolate;
-  background: #6f0017;
-  color: #fffaf2;
+
+  background: #f7efe2;
+  color: #6f0017;
 }
 
-/* Large editorial word behind everything */
+/* =========================================================
+   OVERSIZED EDITORIAL BACKGROUND TEXT
+   ========================================================= */
+
 .contact-final-cta::before {
   content: "JEWELLERY";
+
   position: absolute;
-  z-index: -1;
-  left: 50%;
+  z-index: -2;
   top: 50%;
+  left: 50%;
+
   transform: translate(-50%, -50%);
+
   white-space: nowrap;
-
-  color: rgba(255, 250, 242, 0.045);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(130px, 19vw, 280px);
-  font-weight: 400;
-  line-height: .75;
-  letter-spacing: -.09em;
-
   pointer-events: none;
   user-select: none;
 
+  color: rgba(111, 0, 23, 0.075);
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(130px, 19vw, 280px);
+  font-weight: 400;
+  line-height: 0.75;
+  letter-spacing: -0.09em;
+
   transition:
-    transform 1.4s cubic-bezier(.16, 1, .3, 1),
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
     letter-spacing 1.2s ease,
     opacity 1s ease;
 }
 
-/* Large gold editorial circle */
+/* =========================================================
+   LARGE EDITORIAL CIRCLE
+   ========================================================= */
+
 .contact-final-cta::after {
+  display: none;
   content: "";
+
   position: absolute;
   z-index: -1;
+
   width: 430px;
   height: 430px;
+
   right: -130px;
   top: 50%;
+
   transform: translateY(-50%);
 
-  border: 1px solid rgba(210, 178, 119, .22);
+  border: 1px solid rgba(111, 0, 23, 0.18);
   border-radius: 50%;
 
   box-shadow:
-    0 0 0 30px rgba(210,178,119,.018),
-    0 0 0 80px rgba(210,178,119,.012);
+    0 0 0 30px rgba(111, 0, 23, 0.018),
+    0 0 0 80px rgba(111, 0, 23, 0.01);
+
+  pointer-events: none;
 
   animation: ctaEditorialRing 9s ease-in-out infinite;
-  pointer-events: none;
 }
 
-
 /* =========================================================
-   IMAGE — EDITORIAL SIDE ELEMENT
+   IMAGE
    ========================================================= */
 
 .contact-final-cta__image {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
+
   left: 6%;
   top: 50%;
+
   width: min(31vw, 420px);
   height: 420px;
 
-  transform: translateY(-50%) rotate(-3deg);
   overflow: hidden;
 
-  border: 1px solid rgba(210,178,119,.32);
-  background: #420b13;
+  transform: translateY(-50%) rotate(-3deg);
+
+  border: 1px solid rgba(111, 0, 23, 0.22);
+
+  background: #ead9c3;
 
   box-shadow:
-    18px 20px 0 rgba(210,178,119,.08),
-    0 30px 70px rgba(35,0,7,.22);
+    18px 20px 0 rgba(111, 0, 23, 0.08),
+    0 30px 70px rgba(66, 11, 19, 0.12);
 
   transition:
-    transform 1s cubic-bezier(.16,1,.3,1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 1s ease;
 }
 
-/* Editorial inner frame */
+/* Inner editorial frame */
+
 .contact-final-cta__image::before {
   content: "";
+
   position: absolute;
   z-index: 2;
+
   inset: 14px;
 
-  border: 1px solid rgba(255,250,242,.25);
+  border: 1px solid rgba(111, 0, 23, 0.25);
 
   pointer-events: none;
 
   transition:
-    inset .8s cubic-bezier(.16,1,.3,1),
-    border-color .6s ease;
+    inset 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.6s ease;
 }
 
 /* Image */
+
 .contact-final-cta__image img {
   width: 100%;
   height: 100%;
+
   display: block;
 
   object-fit: cover;
-  filter:
-    saturate(.72)
-    contrast(.98);
+
+  filter: saturate(0.72) contrast(0.98);
 
   transform: scale(1.04);
 
   transition:
-    transform 1.4s cubic-bezier(.16,1,.3,1),
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
     filter 1s ease;
 }
-
 
 /* =========================================================
    CONTENT
@@ -2701,19 +2783,23 @@ nav,
   width: min(650px, calc(100% - 40px));
 
   margin-left: 24%;
+
   padding: 70px 30px;
 
   text-align: left;
 }
 
-/* Small vertical editorial number */
+/* Editorial section number */
+
 .contact-final-cta__content::before {
   content: "03";
+
   position: absolute;
+
   left: 0;
   top: 72px;
 
-  color: rgba(210,178,119,.72);
+  color: rgba(111, 0, 23, 0.5);
 
   font-family: Georgia, serif;
   font-size: 10px;
@@ -2721,7 +2807,6 @@ nav,
 
   writing-mode: vertical-rl;
 }
-
 
 /* =========================================================
    EYEBROW
@@ -2736,30 +2821,34 @@ nav,
 
   margin: 0 0 24px;
 
-  color: #d2b276;
+  color: #6f0017;
 
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 3.2px;
+
   text-transform: uppercase;
 }
 
-/* Gold line before eyebrow */
+/* Gold editorial line */
+
 .contact-final-cta__content > p::before {
   content: "";
+
   width: 35px;
   height: 1px;
+
   flex: 0 0 auto;
 
-  background: #d2b276;
+  background: #b99559;
 
   transform-origin: left;
-  animation: ctaLineReveal 1s .2s both;
+
+  animation: ctaLineReveal 1s 0.2s both;
 }
 
-
 /* =========================================================
-   MAIN HEADING
+   HEADING
    ========================================================= */
 
 .contact-final-cta__content h2 {
@@ -2767,27 +2856,28 @@ nav,
 
   margin: 0;
 
-  color: #fffaf2;
+  color: #6f0017;
 
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(54px, 6vw, 86px);
   font-weight: 400;
   font-style: italic;
 
-  line-height: .9;
-  letter-spacing: -.065em;
+  line-height: 0.9;
+  letter-spacing: -0.065em;
 
   text-wrap: balance;
 
   transition:
-    transform .8s cubic-bezier(.16,1,.3,1),
-    letter-spacing .8s ease;
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    letter-spacing 0.8s ease;
 }
 
+/* Heading underline */
 
-/* Thin decorative line */
 .contact-final-cta__content h2::after {
   content: "";
+
   display: block;
 
   width: 90px;
@@ -2795,13 +2885,14 @@ nav,
 
   margin-top: 25px;
 
-  background: rgba(210,178,119,.6);
+  background: rgba(111, 0, 23, 0.5);
 
   transform-origin: left;
-  transition:
-    width .8s cubic-bezier(.16,1,.3,1);
-}
 
+  transition:
+    width 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.6s ease;
+}
 
 /* =========================================================
    DESCRIPTION
@@ -2814,13 +2905,12 @@ nav,
 
   margin-top: 24px;
 
-  color: rgba(255,250,242,.68);
+  color: #75635b;
 
   font-size: 14px;
   line-height: 1.75;
-  letter-spacing: .02em;
+  letter-spacing: 0.02em;
 }
-
 
 /* =========================================================
    BUTTONS
@@ -2834,8 +2924,6 @@ nav,
   margin-top: 32px;
 }
 
-
-/* Base button */
 .contact-final-cta__buttons a {
   position: relative;
 
@@ -2860,70 +2948,64 @@ nav,
   text-transform: uppercase;
 
   transition:
-    transform .45s cubic-bezier(.16,1,.3,1),
-    background .45s ease,
-    color .45s ease,
-    border-color .45s ease,
-    letter-spacing .45s ease;
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.45s ease,
+    color 0.45s ease,
+    border-color 0.45s ease,
+    letter-spacing 0.45s ease;
 }
 
-
 /* =========================================================
-   WHATSAPP BUTTON
+   WHATSAPP
    ========================================================= */
 
 .cta-whatsapp {
-  background: #d2b276;
-  color: #52000f;
+  background: #6f0017;
+  color: #fffaf2;
 
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.12);
+  box-shadow: 0 8px 25px rgba(66, 11, 19, 0.12);
 }
 
 .cta-whatsapp:hover {
-  background: #e0c28f;
-  color: #42000c;
+  background: #420b13;
 
   transform: translateY(-4px);
+
   letter-spacing: 2.3px;
 
-  box-shadow:
-    0 14px 32px rgba(0,0,0,.18);
+  box-shadow: 0 14px 32px rgba(66, 11, 19, 0.18);
 }
 
-
 /* =========================================================
-   CALL BUTTON
+   CALL
    ========================================================= */
 
 .cta-call {
-  border: 1px solid rgba(255,250,242,.35);
+  border: 1px solid rgba(111, 0, 23, 0.35);
 
-  background: rgba(255,250,242,.025);
+  background: rgba(111, 0, 23, 0.025);
 
-  color: #fffaf2;
-
-  backdrop-filter: blur(5px);
+  color: #6f0017;
 }
 
 .cta-call:hover {
-  border-color: #d2b276;
-  color: #d2b276;
+  border-color: #6f0017;
+
+  background: rgba(111, 0, 23, 0.055);
+
+  color: #6f0017;
 
   transform: translateY(-4px);
-  letter-spacing: 2.3px;
 
-  background: rgba(210,178,119,.06);
+  letter-spacing: 2.3px;
 }
 
-
 /* =========================================================
-   ICON MOTION
+   BUTTON ICONS
    ========================================================= */
 
 .contact-final-cta__buttons svg {
-  transition:
-    transform .45s cubic-bezier(.16,1,.3,1);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .cta-whatsapp:hover svg {
@@ -2934,7 +3016,6 @@ nav,
   transform: translateX(5px);
 }
 
-
 /* =========================================================
    BUTTON SHINE
    ========================================================= */
@@ -2943,59 +3024,52 @@ nav,
   content: "";
 
   position: absolute;
+
   top: -30%;
   bottom: -30%;
   left: -80%;
 
   width: 35%;
 
-  background: rgba(255,255,255,.2);
+  background: rgba(255, 250, 242, 0.2);
 
   transform: skewX(-20deg);
-
-  transition: none;
 }
 
 .contact-final-cta__buttons a:hover::before {
-  animation: ctaButtonShine .85s ease;
+  animation: ctaButtonShine 0.85s ease;
 }
 
-
 /* =========================================================
-   HOVER — WHOLE EDITORIAL COMPOSITION
+   MAIN HOVER
    ========================================================= */
 
 .contact-final-cta:hover::before {
-  transform:
-    translate(-50%, -50%)
-    scale(1.025);
+  transform: translate(-50%, -50%) scale(1.025);
 
-  letter-spacing: -.07em;
-  opacity: .85;
+  color: rgba(111, 0, 23, 0.09);
+
+  letter-spacing: -0.07em;
 }
 
 .contact-final-cta:hover .contact-final-cta__image {
-  transform:
-    translateY(-50%)
-    rotate(-1deg)
-    scale(1.015);
+  transform: translateY(-50%) rotate(-1deg) scale(1.015);
 
   box-shadow:
-    22px 25px 0 rgba(210,178,119,.1),
-    0 35px 80px rgba(35,0,7,.27);
+    22px 25px 0 rgba(111, 0, 23, 0.1),
+    0 35px 80px rgba(66, 11, 19, 0.17);
 }
 
 .contact-final-cta:hover .contact-final-cta__image img {
   transform: scale(1.085);
 
-  filter:
-    saturate(.88)
-    contrast(1.02);
+  filter: saturate(0.88) contrast(1.02);
 }
 
 .contact-final-cta:hover .contact-final-cta__image::before {
   inset: 20px;
-  border-color: rgba(255,250,242,.38);
+
+  border-color: rgba(111, 0, 23, 0.35);
 }
 
 .contact-final-cta:hover .contact-final-cta__content h2 {
@@ -3004,21 +3078,25 @@ nav,
 
 .contact-final-cta:hover .contact-final-cta__content h2::after {
   width: 135px;
-}
 
+  background: #b99559;
+}
 
 /* =========================================================
    ANIMATIONS
    ========================================================= */
 
 @keyframes ctaEditorialRing {
-  0%, 100% {
-    opacity: .45;
-    transform: translateY(-50%) scale(.96);
+  0%,
+  100% {
+    opacity: 0.45;
+
+    transform: translateY(-50%) scale(0.96);
   }
 
   50% {
-    opacity: .8;
+    opacity: 0.8;
+
     transform: translateY(-50%) scale(1.035);
   }
 }
@@ -3045,767 +3123,11 @@ nav,
   }
 }
 
-
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
-
-  .contact-final-cta {
-    min-height: 500px;
-  }
-
-  .contact-final-cta__image {
-    left: 4%;
-    width: 34vw;
-    height: 360px;
-  }
-
-  .contact-final-cta__content {
-    margin-left: 25%;
-  }
-
-  .contact-final-cta__content h2 {
-    font-size: clamp(48px, 7vw, 70px);
-  }
-
-  .contact-final-cta::after {
-    width: 350px;
-    height: 350px;
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 650px) {
-
-  .contact-final-cta {
-    min-height: 570px;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  /* Background editorial word */
-  .contact-final-cta::before {
-    top: 16%;
-    left: 50%;
-
-    font-size: clamp(80px, 22vw, 130px);
-    opacity: .7;
-  }
-
-  /* Decorative circle */
-  .contact-final-cta::after {
-    width: 280px;
-    height: 280px;
-
-    right: -110px;
-    top: 24%;
-  }
-
-  /* Image becomes a floating editorial image */
-  .contact-final-cta__image {
-    top: 28px;
-    left: 50%;
-
-    width: 72%;
-    height: 205px;
-
-    transform:
-      translateX(-50%)
-      rotate(-2deg);
-  }
-
-  .contact-final-cta__image::before {
-    inset: 9px;
-  }
-
-  /* Content */
-  .contact-final-cta__content {
-    width: 100%;
-
-    margin: 0;
-
-    padding: 0 22px 38px;
-
-    text-align: center;
-  }
-
-  .contact-final-cta__content::before {
-    display: none;
-  }
-
-  .contact-final-cta__content > p {
-    justify-content: center;
-
-    margin-bottom: 15px;
-
-    font-size: 7px;
-    letter-spacing: 2.5px;
-  }
-
-  .contact-final-cta__content > p::before {
-    width: 22px;
-  }
-
-  .contact-final-cta__content h2 {
-    max-width: 360px;
-    margin: 0 auto;
-
-    font-size: 43px;
-    line-height: .94;
-  }
-
-  .contact-final-cta__content h2::after {
-    width: 60px;
-    margin: 18px auto 0;
-  }
-
-  .contact-final-cta__content > span {
-    max-width: 320px;
-
-    margin: 18px auto 0;
-
-    font-size: 10px;
-    line-height: 1.65;
-  }
-
-  .contact-final-cta__buttons {
-    width: 100%;
-
-    flex-direction: column;
-
-    gap: 7px;
-
-    margin-top: 23px;
-  }
-
-  .contact-final-cta__buttons a {
-    width: 100%;
-    min-height: 43px;
-
-    font-size: 7px;
-    letter-spacing: 1.7px;
-  }
-
-  /* Disable large desktop movement on touch */
-  .contact-final-cta:hover .contact-final-cta__image {
-    transform:
-      translateX(-50%)
-      rotate(-2deg);
-  }
-
-  .contact-final-cta:hover .contact-final-cta__content h2 {
-    transform: none;
-  }
-}
-
-
-/* =========================================================
-   SMALL PHONES
-   ========================================================= */
-
-@media (max-width: 380px) {
-
-  .contact-final-cta {
-    min-height: 550px;
-  }
-
-  .contact-final-cta__image {
-    width: 76%;
-    height: 190px;
-  }
-
-  .contact-final-cta__content {
-    padding-bottom: 30px;
-  }
-
-  .contact-final-cta__content h2 {
-    font-size: 39px;
-  }
-
-  .contact-final-cta__content > span {
-    font-size: 9.5px;
-  }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .contact-final-cta::before,
-  .contact-final-cta::after,
-  .contact-final-cta__image,
-  .contact-final-cta__image img,
-  .contact-final-cta__content h2 {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  .contact-final-cta__buttons a::before {
-    animation: none !important;
-  }
-}
-
-/* =========================================================
-   FINAL CTA — EDITORIAL BEIGE + BURGUNDY
-   ========================================================= */
-
-.contact-final-cta {
-  position: relative;
-  min-height: 560px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  isolation: isolate;
-
-  background: #f7efe2;
-  color: #6f0017;
-}
-
-
-/* =========================================================
-   OVERSIZED EDITORIAL BACKGROUND TEXT
-   ========================================================= */
-
-.contact-final-cta::before {
-  content: "JEWELLERY";
-
-  position: absolute;
-  z-index: -2;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  white-space: nowrap;
-  pointer-events: none;
-  user-select: none;
-
-  color: rgba(111, 0, 23, 0.075);
-
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(130px, 19vw, 280px);
-  font-weight: 400;
-  line-height: .75;
-  letter-spacing: -.09em;
-
-  transition:
-    transform 1.4s cubic-bezier(.16, 1, .3, 1),
-    letter-spacing 1.2s ease,
-    opacity 1s ease;
-}
-
-
-/* =========================================================
-   LARGE EDITORIAL CIRCLE
-   ========================================================= */
-
-.contact-final-cta::after {
-  content: "";
-
-  position: absolute;
-  z-index: -1;
-
-  width: 430px;
-  height: 430px;
-
-  right: -130px;
-  top: 50%;
-
-  transform: translateY(-50%);
-
-  border: 1px solid rgba(111, 0, 23, .18);
-  border-radius: 50%;
-
-  box-shadow:
-    0 0 0 30px rgba(111, 0, 23, .018),
-    0 0 0 80px rgba(111, 0, 23, .01);
-
-  pointer-events: none;
-
-  animation: ctaEditorialRing 9s ease-in-out infinite;
-}
-
-
-/* =========================================================
-   IMAGE
-   ========================================================= */
-
-.contact-final-cta__image {
-  position: absolute;
-  z-index: 1;
-
-  left: 6%;
-  top: 50%;
-
-  width: min(31vw, 420px);
-  height: 420px;
-
-  overflow: hidden;
-
-  transform:
-    translateY(-50%)
-    rotate(-3deg);
-
-  border: 1px solid rgba(111, 0, 23, .22);
-
-  background: #ead9c3;
-
-  box-shadow:
-    18px 20px 0 rgba(111, 0, 23, .08),
-    0 30px 70px rgba(66, 11, 19, .12);
-
-  transition:
-    transform 1s cubic-bezier(.16, 1, .3, 1),
-    box-shadow 1s ease;
-}
-
-
-/* Inner editorial frame */
-
-.contact-final-cta__image::before {
-  content: "";
-
-  position: absolute;
-  z-index: 2;
-
-  inset: 14px;
-
-  border: 1px solid rgba(111, 0, 23, .25);
-
-  pointer-events: none;
-
-  transition:
-    inset .8s cubic-bezier(.16, 1, .3, 1),
-    border-color .6s ease;
-}
-
-
-/* Image */
-
-.contact-final-cta__image img {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
-
-  filter:
-    saturate(.72)
-    contrast(.98);
-
-  transform: scale(1.04);
-
-  transition:
-    transform 1.4s cubic-bezier(.16, 1, .3, 1),
-    filter 1s ease;
-}
-
-
-/* =========================================================
-   CONTENT
-   ========================================================= */
-
-.contact-final-cta__content {
-  position: relative;
-  z-index: 3;
-
-  width: min(650px, calc(100% - 40px));
-
-  margin-left: 24%;
-
-  padding: 70px 30px;
-
-  text-align: left;
-}
-
-
-/* Editorial section number */
-
-.contact-final-cta__content::before {
-  content: "03";
-
-  position: absolute;
-
-  left: 0;
-  top: 72px;
-
-  color: rgba(111, 0, 23, .5);
-
-  font-family: Georgia, serif;
-  font-size: 10px;
-  letter-spacing: 3px;
-
-  writing-mode: vertical-rl;
-}
-
-
-/* =========================================================
-   EYEBROW
-   ========================================================= */
-
-.contact-final-cta__content > p {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  margin: 0 0 24px;
-
-  color: #6f0017;
-
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 3.2px;
-
-  text-transform: uppercase;
-}
-
-
-/* Gold editorial line */
-
-.contact-final-cta__content > p::before {
-  content: "";
-
-  width: 35px;
-  height: 1px;
-
-  flex: 0 0 auto;
-
-  background: #b99559;
-
-  transform-origin: left;
-
-  animation: ctaLineReveal 1s .2s both;
-}
-
-
-/* =========================================================
-   HEADING
-   ========================================================= */
-
-.contact-final-cta__content h2 {
-  max-width: 620px;
-
-  margin: 0;
-
-  color: #6f0017;
-
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(54px, 6vw, 86px);
-  font-weight: 400;
-  font-style: italic;
-
-  line-height: .9;
-  letter-spacing: -.065em;
-
-  text-wrap: balance;
-
-  transition:
-    transform .8s cubic-bezier(.16, 1, .3, 1),
-    letter-spacing .8s ease;
-}
-
-
-/* Heading underline */
-
-.contact-final-cta__content h2::after {
-  content: "";
-
-  display: block;
-
-  width: 90px;
-  height: 1px;
-
-  margin-top: 25px;
-
-  background: rgba(111, 0, 23, .5);
-
-  transform-origin: left;
-
-  transition:
-    width .8s cubic-bezier(.16, 1, .3, 1),
-    background .6s ease;
-}
-
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
-
-.contact-final-cta__content > span {
-  display: block;
-
-  max-width: 460px;
-
-  margin-top: 24px;
-
-  color: #75635b;
-
-  font-size: 14px;
-  line-height: 1.75;
-  letter-spacing: .02em;
-}
-
-
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
-.contact-final-cta__buttons {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  margin-top: 32px;
-}
-
-
-.contact-final-cta__buttons a {
-  position: relative;
-
-  min-height: 48px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-
-  padding: 0 25px;
-
-  overflow: hidden;
-
-  border-radius: 2px;
-
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 2px;
-
-  text-decoration: none;
-  text-transform: uppercase;
-
-  transition:
-    transform .45s cubic-bezier(.16, 1, .3, 1),
-    background .45s ease,
-    color .45s ease,
-    border-color .45s ease,
-    letter-spacing .45s ease;
-}
-
-
-/* =========================================================
-   WHATSAPP
-   ========================================================= */
-
-.cta-whatsapp {
-  background: #6f0017;
-  color: #fffaf2;
-
-  box-shadow:
-    0 8px 25px rgba(66, 11, 19, .12);
-}
-
-.cta-whatsapp:hover {
-  background: #420b13;
-
-  transform: translateY(-4px);
-
-  letter-spacing: 2.3px;
-
-  box-shadow:
-    0 14px 32px rgba(66, 11, 19, .18);
-}
-
-
-/* =========================================================
-   CALL
-   ========================================================= */
-
-.cta-call {
-  border: 1px solid rgba(111, 0, 23, .35);
-
-  background: rgba(111, 0, 23, .025);
-
-  color: #6f0017;
-}
-
-.cta-call:hover {
-  border-color: #6f0017;
-
-  background: rgba(111, 0, 23, .055);
-
-  color: #6f0017;
-
-  transform: translateY(-4px);
-
-  letter-spacing: 2.3px;
-}
-
-
-/* =========================================================
-   BUTTON ICONS
-   ========================================================= */
-
-.contact-final-cta__buttons svg {
-  transition:
-    transform .45s cubic-bezier(.16, 1, .3, 1);
-}
-
-.cta-whatsapp:hover svg {
-  transform:
-    rotate(-8deg)
-    scale(1.08);
-}
-
-.cta-call:hover svg {
-  transform:
-    translateX(5px);
-}
-
-
-/* =========================================================
-   BUTTON SHINE
-   ========================================================= */
-
-.contact-final-cta__buttons a::before {
-  content: "";
-
-  position: absolute;
-
-  top: -30%;
-  bottom: -30%;
-  left: -80%;
-
-  width: 35%;
-
-  background: rgba(255, 250, 242, .2);
-
-  transform: skewX(-20deg);
-}
-
-.contact-final-cta__buttons a:hover::before {
-  animation: ctaButtonShine .85s ease;
-}
-
-
-/* =========================================================
-   MAIN HOVER
-   ========================================================= */
-
-.contact-final-cta:hover::before {
-  transform:
-    translate(-50%, -50%)
-    scale(1.025);
-
-  color: rgba(111, 0, 23, .09);
-
-  letter-spacing: -.07em;
-}
-
-.contact-final-cta:hover .contact-final-cta__image {
-  transform:
-    translateY(-50%)
-    rotate(-1deg)
-    scale(1.015);
-
-  box-shadow:
-    22px 25px 0 rgba(111, 0, 23, .10),
-    0 35px 80px rgba(66, 11, 19, .17);
-}
-
-.contact-final-cta:hover .contact-final-cta__image img {
-  transform: scale(1.085);
-
-  filter:
-    saturate(.88)
-    contrast(1.02);
-}
-
-.contact-final-cta:hover .contact-final-cta__image::before {
-  inset: 20px;
-
-  border-color: rgba(111, 0, 23, .35);
-}
-
-.contact-final-cta:hover .contact-final-cta__content h2 {
-  transform: translateX(5px);
-}
-
-.contact-final-cta:hover .contact-final-cta__content h2::after {
-  width: 135px;
-
-  background: #b99559;
-}
-
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes ctaEditorialRing {
-
-  0%,
-  100% {
-    opacity: .45;
-
-    transform:
-      translateY(-50%)
-      scale(.96);
-  }
-
-  50% {
-    opacity: .8;
-
-    transform:
-      translateY(-50%)
-      scale(1.035);
-  }
-}
-
-
-@keyframes ctaLineReveal {
-
-  from {
-    transform: scaleX(0);
-    opacity: 0;
-  }
-
-  to {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-}
-
-
-@keyframes ctaButtonShine {
-
-  from {
-    left: -80%;
-  }
-
-  to {
-    left: 150%;
-  }
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-
   .contact-final-cta {
     min-height: 500px;
   }
@@ -3831,13 +3153,11 @@ nav,
   }
 }
 
-
 /* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 650px) {
-
   .contact-final-cta {
     min-height: 570px;
 
@@ -3851,7 +3171,7 @@ nav,
 
     font-size: clamp(80px, 22vw, 130px);
 
-    opacity: .7;
+    opacity: 0.7;
   }
 
   .contact-final-cta::after {
@@ -3861,7 +3181,6 @@ nav,
     right: -110px;
     top: 24%;
   }
-
 
   /* Image */
 
@@ -3872,15 +3191,12 @@ nav,
     width: 72%;
     height: 205px;
 
-    transform:
-      translateX(-50%)
-      rotate(-2deg);
+    transform: translateX(-50%) rotate(-2deg);
   }
 
   .contact-final-cta__image::before {
     inset: 9px;
   }
-
 
   /* Content */
 
@@ -3897,7 +3213,6 @@ nav,
   .contact-final-cta__content::before {
     display: none;
   }
-
 
   /* Eyebrow */
 
@@ -3914,7 +3229,6 @@ nav,
     width: 22px;
   }
 
-
   /* Heading */
 
   .contact-final-cta__content h2 {
@@ -3924,7 +3238,7 @@ nav,
 
     font-size: 43px;
 
-    line-height: .94;
+    line-height: 0.94;
   }
 
   .contact-final-cta__content h2::after {
@@ -3932,7 +3246,6 @@ nav,
 
     margin: 18px auto 0;
   }
-
 
   /* Description */
 
@@ -3945,7 +3258,6 @@ nav,
 
     line-height: 1.65;
   }
-
 
   /* Buttons */
 
@@ -3968,13 +3280,10 @@ nav,
     letter-spacing: 1.7px;
   }
 
-
   /* Prevent desktop hover movement on touch */
 
   .contact-final-cta:hover .contact-final-cta__image {
-    transform:
-      translateX(-50%)
-      rotate(-2deg);
+    transform: translateX(-50%) rotate(-2deg);
   }
 
   .contact-final-cta:hover .contact-final-cta__content h2 {
@@ -3982,13 +3291,11 @@ nav,
   }
 }
 
-
 /* =========================================================
    SMALL PHONES
    ========================================================= */
 
 @media (max-width: 380px) {
-
   .contact-final-cta {
     min-height: 550px;
   }
@@ -4011,13 +3318,11 @@ nav,
   }
 }
 
-
 /* =========================================================
    ACCESSIBILITY
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   .contact-final-cta::before,
   .contact-final-cta::after,
   .contact-final-cta__image,
@@ -4032,3 +3337,236 @@ nav,
   }
 }
 
+/* =========================================================
+   STATIC BRAND MARK — SAME LOGO, NO ROTATION
+   Fills the empty upper area next to the heading.
+   ========================================================= */
+
+.cta-brand-mark {
+  position: absolute;
+  z-index: 4;
+  left: clamp(110px, 18vw, 260px);
+  top: calc(50% - 250px);
+  width: 150px;
+  height: 150px;
+  pointer-events: none;
+}
+
+@keyframes ctaBrandRingRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cta-brand-mark__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cta-brand-mark__ring {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: ctaBrandRingRotate 14s linear infinite;
+}
+
+.cta-brand-mark__text {
+  fill: var(--burgundy);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.cta-brand-mark__circle {
+  fill: none;
+  stroke: rgba(111, 0, 23, 0.3);
+  stroke-width: 1.4;
+  stroke-dasharray: 1 5;
+}
+
+.cta-brand-mark__center {
+  fill: var(--burgundy);
+}
+
+.cta-brand-mark__center text:first-child {
+  fill: var(--gold);
+  font-size: 28px;
+}
+
+.cta-brand-mark__initials {
+  fill: var(--burgundy);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 900px) {
+  .cta-brand-mark {
+    left: clamp(70px, 14vw, 180px);
+    top: calc(50% - 175px);
+    width: 130px;
+    height: 130px;
+  }
+}
+
+@media (max-width: 650px) {
+  .cta-brand-mark {
+    left: 50%;
+    top: 100px;
+    width: 100px;
+    height: 100px;
+    transform: translateX(-70px);
+  }
+}
+
+@media (max-width: 380px) {
+  .cta-brand-mark {
+    width: 88px;
+    height: 88px;
+    top: 88px;
+  }
+}
+
+/* =========================================================
+   CRAFT CIRCLE — ROTATING RING + STATIC PJ LOGO BADGE
+   Overlaps the bottom-right corner of the featured image.
+   Outer ring (SVG curved text) rotates continuously.
+   Inner "PJ" roundel stays static, matching the nav logo.
+   ========================================================= */
+
+.cta-craft-circle {
+  position: absolute;
+  z-index: 4;
+  left: clamp(150px, 21vw, 300px);
+  top: calc(50% + 100px);
+  width: 132px;
+  height: 132px;
+  pointer-events: none;
+}
+
+.cta-craft-circle__orbit {
+  position: absolute;
+  inset: 0;
+  animation: cpCraftSpin 17s linear infinite;
+}
+
+.cta-craft-circle__orbit-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cta-craft-circle__orbit-svg text {
+  fill: #6f0017;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+}
+
+.cta-craft-circle__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  background: #6f0017;
+  box-shadow:
+    0 8px 22px rgba(66, 11, 19, 0.25),
+    0 0 0 6px #f7efe2;
+}
+
+.cta-craft-circle__dot {
+  display: none;
+}
+
+.cta-craft-circle__logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+@keyframes cpCraftSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 900px) {
+  .cta-craft-circle {
+    left: clamp(100px, 17vw, 210px);
+    top: calc(50% + 65px);
+    width: 108px;
+    height: 108px;
+  }
+
+  .cta-craft-circle__inner {
+    width: 50px;
+    height: 50px;
+  }
+
+  .cta-craft-circle__orbit-svg text {
+    font-size: 10.5px;
+    letter-spacing: 3px;
+  }
+}
+
+@media (max-width: 650px) {
+  .cta-craft-circle {
+    left: 50%;
+    top: 190px;
+    width: 84px;
+    height: 84px;
+    transform: translateX(38px);
+  }
+
+  .cta-craft-circle__inner {
+    width: 42px;
+    height: 42px;
+    box-shadow:
+      0 6px 16px rgba(66, 11, 19, 0.22),
+      0 0 0 4px #f7efe2;
+  }
+
+  .cta-craft-circle__orbit-svg text {
+    font-size: 8.5px;
+    letter-spacing: 2.2px;
+  }
+}
+
+@media (max-width: 380px) {
+  .cta-craft-circle {
+    width: 74px;
+    height: 74px;
+    top: 175px;
+  }
+
+  .cta-craft-circle__inner {
+    width: 37px;
+    height: 37px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-brand-mark__ring,
+  .cta-craft-circle__orbit {
+    animation: none !important;
+  }
+}
