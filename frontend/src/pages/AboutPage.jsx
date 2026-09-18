@@ -1,30 +1,63 @@
 import { useEffect, useRef, useState } from "react";
+import {
+  ArrowDown,
+  ArrowUpRight,
+  ArrowRight,
+  Sparkles,
+  Gem,
+  Hand,
+  ShieldCheck,
+} from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import "./AboutPage.css";
+
+/* =========================================================
+   IMAGES
+========================================================= */
 
 const heroImage =
   "https://i.pinimg.com/736x/b4/b2/12/b4b212ea38276ef52e532767dd2200c7.jpg";
+
+const DemoImage =
+  "https://i.pinimg.com/1200x/f7/9b/b2/f79bb28c7826c55ad47de5309c52346f.jpg";
+
 const craftImage =
-  "https://i.pinimg.com/736x/b4/b2/12/b4b212ea38276ef52e532767dd2200c7.jpg";
-const founderImage =
-  "https://i.pinimg.com/736x/b4/b2/12/b4b212ea38276ef52e532767dd2200c7.jpg";
-const auroraImage =
+  "https://i.pinimg.com/736x/e9/a8/89/e9a889cd38fd5441a173fb8c8c4a9489.jpg";
+
+import founderImage from "../assets/pankaj_jewellers_model.png"
+
+const collectionImage =
   "https://i.pinimg.com/736x/b4/b2/12/b4b212ea38276ef52e532767dd2200c7.jpg";
 
-function Reveal({ children, className = "", delay = 0 }) {
+/* =========================================================
+   REVEAL
+========================================================= */
+
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  direction = "up",
+}) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const node = ref.current;
+
     if (!node) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry?.isIntersecting) {
+        if (entry.isIntersecting) {
           setVisible(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.14 }
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -60px 0px",
+      }
     );
 
     observer.observe(node);
@@ -35,7 +68,9 @@ function Reveal({ children, className = "", delay = 0 }) {
   return (
     <div
       ref={ref}
-      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+      className={`reveal reveal--${direction} ${
+        visible ? "is-visible" : ""
+      } ${className}`}
       style={{ "--delay": `${delay}ms` }}
     >
       {children}
@@ -43,25 +78,34 @@ function Reveal({ children, className = "", delay = 0 }) {
   );
 }
 
+/* =========================================================
+   COUNTER
+========================================================= */
+
 function Counter({ end, suffix = "", comma = false }) {
   const ref = useRef(null);
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     const node = ref.current;
+
     if (!node) return;
 
     let frame = 0;
+    let started = false;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (!entry?.isIntersecting) return;
+        if (!entry.isIntersecting || started) return;
+
+        started = true;
 
         const start = performance.now();
+        const duration = 1800;
 
         const tick = (time) => {
-          const progress = Math.min((time - start) / 1600, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
+          const progress = Math.min((time - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 4);
 
           setValue(Math.round(end * eased));
 
@@ -92,341 +136,673 @@ function Counter({ end, suffix = "", comma = false }) {
   );
 }
 
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
 function ScrollProgress() {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const update = () => {
-      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const total =
+        document.documentElement.scrollHeight - window.innerHeight;
+
       setProgress(total > 0 ? window.scrollY / total : 0);
     };
 
     update();
 
-    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("scroll", update, {
+      passive: true,
+    });
 
-    return () => window.removeEventListener("scroll", update);
+    return () =>
+      window.removeEventListener("scroll", update);
   }, []);
 
   return (
     <div
-      className="scroll-progress"
-      style={{ transform: `scaleX(${progress})` }}
+      className="about-progress"
+      style={{
+        transform: `scaleX(${progress})`,
+      }}
       aria-hidden="true"
     />
   );
 }
 
+/* =========================================================
+   PARALLAX IMAGE
+========================================================= */
+
+function ParallaxImage({
+  src,
+  alt,
+  className = "",
+  speed = 40,
+}) {
+  const ref = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const y = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [speed, -speed]
+  );
+
+  return (
+    <div
+      ref={ref}
+      className={`parallax-image ${className}`}
+    >
+      <motion.img
+        src={src}
+        alt={alt}
+        style={{ y }}
+        loading="lazy"
+      />
+
+      <span className="image-shine" />
+    </div>
+  );
+}
+
+/* =========================================================
+   ROTATING SEAL
+========================================================= */
+
+function AtelierSeal() {
+  return (
+    <motion.div
+      className="atelier-seal"
+      animate={{
+        rotate: 360,
+      }}
+      transition={{
+        duration: 26,
+        repeat: Infinity,
+        ease: "linear",
+      }}
+    >
+      <svg viewBox="0 0 200 200">
+        <defs>
+          <path
+            id="sealPath"
+            d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"
+          />
+        </defs>
+
+        <text>
+          <textPath href="#sealPath">
+            SOLENNE · ATELIER · MADE BY HAND · EST. 2014 ·
+          </textPath>
+        </text>
+      </svg>
+
+      <div className="seal-center">
+        <Sparkles size={22} strokeWidth={1.2} />
+        <span>SL</span>
+      </div>
+    </motion.div>
+  );
+}
+
+/* =========================================================
+   DATA
+========================================================= */
+
 const values = [
-  [
-    "01",
-    "Slow craft",
-    "Two collections a year. No shortcuts, no seasons we don't believe in.",
-  ],
-  [
-    "02",
-    "Honest metal",
-    "Recycled gold and traceable stones, sourced from a circle of five families.",
-  ],
-  [
-    "03",
-    "Made to last",
-    "Lifetime repair and re-polish. Every Solenne piece is meant to be inherited.",
-  ],
+  {
+    number: "01",
+    icon: Hand,
+    title: "Made slowly",
+    body: "Every piece passes through human hands. We believe refinement is created through patience, not speed.",
+  },
+  {
+    number: "02",
+    icon: Gem,
+    title: "Chosen with intent",
+    body: "We select materials for character, balance and longevity rather than following temporary trends.",
+  },
+  {
+    number: "03",
+    icon: ShieldCheck,
+    title: "Designed to remain",
+    body: "Our pieces are created to become part of a personal story and eventually something worth passing on.",
+  },
 ];
+
+const craftSteps = [
+  {
+    number: "01",
+    title: "The sketch",
+    text: "An idea begins with proportion, silhouette and the relationship between light and metal.",
+  },
+  {
+    number: "02",
+    title: "The form",
+    text: "Wax, metal and stone are gradually shaped until the original idea becomes tangible.",
+  },
+  {
+    number: "03",
+    title: "The hand",
+    text: "Edges are softened, surfaces are polished and every detail receives its final human touch.",
+  },
+  {
+    number: "04",
+    title: "The piece",
+    text: "Only when the object feels balanced, considered and complete does it leave the atelier.",
+  },
+];
+
+/* =========================================================
+   PAGE
+========================================================= */
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen overflow-hidden bg-background font-sans text-foreground">
+    <main className="about-page">
       <ScrollProgress />
 
-      <div aria-hidden="true" className="paper-grain" />
+      {/* =====================================================
+          GRAIN
+      ====================================================== */}
 
-      <header className="sticky top-0 z-50 border-b border-foreground/5 bg-background/70 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-[1320px] items-center justify-between px-5 py-4 sm:px-8">
-          <a href="#story" className="font-serif text-[28px] leading-none">
+      <div className="about-grain" />
+
+      {/* =====================================================
+          NAVBAR
+      ====================================================== */}
+
+      <header className="about-nav">
+        <div className="about-nav__inner">
+          <a href="#top" className="about-logo">
             Solenne
           </a>
 
-          <nav
-            aria-label="Primary navigation"
-            className="hidden items-center gap-9 text-[11px] uppercase text-muted-foreground md:flex"
-          >
-            <a className="story-link" href="#values">
-              Philosophy
-            </a>
-            <a className="story-link text-primary" href="#atelier">
-              Atelier
-            </a>
-            <a className="story-link" href="#founder">
-              Founder
-            </a>
-            <a className="story-link" href="#collection">
-              Collection
-            </a>
+          <nav>
+            <a href="#story">Our Story</a>
+            <a href="#craft">Craft</a>
+            <a href="#values">Philosophy</a>
+            <a href="#founder">Founder</a>
           </nav>
 
-          <span className="header-date text-[10px] uppercase text-accent sm:text-xs">
-            Paris · MMXIV
-          </span>
+          <a href="#collection" className="nav-cta">
+            Explore
+            <ArrowUpRight size={14} />
+          </a>
         </div>
       </header>
 
-      <section
-        id="story"
-        className="mx-auto max-w-[1320px] px-5 pb-20 pt-16 sm:px-8 lg:pt-24"
-      >
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-8">
-          <Reveal className="hero-copy lg:col-span-5">
-            <p className="eyebrow">— Our story</p>
+      {/* =====================================================
+          HERO
+      ====================================================== */}
 
-            <h1 className="mt-4 max-w-[9ch] font-serif text-[clamp(3.7rem,7vw,6.6rem)] leading-[0.88]">
-              The quiet <em className="text-primary">alchemy</em> of worn gold.
-            </h1>
+      <section id="top" className="about-hero">
+        <div className="about-container">
+          <div className="hero-grid">
 
-            <p className="mt-8 max-w-[46ch] text-[15px] leading-7 text-muted-foreground">
-              Solenne began in a single Parisian workshop, where a house of one
-              made pieces meant to be inherited. We shape metal the slow
-              way—cast by hand, polished by thumb—until each piece carries the
-              warmth of its maker.
-            </p>
+            <Reveal className="hero-intro">
+              <div className="section-index">
+                <span>01</span>
+                <span>Our Story</span>
+              </div>
 
-            <div className="mt-8 flex items-center gap-4">
-              <span className="h-px w-16 bg-accent" />
-              <span className="microcopy">Est. 2014 · Rue de Sévigné</span>
-            </div>
-          </Reveal>
+              <h1>
+                Objects with
+                <span> a memory.</span>
+              </h1>
 
-          <Reveal delay={140} className="hero-visual relative lg:col-span-7">
-            <div className="image-shell hero-image group">
-              <img
-                src={heroImage}
-                alt="Woman wearing Solenne garnet and gold jewelry"
-                width={1120}
-                height={848}
-              />
-              <span className="image-glint" aria-hidden="true" />
-            </div>
+              <p>
+                Jewellery should not simply complete an outfit.
+                It should become part of the person who wears it.
+              </p>
 
-            <div className="floating-stat">
-              <strong>10</strong>
-              <span>
-                years at
-                <br />
-                the bench
-              </span>
-            </div>
-          </Reveal>
+              <a href="#story" className="scroll-link">
+                <span>Discover our story</span>
+
+                <span className="scroll-link__icon">
+                  <ArrowDown size={16} />
+                </span>
+              </a>
+            </Reveal>
+
+            <Reveal
+              delay={180}
+              className="hero-image-wrap"
+              direction="right"
+            >
+              <div className="hero-image-frame">
+                <ParallaxImage
+                  src={heroImage}
+                  alt="Solenne fine jewellery"
+                  speed={50}
+                />
+
+                <div className="hero-image-label">
+                  <span>Atelier No. 01</span>
+                  <span>Paris · 2014</span>
+                </div>
+              </div>
+
+              <div className="hero-number">
+                10
+                <span>Years of craft</span>
+              </div>
+            </Reveal>
+
+          </div>
+        </div>
+
+        <div className="hero-watermark">
+          SOLENNE
         </div>
       </section>
 
-      <section
-        id="atelier"
-        className="mx-auto max-w-[1320px] px-5 pb-24 sm:px-8"
-      >
-        <Reveal className="chapter-marker">
-          <span>02</span>
-          <p>
-            Formed by time
-            <br />
-            finished by hand
-          </p>
-        </Reveal>
+      {/* =====================================================
+          STORY
+      ====================================================== */}
 
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
-          <Reveal className="relative lg:col-span-4">
-            <div className="image-shell craft-image">
-              <img
+      <section id="story" className="story-section">
+        <div className="about-container">
+
+          <Reveal className="story-topline">
+            <span>Our beginning</span>
+
+            <div />
+
+            <span>Chapter 01</span>
+          </Reveal>
+
+          <div className="story-grid">
+
+            <Reveal className="story-image">
+              <ParallaxImage
                 src={craftImage}
-                alt="Hand-forged gold and garnet jewelry on marble"
-                width={736}
-                height={912}
-                loading="lazy"
+                alt="Jewellery craftsmanship"
+                speed={35}
               />
-              <span className="image-glint" aria-hidden="true" />
-            </div>
 
-            <div className="floating-stat -right-3 -top-7 bottom-auto left-auto">
-              <strong>42</strong>
-              <span>hands</span>
-            </div>
-          </Reveal>
+              <div className="vertical-label">
+                FORM · MATERIAL · LIGHT
+              </div>
+            </Reveal>
 
-          <Reveal delay={100} className="lg:col-span-5 lg:pl-5">
-            <h2 className="font-serif text-[clamp(2.7rem,5vw,4.2rem)] leading-none">
-              A philosophy of <em className="text-primary">patience</em>.
-            </h2>
-
-            <p className="mt-6 max-w-[44ch] text-[15px] leading-7 text-muted-foreground">
-              We release two collections a year, never more. Every stone is
-              chosen for its imperfection, every clasp for its weight against the
-              skin. Luxury, for us, is the discipline of leaving well enough
-              alone.
-            </p>
-
-            <div className="mt-7 flex items-center gap-3">
-              <span className="h-px w-10 bg-accent" />
-              <span className="microcopy">Atelier · Paris</span>
-            </div>
-          </Reveal>
-
-          <Reveal delay={180} className="flex justify-center lg:col-span-3">
-            <div className="seal" aria-label="Made slowly by hand">
-              <span>Solenne · Paris · Made Slowly · </span>
-              <strong>hand</strong>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section
-        id="founder"
-        className="mx-auto max-w-[1320px] px-5 pb-24 sm:px-8"
-      >
-        <Reveal className="founder-panel">
-          <div className="grid items-center gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-8">
-              <p className="eyebrow">— The founder</p>
-
-              <span className="quote-mark" aria-hidden="true">
-                “
+            <Reveal
+              delay={120}
+              className="story-content"
+            >
+              <span className="small-kicker">
+                The house of Solenne
               </span>
 
-              <blockquote className="founder-quote mt-3 max-w-[25ch] font-serif text-[clamp(2.25rem,4.2vw,3.6rem)] leading-[1.03]">
-                I never wanted to make jewelry. I wanted to make the objects my
-                mother would keep.
-              </blockquote>
+              <h2>
+                Born from the belief that
+                <em> beautiful things</em>
+                deserve time.
+              </h2>
 
-              <div className="mt-6 flex items-center gap-3">
-                <span className="h-px w-10 bg-accent" />
-                <span className="microcopy">
-                  Élodie Marchand · Founder &amp; Master Goldsmith
+              <div className="story-copy">
+                <p>
+                  Solenne began with a simple question:
+                  what makes an object worth keeping?
+                </p>
+
+                <p>
+                  Our answer has always been found in the
+                  details — the weight of a clasp, the curve
+                  of a setting, the way a surface catches
+                  afternoon light.
+                </p>
+
+                <p>
+                  We create jewellery through a slower,
+                  more deliberate process where material,
+                  maker and wearer remain connected.
+                </p>
+              </div>
+
+              <div className="story-signature">
+                <span className="signature-line" />
+                <span>
+                  Crafted with intention
                 </span>
               </div>
-            </div>
-
-            <div className="image-shell founder-image lg:col-span-4">
-              <img
-                src={founderImage}
-                alt="Élodie Marchand at her jewelry workbench"
-                width={736}
-                height={912}
-                loading="lazy"
-              />
-              <span className="image-glint" aria-hidden="true" />
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      <section
-        id="values"
-        className="mx-auto max-w-[1320px] px-5 pb-24 sm:px-8"
-      >
-        <Reveal className="section-heading">
-          <p className="eyebrow">— What we hold</p>
-          <h2>Principles, not promises.</h2>
-        </Reveal>
-
-        <div className="grid gap-px overflow-hidden border border-border bg-border md:grid-cols-3">
-          {values.map(([number, title, body], index) => (
-            <Reveal
-              key={title}
-              delay={index * 100}
-              className="value-item"
-            >
-              <span className="eyebrow">{number}</span>
-
-              <h3 className="mt-2 font-serif text-3xl">{title}</h3>
-
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                {body}
-              </p>
             </Reveal>
-          ))}
+
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1320px] px-5 pb-24 sm:px-8">
-        <Reveal className="chapter-marker chapter-marker-right">
-          <span>05</span>
-          <p>
-            A house measured
-            <br />
-            in lasting things
-          </p>
-        </Reveal>
+      {/* =====================================================
+          MARQUEE
+      ====================================================== */}
 
-        <Reveal className="stats-band">
-          <div>
-            <strong>
-              <Counter end={100} suffix="%" />
-            </strong>
-            <span>recycled gold</span>
-          </div>
+      <section className="marquee-section">
+        <div className="marquee-track">
+          <span>CRAFTED BY HAND</span>
+          <i>✦</i>
+          <span>DESIGNED TO REMAIN</span>
+          <i>✦</i>
+          <span>MADE WITH INTENTION</span>
+          <i>✦</i>
 
-          <div>
-            <strong>
-              <Counter end={3200} comma />
-            </strong>
-            <span>pieces in circulation</span>
-          </div>
-
-          <div>
-            <strong>
-              <Counter end={5} />
-            </strong>
-            <span>sourcing families</span>
-          </div>
-        </Reveal>
+          <span>CRAFTED BY HAND</span>
+          <i>✦</i>
+          <span>DESIGNED TO REMAIN</span>
+          <i>✦</i>
+          <span>MADE WITH INTENTION</span>
+          <i>✦</i>
+        </div>
       </section>
+
+      {/* =====================================================
+          CRAFT
+      ====================================================== */}
+
+      <section id="craft" className="craft-section">
+        <div className="about-container">
+
+          <Reveal className="section-heading-large">
+            <div className="section-index">
+              <span>02</span>
+              <span>The Atelier</span>
+            </div>
+
+            <h2>
+              Where material
+              <br />
+              becomes <em>meaning.</em>
+            </h2>
+          </Reveal>
+
+          <div className="craft-layout">
+
+            <Reveal className="craft-image-large">
+              <ParallaxImage
+                src={DemoImage}
+                alt="Solenne artisan working at the atelier"
+                speed={45}
+              />
+
+              <div className="craft-image-caption">
+                <span>Inside the atelier</span>
+                <span>Every surface is finished by hand</span>
+              </div>
+            </Reveal>
+
+            <div className="craft-process">
+
+              {craftSteps.map((step, index) => (
+                <Reveal
+                  key={step.number}
+                  delay={index * 90}
+                  className="craft-step"
+                >
+                  <span className="craft-step__number">
+                    {step.number}
+                  </span>
+
+                  <div>
+                    <h3>{step.title}</h3>
+
+                    <p>{step.text}</p>
+                  </div>
+
+                  <ArrowUpRight
+                    size={18}
+                    strokeWidth={1}
+                  />
+                </Reveal>
+              ))}
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          PHILOSOPHY
+      ====================================================== */}
+
+      <section id="values" className="philosophy-section">
+        <div className="about-container">
+
+          <div className="philosophy-heading">
+            <Reveal>
+              <div className="section-index">
+                <span>03</span>
+                <span>Our Philosophy</span>
+              </div>
+
+              <h2>
+                Less noise.
+                <br />
+                <em>More substance.</em>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={150}>
+              <p>
+                Luxury, to us, is not excess. It is the
+                freedom to be selective — in materials,
+                process and everything we choose to put
+                into the world.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className="values-grid">
+            {values.map((value, index) => {
+              const Icon = value.icon;
+
+              return (
+                <Reveal
+                  key={value.number}
+                  delay={index * 100}
+                  className="value-card"
+                >
+                  <div className="value-card__top">
+                    <span>{value.number}</span>
+
+                    <Icon
+                      size={24}
+                      strokeWidth={1.1}
+                    />
+                  </div>
+
+                  <h3>{value.title}</h3>
+
+                  <p>{value.body}</p>
+
+                  <span className="value-arrow">
+                    <ArrowRight size={17} />
+                  </span>
+                </Reveal>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          FOUNDER
+      ====================================================== */}
+
+      <section id="founder" className="founder-section">
+        <div className="about-container">
+
+          <Reveal className="founder-panel">
+
+            <div className="founder-image">
+              <ParallaxImage
+                src={founderImage}
+                alt="Solenne founder in the atelier"
+                speed={30}
+              />
+
+              <span className="founder-image__number">
+                04
+              </span>
+            </div>
+
+            <div className="founder-content">
+
+              <div className="section-index section-index--light">
+                <span>04</span>
+                <span>The Founder</span>
+              </div>
+
+              <div className="quote-mark">
+                “
+              </div>
+
+              <blockquote>
+                I wanted to create
+                jewellery that becomes
+                more beautiful with
+                <em> time.</em>
+              </blockquote>
+
+              <p>
+                Élodie Marchand founded Solenne with
+                one ambition: to build a jewellery house
+                where craftsmanship could remain at the
+                centre of every decision.
+              </p>
+
+              <div className="founder-signature">
+                <span>Élodie Marchand</span>
+                <small>
+                  Founder & Master Goldsmith
+                </small>
+              </div>
+
+            </div>
+
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          STATS
+      ====================================================== */}
+
+      <section className="numbers-section">
+        <div className="about-container">
+
+          <Reveal className="numbers-header">
+            <span>05</span>
+
+            <p>
+              A house measured
+              <br />
+              in lasting things.
+            </p>
+          </Reveal>
+
+          <div className="numbers-grid">
+
+            <Reveal className="number-item">
+              <strong>
+                <Counter end={100} suffix="%" />
+              </strong>
+
+              <span>Recycled gold</span>
+            </Reveal>
+
+            <Reveal delay={100} className="number-item">
+              <strong>
+                <Counter end={3200} comma />
+              </strong>
+
+              <span>Pieces in circulation</span>
+            </Reveal>
+
+            <Reveal delay={200} className="number-item">
+              <strong>
+                <Counter end={10} suffix="+" />
+              </strong>
+
+              <span>Years of craft</span>
+            </Reveal>
+
+          </div>
+
+          <Reveal className="numbers-bottom">
+            <AtelierSeal />
+
+            <p>
+              Every number represents a relationship —
+              between maker and material, object and wearer,
+              present and future.
+            </p>
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          COLLECTION CTA
+      ====================================================== */}
 
       <section
         id="collection"
-        className="mx-auto max-w-[1320px] px-5 pb-28 sm:px-8"
+        className="collection-section"
       >
-        <Reveal className="collection-panel">
-          <div className="grid items-center gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-6">
-              <p className="eyebrow text-accent">— The next chapter</p>
+        <div className="about-container">
 
-              <h2 className="mt-3 max-w-[10ch] font-serif text-[clamp(3rem,6vw,5rem)] leading-[0.92] text-primary-foreground">
-                The <em className="text-accent">Aurora</em> collection.
+          <Reveal className="collection-panel">
+
+            <div className="collection-copy">
+
+              <span className="collection-kicker">
+                The next chapter
+              </span>
+
+              <h2>
+                Jewellery for
+                <br />
+                <em>what comes next.</em>
               </h2>
 
-              <p className="mt-6 max-w-[40ch] text-[15px] leading-7 text-primary-foreground/70">
-                Twelve pieces cast from a single mold of dawn. Arriving this
-                autumn, in editions of forty.
+              <p>
+                Discover the latest Solenne collection —
+                considered forms, tactile materials and
+                pieces designed to become yours.
               </p>
 
-              <a href="#story" className="collection-link">
-                Discover the collection <span>↗</span>
+              <a href="/collection" className="collection-button">
+                <span>Explore collection</span>
+
+                <span>
+                  <ArrowUpRight size={17} />
+                </span>
               </a>
+
             </div>
 
-            <div className="image-shell collection-image lg:col-span-6">
-              <img
-                src={auroraImage}
-                alt="Aurora gold and garnet statement necklace"
-                width={896}
-                height={736}
-                loading="lazy"
+            <div className="collection-image">
+              <ParallaxImage
+                src={collectionImage}
+                alt="Solenne jewellery collection"
+                speed={40}
               />
-              <span className="image-glint" aria-hidden="true" />
             </div>
-          </div>
-        </Reveal>
+
+          </Reveal>
+
+        </div>
       </section>
 
-      <footer className="border-t border-foreground/10">
-        <div className="mx-auto flex max-w-[1320px] flex-col gap-4 px-5 py-9 text-[10px] uppercase text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <span className="font-serif text-2xl normal-case text-foreground">
-            Solenne
-          </span>
-          <span>Atelier · 4 Rue de Sévigné, Paris</span>
-          <span>© MMXXVI · All pieces made by hand</span>
-        </div>
-      </footer>
     </main>
   );
 }
