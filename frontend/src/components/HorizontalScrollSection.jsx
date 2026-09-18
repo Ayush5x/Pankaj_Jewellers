@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 export default function HorizontalScrollSection({ children }) {
   const sectionRef = useRef(null);
@@ -8,129 +8,177 @@ export default function HorizontalScrollSection({ children }) {
   const targetX = useRef(0);
   const frameRef = useRef(null);
 
+  const isLocked = useRef(false);
+
   useEffect(() => {
     const section = sectionRef.current;
     const track = trackRef.current;
 
     if (!section || !track) return;
 
+    /* ---------------------------------------
+       CALCULATE SECTION HEIGHT
+    --------------------------------------- */
     const updateHeight = () => {
-      /*
-       * Actual width of all cards + gaps + padding
-       */
       const trackWidth = track.scrollWidth;
 
-      /*
-       * How much the track needs to move
-       * before the LAST card reaches the viewport.
-       */
       const horizontalDistance = Math.max(
         0,
         trackWidth - window.innerWidth
       );
 
-      /*
-       * Sticky viewport + horizontal distance.
-       *
-       * This is the important part:
-       * the section cannot finish until the
-       * horizontal track has reached its end.
-       */
-      section.style.height =
-        `${horizontalDistance + window.innerHeight}px`;
+      section.style.height = `${
+        horizontalDistance + window.innerHeight
+      }px`;
     };
 
+    /* ---------------------------------------
+       SMOOTH HORIZONTAL ANIMATION
+    --------------------------------------- */
     const animate = () => {
-      const rect = section.getBoundingClientRect();
-
-      const sectionHeight = section.offsetHeight;
-      const viewportHeight = window.innerHeight;
-
-      const maxHorizontal =
-        Math.max(
-          0,
-          track.scrollWidth - window.innerWidth
-        );
-
-      /*
-       * How far we've travelled vertically
-       * inside the horizontal section.
-       */
-      const scrollDistance =
-        sectionHeight - viewportHeight;
-
-      const scrolled =
-        Math.min(
-          Math.max(-rect.top, 0),
-          scrollDistance
-        );
-
-      /*
-       * Horizontal target position
-       */
-      targetX.current =
-        Math.min(scrolled, maxHorizontal);
-
-      /*
-       * Smooth movement
-       */
       currentX.current +=
-        (targetX.current - currentX.current) * 0.08;
+        (targetX.current - currentX.current) * 0.1;
 
-      /*
-       * Snap when extremely close
-       */
       if (
         Math.abs(
           targetX.current - currentX.current
         ) < 0.05
       ) {
-        currentX.current =
-          targetX.current;
+        currentX.current = targetX.current;
       }
 
-      track.style.transform =
-        `translate3d(${-currentX.current}px, 0, 0)`;
+      track.style.transform = `translate3d(${-currentX.current}px, 0, 0)`;
 
       frameRef.current =
         requestAnimationFrame(animate);
     };
 
-    updateHeight();
+    /* ---------------------------------------
+       WHEEL CONTROL
+    --------------------------------------- */
+    const handleWheel = (e) => {
+      const rect = section.getBoundingClientRect();
 
-    /*
-     * Wait for images to load because image
-     * dimensions can change track width.
-     */
-    const images =
-      track.querySelectorAll('img');
+      const viewportHeight = window.innerHeight;
+
+      /*
+        Section is active when it occupies
+        the viewport.
+      */
+      const sectionActive =
+        rect.top <= 0 &&
+        rect.bottom >= viewportHeight;
+
+      if (!sectionActive) {
+        return;
+      }
+
+      const maxHorizontal = Math.max(
+        0,
+        track.scrollWidth - window.innerWidth
+      );
+
+      /*
+        Current horizontal position.
+      */
+      const current = targetX.current;
+
+      /*
+        Scrolling DOWN
+        -> move cards LEFT
+      */
+      if (e.deltaY > 0) {
+        if (current < maxHorizontal) {
+          e.preventDefault();
+
+          targetX.current = Math.min(
+            current + Math.abs(e.deltaY),
+            maxHorizontal
+          );
+
+          isLocked.current = true;
+        } else {
+          /*
+            Last card has reached the end.
+            Allow normal vertical scrolling.
+          */
+          isLocked.current = false;
+        }
+      }
+
+      /*
+        Scrolling UP
+        -> move cards RIGHT
+      */
+      else if (e.deltaY < 0) {
+        if (current > 0) {
+          e.preventDefault();
+
+          targetX.current = Math.max(
+            current - Math.abs(e.deltaY),
+            0
+          );
+
+          isLocked.current = true;
+        } else {
+          /*
+            First card is reached.
+            Allow normal vertical scrolling upward.
+          */
+          isLocked.current = false;
+        }
+      }
+    };
+
+    /* ---------------------------------------
+       IMAGE LOAD SUPPORT
+    --------------------------------------- */
+    const images = track.querySelectorAll("img");
 
     images.forEach((img) => {
       if (!img.complete) {
-        img.addEventListener(
-          'load',
-          updateHeight
-        );
+        img.addEventListener("load", updateHeight);
       }
     });
 
+    /* ---------------------------------------
+       EVENT LISTENERS
+    --------------------------------------- */
+    window.addEventListener("resize", updateHeight);
+
     window.addEventListener(
-      'resize',
-      updateHeight
+      "wheel",
+      handleWheel,
+      {
+        passive: false,
+      }
     );
+
+    /* ---------------------------------------
+       INITIALIZE
+    --------------------------------------- */
+    updateHeight();
 
     frameRef.current =
       requestAnimationFrame(animate);
 
+    /* ---------------------------------------
+       CLEANUP
+    --------------------------------------- */
     return () => {
       window.removeEventListener(
-        'resize',
+        "resize",
         updateHeight
+      );
+
+      window.removeEventListener(
+        "wheel",
+        handleWheel
       );
 
       images.forEach((img) => {
         img.removeEventListener(
-          'load',
+          "load",
           updateHeight
         );
       });

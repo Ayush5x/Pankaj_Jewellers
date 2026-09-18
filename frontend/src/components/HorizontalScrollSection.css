@@ -277,3 +277,22 @@
   }
 }
 
+.h-section {
+  position: relative;
+  width: 100%;
+}
+
+.h-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.h-track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  will-change: transform;
+}

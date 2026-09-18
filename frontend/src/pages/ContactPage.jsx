@@ -650,7 +650,7 @@ export default function ContactPage() {
               </div>
 
               <a
-                href="https://www.google.com/maps/search/?api=1&query=Pankaj+Jewellers+Dhole+Patil+Road+Pune"
+                href="https://i.pinimg.com/1200x/56/5e/8f/565e8f759996d80dfc516836b59d88af.jpg"
                 target="_blank"
                 rel="noreferrer"
                 className="store-card__direction"
@@ -718,6 +718,23 @@ export default function ContactPage() {
               <ArrowRight size={17} />
             </a>
 
+          </div>
+
+        </div>
+
+        {/* =====================================================
+            EDITORIAL CRAFT CIRCLE
+        ====================================================== */}
+        <div className="cta-craft-circle" aria-hidden="true">
+
+          <div className="cta-craft-circle__orbit">
+            <span>
+              CRAFTED FOR GENERATIONS
+            </span>
+          </div>
+
+          <div className="cta-craft-circle__inner">
+            <span className="cta-craft-circle__dot"></span>
           </div>
 
         </div>

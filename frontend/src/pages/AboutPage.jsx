@@ -315,29 +315,6 @@ export default function AboutPage() {
 
       <div className="about-grain" />
 
-      {/* =====================================================
-          NAVBAR
-      ====================================================== */}
-
-      <header className="about-nav">
-        <div className="about-nav__inner">
-          <a href="#top" className="about-logo">
-            Solenne
-          </a>
-
-          <nav>
-            <a href="#story">Our Story</a>
-            <a href="#craft">Craft</a>
-            <a href="#values">Philosophy</a>
-            <a href="#founder">Founder</a>
-          </nav>
-
-          <a href="#collection" className="nav-cta">
-            Explore
-            <ArrowUpRight size={14} />
-          </a>
-        </div>
-      </header>
 
       {/* =====================================================
           HERO
