@@ -3,6 +3,7 @@ import NewProductCard from '../components/NewProductCard';
 import { CATEGORIES, PRODUCTS } from '../data/products';
 import '../pages/pages-shared.css';
 import './ShopPage.css';
+import jewelVideo from  "../assets/video/video1_cut.mp4"
 
 const CATEGORY_ICONS = {
   rings: '◇',
@@ -106,7 +107,7 @@ export default function ShopPage() {
             <source src="/videos/shop-hero.mp4" type="video/mp4" />
 
             <source
-              src="https://www.pexels.com/download/video/8706305"
+              src="https://www.pexels.com/download/video/10835737/"
               type="video/mp4"
             />
           </video>
@@ -136,10 +137,15 @@ export default function ShopPage() {
 
             <div className="featured-story__content">
               <div className="featured-story__image">
-                <img
-                  src="/heroo.png"
-                  alt="Featured jewellery collection"
-                />
+               <video autoPlay muted loop playsInline >
+            <source src="/videos/shop-hero.mp4" type="video/mp4" />
+
+            <source
+              src={jewelVideo}
+              type="video/mp4"
+            />
+          </video>
+
               </div>
 
               <div className="featured-story__copy">
@@ -234,16 +240,12 @@ export default function ShopPage() {
             <div className="shop-catalog__topline">
               <span>Pankaj Jewellers</span>
 
-              <a href="#shop-products">
-                Shop All Jewellery <span>→</span>
-              </a>
+              
             </div>
 
             <div className="shop-catalog__heading">
               <div>
-                <p className="shop-catalog__eyebrow">
-                  Fine jewellery collection
-                </p>
+               
 
                 <h2>All Products</h2>
               </div>
