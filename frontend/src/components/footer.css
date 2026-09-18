@@ -1,147 +1,1551 @@
+/* =========================================================
+   PREMIUM JEWELLERY FOOTER
+========================================================= */
+
 .footer {
-  background: var(--color-maroon-dark);
-  color: rgba(255, 255, 255, 0.75);
+  --footer-bg: #390812;
+  --footer-bg-deep: #24050c;
+  --footer-gold: #c9a45c;
+  --footer-gold-soft: #e0c98e;
+  --footer-white: #f8f5ef;
+  --footer-muted: rgba(248, 245, 239, 0.58);
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(126, 31, 48, 0.32),
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      var(--footer-bg) 0%,
+      var(--footer-bg-deep) 100%
+    );
+
+  color: var(--footer-muted);
 }
+
+
+/* =========================================================
+   SUBTLE GOLD TOP LINE
+========================================================= */
+
+.footer::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 6%;
+  right: 6%;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 164, 92, 0.65),
+    rgba(224, 201, 142, 0.25),
+    transparent
+  );
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
 
 .footer__grid {
+  position: relative;
+  z-index: 2;
+
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
-  gap: 40px;
-  padding: 56px 24px 40px;
+  grid-template-columns: 1.7fr 0.9fr 0.9fr 1.2fr;
+
+  gap: 70px;
+
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+
+  padding: 85px 6vw 65px;
+
+  box-sizing: border-box;
 }
+
+
+/* =========================================================
+   BRAND AREA
+========================================================= */
 
 .footer__brand {
-  font-family: var(--font-label);
-  color: #fff;
-  font-size: 20px;
-  letter-spacing: 0.06em;
-  margin: 0 0 16px;
-}
-.footer__brand span {
-  color: var(--color-gold-light);
-  font-size: 14px;
-  margin-left: 6px;
+  margin: 0 0 20px;
+
+  color: var(--footer-white);
+
+  font-family: var(--font-label, serif);
+
+  font-size: 25px;
+  font-weight: 500;
+
+  letter-spacing: 0.14em;
+
+  line-height: 1.1;
 }
 
-.footer__about {
-  font-size: 13.5px;
-  line-height: 1.7;
-  max-width: 320px;
-  margin: 0 0 20px;
+.footer__brand span {
+  display: inline-block;
+
+  margin-left: 8px;
+
+  color: var(--footer-gold-soft);
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.2em;
+
+  vertical-align: middle;
 }
+
+
+/* =========================================================
+   BRAND DECORATIVE LINE
+========================================================= */
+
+.footer__brand::after {
+  content: "";
+
+  display: block;
+
+  width: 48px;
+  height: 1px;
+
+  margin-top: 20px;
+
+  background: var(--footer-gold);
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.footer__about {
+  max-width: 390px;
+
+  margin: 0 0 28px;
+
+  color: rgba(248, 245, 239, 0.55);
+
+  font-size: 13px;
+
+  line-height: 1.9;
+
+  letter-spacing: 0.015em;
+}
+
+
+/* =========================================================
+   SOCIALS
+========================================================= */
 
 .footer__socials {
   display: flex;
-  gap: 14px;
+
+  align-items: center;
+
+  gap: 12px;
 }
+
 .footer__socials a {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  position: relative;
+
+  width: 38px;
+  height: 38px;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
-  color: #fff;
+
+  border: 1px solid rgba(224, 201, 142, 0.25);
+
+  border-radius: 50%;
+
+  color: rgba(248, 245, 239, 0.8);
+
+  background: rgba(255, 255, 255, 0.015);
+
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    transform 0.35s ease;
 }
+
 .footer__socials a:hover {
-  border-color: var(--color-gold-light);
-  color: var(--color-gold-light);
+  color: var(--footer-gold-soft);
+
+  border-color: rgba(224, 201, 142, 0.75);
+
+  background: rgba(224, 201, 142, 0.06);
+
+  transform: translateY(-3px);
 }
+
+
+/* =========================================================
+   COLUMN HEADINGS
+========================================================= */
 
 .footer h4 {
-  color: #fff;
-  font-size: 14.5px;
+  position: relative;
+
+  margin: 0 0 24px;
+
+  color: var(--footer-white);
+
+  font-size: 11px;
+
   font-weight: 500;
-  margin: 0 0 18px;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
 }
 
+.footer h4::after {
+  content: "";
+
+  display: block;
+
+  width: 28px;
+  height: 1px;
+
+  margin-top: 11px;
+
+  background: rgba(201, 164, 92, 0.7);
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
 .footer ul {
-  list-style: none;
   margin: 0;
   padding: 0;
+
+  list-style: none;
 }
+
 .footer ul li {
-  margin-bottom: 12px;
-  font-size: 13.5px;
+  margin-bottom: 13px;
+
+  font-size: 13px;
+
+  line-height: 1.5;
 }
+
+.footer ul li a {
+  position: relative;
+
+  color: rgba(248, 245, 239, 0.55);
+
+  text-decoration: none;
+
+  transition:
+    color 0.3s ease,
+    padding-left 0.3s ease;
+}
+
 .footer ul li a:hover {
-  color: var(--color-gold-light);
+  padding-left: 7px;
+
+  color: var(--footer-gold-soft);
 }
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
 
 .footer__contact li {
   display: flex;
+
   align-items: flex-start;
-  gap: 8px;
+
+  gap: 11px;
+
+  margin-bottom: 16px;
+
+  color: rgba(248, 245, 239, 0.58);
 }
+
 .footer__contact svg {
-  margin-top: 2px;
   flex-shrink: 0;
-  color: var(--color-gold-light);
+
+  margin-top: 2px;
+
+  color: var(--footer-gold);
+
+  stroke-width: 1.4;
 }
 
-.footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-.footer__bottom-inner {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 18px 24px;
-  font-size: 12.5px;
-}
 
-@media (max-width: 860px) {
-  .footer__grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media (max-width: 520px) {
-  .footer__grid {
-    grid-template-columns: 1fr;
-  }
-}
-.footer {
+/* =========================================================
+   WATERMARK AREA
+========================================================= */
+
+.footer__watermark-wrapper {
   position: relative;
+
+  width: 100%;
+
   overflow: hidden;
+
+  padding-top: 10px;
 }
+
+
+/* =========================================================
+   WATERMARK
+========================================================= */
 
 .footer__watermark {
-  font-size: clamp(3.5rem, 13vw, 10rem);
-  font-weight: 700;
-  line-height: 1;
-  color: rgba(255, 255, 255, 1);
+  position: relative;
+
+  width: 100%;
+
+  box-sizing: border-box;
+
+  margin: 0;
+
+  padding: 0 3vw;
+
+  color: rgba(224, 201, 142, 0.105);
+
+  font-family: var(--font-label, serif);
+
+  font-size: clamp(5rem, 13.5vw, 13rem);
+
+  font-weight: 500;
+
+  line-height: 0.72;
+
+  letter-spacing: -0.065em;
+
   text-align: center;
+
   white-space: nowrap;
-  letter-spacing: -0.02em;
-  margin-top: 2rem;
+
+  user-select: none;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   WATERMARK GOLD HIGHLIGHT
+========================================================= */
+
+.footer__watermark-wrapper::before {
+  content: "";
+
+  position: absolute;
+
+  left: 8%;
+  right: 8%;
+
+  top: 50%;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(201, 164, 92, 0.22),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   WATERMARK BOTTOM FADE
+========================================================= */
+
+.footer__watermark-wrapper::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    transparent 20%,
+    rgba(36, 5, 12, 0.2) 65%,
+    var(--footer-bg-deep) 100%
+  );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BOTTOM BAR
+========================================================= */
+
+.footer__bottom {
+  position: relative;
+
+  z-index: 3;
+
+  border-top: 1px solid rgba(224, 201, 142, 0.12);
+}
+
+.footer__bottom-inner {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  max-width: 1500px;
+
+  margin: 0 auto;
+
+  padding: 20px 6vw;
+
+  box-sizing: border-box;
+
+  color: rgba(248, 245, 239, 0.38);
+
+  font-size: 11px;
+
+  letter-spacing: 0.03em;
+}
+
+.footer__bottom-inner a {
+  color: rgba(248, 245, 239, 0.42);
+
+  text-decoration: none;
+
+  transition: color 0.3s ease;
+}
+
+.footer__bottom-inner a:hover {
+  color: var(--footer-gold-soft);
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .footer__grid {
+    grid-template-columns: 1.4fr 1fr 1fr;
+
+    gap: 45px;
+
+    padding: 65px 5vw 50px;
+  }
+
+  .footer__brand-column {
+    grid-column: span 3;
+  }
+
+  .footer__watermark {
+    font-size: 14vw;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+
+    gap: 38px;
+
+    padding: 55px 24px 40px;
+  }
+
+  .footer__brand-column {
+    grid-column: auto;
+  }
+
+  .footer__brand {
+    font-size: 21px;
+  }
+
+  .footer__about {
+    max-width: 100%;
+
+    font-size: 12.5px;
+
+    line-height: 1.8;
+  }
+
+  .footer__watermark {
+    font-size: 18vw;
+
+    letter-spacing: -0.055em;
+
+    line-height: 0.8;
+  }
+
+  .footer__bottom-inner {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 18px 24px;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .footer__grid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .footer__watermark {
+    font-size: 17vw;
+  }
+}
+
+
+/* =========================================================
+   GLOBAL OVERFLOW FIX
+========================================================= */
+
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+
+/* =========================================================
+   UNIQUE — LIQUID LUXURY WATERMARK
+========================================================= */
+
+.footer__watermark-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  margin-top: 5px;
+}
+
+
+/* ---------------------------------------------------------
+   WATERMARK
+--------------------------------------------------------- */
+
+.footer__watermark {
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0;
+
+  padding: 20px 1.5vw 45px;
+
+  box-sizing: border-box;
+
+  font-family: var(--font-label, serif);
+
+  font-size: clamp(3.5rem, 11vw, 10rem);
+
+  font-weight: 500;
+
+  line-height: 0.78;
+
+  letter-spacing: -0.065em;
+
+  text-align: center;
+
+  white-space: nowrap;
+
   user-select: none;
   pointer-events: none;
 
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.15) 0%,
-    rgba(0, 0, 0, 0.02) 60%,
-    rgba(0, 0, 0, 0) 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.15) 0%,
-    rgba(0, 0, 0, 0.02) 60%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  /*
+    Champagne ghost typography
+  */
+  color: rgba(224, 201, 142, 0.12);
+
+  /*
+    The text itself slowly breathes
+  */
+  animation: luxuryBreathing 9s cubic-bezier(.45, 0, .25, 1) infinite;
+
+  will-change: transform, letter-spacing, opacity;
 }
 
-@media (max-width: 600px) {
-  .footer__watermark {
-    font-size: 11vw;
-    letter-spacing: -0.03em;
+
+/* =========================================================
+   SOFT INTERNAL GLOW
+========================================================= */
+
+.footer__watermark::before {
+  content: "PANKAJ JEWELLERS";
+
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding-top: 20px;
+
+  box-sizing: border-box;
+
+  font: inherit;
+
+  letter-spacing: inherit;
+
+  color: transparent;
+
+  /*
+    Very soft champagne glow
+  */
+  text-shadow:
+    0 0 35px rgba(224, 201, 142, 0.08),
+    0 0 80px rgba(224, 201, 142, 0.035);
+
+  opacity: 0;
+
+  animation: luxuryGlow 9s cubic-bezier(.45, 0, .25, 1) infinite;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LIQUID LIGHT
+========================================================= */
+
+.footer__watermark-wrapper::after {
+  content: "";
+
+  position: absolute;
+
+  top: -30%;
+  left: 15%;
+
+  width: 70%;
+  height: 160%;
+
+  pointer-events: none;
+
+  /*
+    Large soft radial light instead of a stripe
+  */
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(224, 201, 142, 0.10) 0%,
+      rgba(224, 201, 142, 0.035) 20%,
+      transparent 55%
+    );
+
+  filter: blur(25px);
+
+  opacity: 0;
+
+  transform: translateX(-35%) scale(0.8);
+
+  animation: liquidLight 11s cubic-bezier(.65, 0, .25, 1) infinite;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   BREATHING TYPOGRAPHY
+========================================================= */
+
+@keyframes luxuryBreathing {
+
+  0% {
+    transform:
+      scaleX(0.92)
+      scaleY(1);
+
+    letter-spacing: -0.065em;
+
+    opacity: 0.72;
+  }
+
+  25% {
+    transform:
+      scaleX(0.925)
+      scaleY(1.008);
+
+    letter-spacing: -0.063em;
+
+    opacity: 0.84;
+  }
+
+  50% {
+    transform:
+      scaleX(0.94)
+      scaleY(1.015);
+
+    letter-spacing: -0.059em;
+
+    opacity: 1;
+  }
+
+  75% {
+    transform:
+      scaleX(0.925)
+      scaleY(1.008);
+
+    letter-spacing: -0.063em;
+
+    opacity: 0.84;
+  }
+
+  100% {
+    transform:
+      scaleX(0.92)
+      scaleY(1);
+
+    letter-spacing: -0.065em;
+
+    opacity: 0.72;
   }
 }
 
-@media (max-width: 400px) {
+
+/* =========================================================
+   GLOW BREATHING
+========================================================= */
+
+@keyframes luxuryGlow {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 0.15;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+
+  65% {
+    opacity: 0.15;
+  }
+}
+
+
+/* =========================================================
+   LIQUID LIGHT MOVEMENT
+========================================================= */
+
+@keyframes liquidLight {
+
+  0% {
+    transform:
+      translateX(-45%)
+      translateY(8%)
+      scale(0.75);
+
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.35;
+  }
+
+  45% {
+    transform:
+      translateX(0%)
+      translateY(-2%)
+      scale(1);
+
+    opacity: 0.65;
+  }
+
+  65% {
+    transform:
+      translateX(35%)
+      translateY(3%)
+      scale(1.05);
+
+    opacity: 0.35;
+  }
+
+  82% {
+    opacity: 0;
+  }
+
+  100% {
+    transform:
+      translateX(45%)
+      translateY(8%)
+      scale(0.8);
+
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   GOLD HAIRLINE
+========================================================= */
+
+.footer__watermark-wrapper::before {
+  content: "";
+
+  position: absolute;
+
+  left: 8%;
+  right: 8%;
+
+  bottom: 7px;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(224, 201, 142, 0.12),
+    rgba(224, 201, 142, 0.35),
+    rgba(224, 201, 142, 0.12),
+    transparent
+  );
+
+  transform: scaleX(0.65);
+
+  transform-origin: center;
+
+  animation: lineReveal 11s cubic-bezier(.65, 0, .25, 1) infinite;
+
+  z-index: 4;
+}
+
+
+@keyframes lineReveal {
+
+  0%,
+  100% {
+    transform: scaleX(0.65);
+    opacity: 0.35;
+  }
+
+  45% {
+    transform: scaleX(1);
+    opacity: 0.75;
+  }
+
+  65% {
+    transform: scaleX(0.85);
+    opacity: 0.45;
+  }
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+
   .footer__watermark {
+    font-size: 10vw;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .footer__watermark {
+    font-size: 12vw;
+
+    letter-spacing: -0.055em;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .footer__watermark {
+    font-size: 14.5vw;
+
+    letter-spacing: -0.045em;
+
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .footer__watermark::before {
+    font-size: inherit;
+  }
+
+  .footer__watermark-wrapper::before {
+    left: 5%;
+    right: 5%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .footer__watermark,
+  .footer__watermark::before,
+  .footer__watermark-wrapper::before,
+  .footer__watermark-wrapper::after {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   ✨ PREMIUM GOLD SHINE — WATERMARK
+   ========================================================= */
+
+.footer__watermark {
+  position: relative;
+  overflow: hidden;
+
+  /* Existing styling */
+  color: rgba(224, 201, 142, 0.14);
+
+  /* Smooth breathing */
+  animation:
+    luxuryBreathing 9s cubic-bezier(.45, 0, .25, 1) infinite;
+
+  will-change: transform, letter-spacing, opacity;
+}
+
+
+/* =========================================================
+   ✨ MOVING GOLD SHINE
+   ========================================================= */
+
+.footer__watermark::after {
+  content: "PANKAJ JEWELLERS";
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 20px 1.5vw 45px;
+
+  box-sizing: border-box;
+
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: center;
+  white-space: nowrap;
+
+  /*
+    Transparent text with moving gold gradient
+  */
+  color: transparent;
+
+  background: linear-gradient(
+    110deg,
+    transparent 0%,
+    transparent 38%,
+
+    rgba(255, 255, 255, 0.03) 42%,
+
+    rgba(224, 201, 142, 0.25) 47%,
+    rgba(255, 239, 190, 0.95) 50%,
+    rgba(224, 201, 142, 0.28) 53%,
+
+    rgba(255, 255, 255, 0.03) 58%,
+
+    transparent 63%,
+    transparent 100%
+  );
+
+  background-size: 250% 100%;
+  background-position: 150% 0;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation: goldShine 7s cubic-bezier(.65, 0, .25, 1) infinite;
+
+  z-index: 3;
+}
+
+
+/* =========================================================
+   ✨ SOFT GOLD HALO
+   ========================================================= */
+
+.footer__watermark::before {
+  content: "PANKAJ JEWELLERS";
+
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 20px 1.5vw 45px;
+
+  box-sizing: border-box;
+
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: center;
+  white-space: nowrap;
+
+  color: transparent;
+
+  text-shadow:
+    0 0 12px rgba(224, 201, 142, 0.15),
+    0 0 30px rgba(224, 201, 142, 0.13),
+    0 0 65px rgba(224, 201, 142, 0.08);
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  animation: goldHalo 7s ease-in-out infinite;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   ✨ SHINE ANIMATION
+   ========================================================= */
+
+@keyframes goldShine {
+
+  0% {
+    background-position: 150% 0;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.35;
+  }
+
+  38% {
+    opacity: 0.85;
+  }
+
+  48% {
+    background-position: 0% 0;
+    opacity: 1;
+  }
+
+  58% {
+    opacity: 0.45;
+  }
+
+  68% {
+    background-position: -100% 0;
+    opacity: 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   ✨ HALO PULSE
+   ========================================================= */
+
+@keyframes goldHalo {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.985);
+  }
+
+  30% {
+    opacity: 0.15;
+  }
+
+  48% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+
+  62% {
+    opacity: 0.12;
+  }
+}
+
+
+/* =========================================================
+   ✨ GOLD LINE SHINE
+   ========================================================= */
+
+.footer__watermark-wrapper::before {
+  content: "";
+
+  position: absolute;
+
+  left: 8%;
+  right: 8%;
+  bottom: 7px;
+
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(224, 201, 142, 0.12) 25%,
+
+    rgba(255, 239, 190, 0.85) 50%,
+
+    rgba(224, 201, 142, 0.12) 75%,
+    transparent 100%
+  );
+
+  background-size: 250% 100%;
+  background-position: 150% 0;
+
+  transform: scaleX(0.65);
+
+  opacity: 0.35;
+
+  animation: goldLineShine 7s cubic-bezier(.65, 0, .25, 1) infinite;
+
+  z-index: 5;
+}
+
+
+@keyframes goldLineShine {
+
+  0% {
+    background-position: 150% 0;
+    transform: scaleX(0.65);
+    opacity: 0.25;
+  }
+
+  35% {
+    opacity: 0.45;
+  }
+
+  50% {
+    background-position: 0% 0;
+    transform: scaleX(1);
+    opacity: 0.9;
+  }
+
+  65% {
+    background-position: -100% 0;
+    transform: scaleX(0.85);
+    opacity: 0.35;
+  }
+
+  100% {
+    background-position: -100% 0;
+    transform: scaleX(0.65);
+    opacity: 0.25;
+  }
+}
+
+
+/* =========================================================
+   ✨ HOVER — EXTRA JEWELLERY GLOW
+   ========================================================= */
+
+.footer__watermark-wrapper:hover .footer__watermark {
+  color: rgba(224, 201, 142, 0.19);
+
+  transition:
+    color 0.8s ease,
+    transform 0.8s ease;
+}
+
+.footer__watermark-wrapper:hover .footer__watermark::before {
+  animation:
+    goldHaloHover 2.5s ease-in-out infinite;
+}
+
+@keyframes goldHaloHover {
+
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+
+/* =========================================================
+   📱 MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .footer__watermark::before,
+  .footer__watermark::after {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+/* =========================================================
+   ♿ REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .footer__watermark,
+  .footer__watermark::before,
+  .footer__watermark::after,
+  .footer__watermark-wrapper::before {
+    animation: none;
+  }
+}
+
+
+/* =========================================================
+   💎 FINAL WATERMARK — RESPONSIVE + SMOOTH LUXURY
+   ========================================================= */
+
+.footer__watermark-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.footer__watermark {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  /* Desktop */
+  font-size: clamp(3.5rem, 10vw, 10rem);
+
+  padding-left: 0;
+  padding-right: 0;
+
+  letter-spacing: -0.065em;
+
+  /* Softer, slower breathing */
+  animation:
+    luxuryBreathingSmooth
+    12s
+    cubic-bezier(0.45, 0, 0.25, 1)
+    infinite;
+
+  will-change: transform, opacity;
+}
+
+
+/* =========================================================
+   ✨ SMOOTHER BREATHING
+   ========================================================= */
+
+@keyframes luxuryBreathingSmooth {
+
+  0%,
+  100% {
+    transform: scaleX(0.965) scaleY(1);
+    opacity: 0.72;
+  }
+
+  25% {
+    transform: scaleX(0.975) scaleY(1.004);
+    opacity: 0.80;
+  }
+
+  50% {
+    transform: scaleX(0.985) scaleY(1.008);
+    opacity: 0.94;
+  }
+
+  75% {
+    transform: scaleX(0.975) scaleY(1.004);
+    opacity: 0.80;
+  }
+}
+
+
+/* =========================================================
+   ✨ SMOOTHER GOLD SHINE
+   ========================================================= */
+
+.footer__watermark::after {
+  animation:
+    goldShineSmooth
+    10s
+    cubic-bezier(0.55, 0, 0.25, 1)
+    infinite;
+}
+
+
+/* Slower and softer shine movement */
+
+@keyframes goldShineSmooth {
+
+  0% {
+    background-position: 150% 0;
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 0;
+  }
+
+  32% {
+    opacity: 0.25;
+  }
+
+  45% {
+    opacity: 0.65;
+  }
+
+  52% {
+    background-position: 0% 0;
+    opacity: 0.78;
+  }
+
+  62% {
+    opacity: 0.25;
+  }
+
+  72% {
+    background-position: -100% 0;
+    opacity: 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   ✨ SOFTER HALO
+   ========================================================= */
+
+.footer__watermark::before {
+  animation:
+    goldHaloSmooth
+    10s
+    cubic-bezier(0.45, 0, 0.25, 1)
+    infinite;
+}
+
+@keyframes goldHaloSmooth {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.99);
+  }
+
+  30% {
+    opacity: 0.08;
+  }
+
+  48% {
+    opacity: 0.38;
+    transform: scale(1);
+  }
+
+  62% {
+    opacity: 0.08;
+  }
+}
+
+
+/* =========================================================
+   📱 MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .footer__watermark-wrapper {
+    width: 100%;
+    overflow: hidden;
+
+    /* Slight breathing space around watermark */
+    padding-left: 8px;
+    padding-right: 8px;
+
+    box-sizing: border-box;
+  }
+
+  .footer__watermark {
+    width: 100%;
+    max-width: 100%;
+
+    /*
+      Smaller than the previous 14.5vw.
+      This prevents the text from touching/cutting
+      the mobile viewport.
+    */
+    font-size: 10.5vw;
+
+    line-height: 0.85;
+
+    letter-spacing: -0.05em;
+
+    padding: 18px 0 38px;
+
+    transform-origin: center center;
+
+    animation:
+      luxuryBreathingSmooth
+      13s
+      cubic-bezier(0.45, 0, 0.25, 1)
+      infinite;
+  }
+
+  .footer__watermark::before,
+  .footer__watermark::after {
+    padding: 18px 0 38px;
+  }
+
+  /* Smaller glow on mobile */
+  .footer__watermark::before {
+    text-shadow:
+      0 0 10px rgba(224, 201, 142, 0.10),
+      0 0 24px rgba(224, 201, 142, 0.07),
+      0 0 45px rgba(224, 201, 142, 0.04);
+  }
+
+  /* Keep the gold line inside the viewport */
+  .footer__watermark-wrapper::before {
+    left: 8%;
+    right: 8%;
+  }
+}
+
+
+/* =========================================================
+   📱 SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .footer__watermark-wrapper {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .footer__watermark {
+    /*
+      Extra reduction for 360px / 375px devices
+    */
     font-size: 9.5vw;
+
+    letter-spacing: -0.045em;
+
+    line-height: 0.88;
+
+    padding-top: 16px;
+    padding-bottom: 34px;
+  }
+
+  .footer__watermark::before,
+  .footer__watermark::after {
+    padding-top: 16px;
+    padding-bottom: 34px;
+  }
+}
+
+
+/* =========================================================
+   📱 VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 340px) {
+
+  .footer__watermark {
+    font-size: 9vw;
+    letter-spacing: -0.04em;
+  }
+}
+
+
+/* =========================================================
+   ♿ ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .footer__watermark,
+  .footer__watermark::before,
+  .footer__watermark::after,
+  .footer__watermark-wrapper::before {
+    animation: none !important;
   }
 }

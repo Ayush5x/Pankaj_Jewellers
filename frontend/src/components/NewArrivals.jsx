@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ProductCard from './ProductCard';
-import HorizontalScrollSection from './HorizontalScrollSection';
+import ScrollReveal from './ScrollReveal';
+import ScrollLinkedRow from './ScrollLinkedRow';
 import { PRODUCTS } from '../data/products';
 import './newArrivals.css';
 
@@ -20,42 +21,45 @@ function matchesFilter(product, filter) {
 
 export default function NewArrivals() {
   const [filter, setFilter] = useState('All');
- const featured = PRODUCTS.filter((p) => p.isNew || PRODUCTS.indexOf(p) < 10).slice(0, 10);
+  const featured = PRODUCTS.filter((p) => p.isNew || PRODUCTS.indexOf(p) < 10).slice(0, 10);
   const visible = featured.filter((p) => matchesFilter(p, filter));
 
   return (
     <section className="arrivals">
       <div className="container">
-        <div className="arrivals__head">
-          <div>
-            <p className="arrivals__eyebrow">Latest Designs</p>
-            <h2 className="arrivals__title">New Arrivals</h2>
+        <ScrollReveal>
+          <div className="arrivals__head">
+            <div>
+              <p className="arrivals__eyebrow">Latest Designs</p>
+              <h2 className="arrivals__title">New Arrivals</h2>
+            </div>
+
+            <div className="arrivals__filters">
+              {FILTERS.map((f) => (
+                <button
+                  key={f}
+                  className={`arrivals__filter ${filter === f ? 'is-active' : ''}`}
+                  onClick={() => setFilter(f)}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+
+            <Link to="/shop" className="arrivals__viewall">View All <ArrowRight size={16} /></Link>
           </div>
+        </ScrollReveal>
 
-          <div className="arrivals__filters">
-            {FILTERS.map((f) => (
-              <button
-                key={f}
-                className={`arrivals__filter ${filter === f ? 'is-active' : ''}`}
-                onClick={() => setFilter(f)}
-              >
-                {f}
-              </button>
-            ))}
-          </div>
-
-          <Link to="/shop" className="arrivals__viewall">View All <ArrowRight size={16} /></Link>
-        </div>
-      </div>
-
-      <HorizontalScrollSection>
-        {visible.map((p) => (
-          <ProductCard product={p} key={p.id} />
-        ))}
-        {visible.length === 0 && (
+        {visible.length === 0 ? (
           <p className="arrivals__empty">No products match this filter yet.</p>
+        ) : (
+          <ScrollLinkedRow>
+            {visible.map((p) => (
+              <ProductCard product={p} key={p.id} />
+            ))}
+          </ScrollLinkedRow>
         )}
-      </HorizontalScrollSection>
+      </div>
     </section>
   );
 }
