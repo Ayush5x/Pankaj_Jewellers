@@ -1,148 +1,3 @@
-.arrivals {
-  padding: 56px 0 80px;
-}
-
-.arrivals__head {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-}
-
-.arrivals__eyebrow {
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-maroon);
-  margin: 0 0 8px;
-}
-
-.arrivals__title {
-  font-family: var(--font-display);
-  font-size: 34px;
-  font-weight: 600;
-  color: var(--color-maroon-dark);
-  margin: 0;
-}
-
-.arrivals__filters {
-  display: flex;
-  border: 1px solid rgba(43, 30, 26, 0.14);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.arrivals__filter {
-  background: #fff;
-  color: var(--color-ink-soft);
-  font-size: 13.5px;
-  padding: 10px 18px;
-  border-right: 1px solid rgba(43, 30, 26, 0.14);
-  transition:
-    background 0.2s ease,
-    color 0.2s ease;
-}
-.arrivals__filter:last-child {
-  border-right: none;
-}
-.arrivals__filter.is-active {
-  background: var(--color-maroon-dark);
-  color: #fff;
-}
-
-.arrivals__viewall {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: var(--color-ink);
-  white-space: nowrap;
-}
-.arrivals__viewall:hover {
-  color: var(--color-maroon);
-}
-
-.arrivals__grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
-}
-
-.arrivals__empty {
-  grid-column: 1 / -1;
-  text-align: center;
-  color: var(--color-ink-soft);
-  padding: 40px 0;
-}
-
-@media (max-width: 1100px) {
-  .arrivals__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 640px) {
-  .arrivals__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .arrivals__filters {
-    flex-wrap: wrap;
-  }
-  .arrivals__filter {
-    flex: 1 1 auto;
-  }
-}
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition:
-    opacity 0.6s cubic-bezier(0.2, 0.7, 0.2, 1),
-    transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
-  will-change: transform, opacity;
-}
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (prefers-reduced-motion: reduce) {
-  .scroll-reveal {
-    transition: none;
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.arrivals .h-section {
-  position: relative;
-  height: 250vh; /* cards jitne zyada, itna badhao */
-}
-
-.arrivals .h-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-}
-
-.arrivals .h-track {
-  display: flex;
-  gap: 24px;
-  padding: 0 6vw;
-  will-change: transform;
-}
-
-.arrivals .h-track > * {
-  flex: 0 0 240px; /* pehle 320px tha, ab chhota */
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .arrivals .h-track {
-    transition: none;
-  }
-}
 /* =========================================================
    NEW ARRIVALS
    ========================================================= */
@@ -150,7 +5,6 @@
 .arrivals {
   padding: 42px 0 52px;
 }
-
 
 /* =========================================================
    HEADER
@@ -166,7 +20,6 @@
   margin-bottom: 24px;
 }
 
-
 /* =========================================================
    EYEBROW
    ========================================================= */
@@ -180,7 +33,6 @@
 
   color: var(--color-maroon);
 }
-
 
 /* =========================================================
    TITLE
@@ -197,7 +49,6 @@
 
   color: var(--color-maroon-dark);
 }
-
 
 /* =========================================================
    FILTERS
@@ -245,7 +96,6 @@
   color: var(--color-maroon);
 }
 
-
 /* =========================================================
    VIEW ALL
    ========================================================= */
@@ -278,29 +128,61 @@
   border-color: var(--color-maroon);
 }
 
-
 /* =========================================================
-   GRID
+   SINGLE ROW (scroll-jacked horizontal pin)
    ========================================================= */
 
-.arrivals__grid {
-  display: grid;
+/* Extra-height wrapper: this is what gives the page real scroll
+   distance to consume while the row is pinned. Height is set by
+   ScrollLinkedRow.jsx via JS; empty/auto until then. */
+.arrivals__scrolljack {
+  position: relative;
+}
 
-  grid-template-columns: repeat(6, 1fr);
+.arrivals__row-viewport {
+  width: 100%;
+}
 
+/* Desktop / scroll-jack mode: sticks to the top of the screen for
+   the duration of the wrapper's extra height, so scrolling moves
+   the cards instead of the page until the row is done. */
+.arrivals__row-viewport[data-mode="scroll-linked"] {
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+}
+
+/* Mobile/tablet/reduced-motion: no pin — plain native swipeable
+   row, page scrolls normally past it. */
+.arrivals__row-viewport[data-mode="swipe"] {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.arrivals__row-viewport[data-mode="swipe"]::-webkit-scrollbar {
+  display: none;
+}
+
+.arrivals__row-track {
+  display: flex;
   gap: 20px;
+  width: max-content;
+  will-change: transform;
+}
+
+.arrivals__row-track > * {
+  flex: 0 0 260px;
+  width: 260px;
 }
 
 .arrivals__empty {
-  grid-column: 1 / -1;
-
   padding: 32px 0;
 
   color: var(--color-ink-soft);
 
   text-align: center;
 }
-
 
 /* =========================================================
    SCROLL REVEAL
@@ -324,64 +206,11 @@
   transform: translateY(0);
 }
 
-
-/* =========================================================
-   HORIZONTAL SCROLL
-   ========================================================= */
-
-/*
-  Height is intentionally NOT fixed.
-
-  HorizontalScrollSection calculates the required height
-  according to the actual width of the product track.
-*/
-
-.arrivals .h-section {
-  position: relative;
-}
-
-.arrivals .h-sticky {
-  position: sticky;
-
-  top: 0;
-
-  display: flex;
-  align-items: center;
-
-  height: 100vh;
-
-  overflow: hidden;
-}
-
-.arrivals .h-track {
-  display: flex;
-
-  align-items: center;
-
-  gap: 20px;
-
-  width: max-content;
-
-  padding: 0 6vw;
-
-  will-change: transform;
-
-  transform: translate3d(0, 0, 0);
-
-  backface-visibility: hidden;
-}
-
-.arrivals .h-track > * {
-  flex: 0 0 240px;
-}
-
-
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 1100px) {
-
   .arrivals {
     padding: 38px 0 46px;
   }
@@ -392,28 +221,17 @@
     margin-bottom: 20px;
   }
 
-  .arrivals__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .arrivals .h-track {
-    gap: 18px;
-
-    padding: 0 5vw;
-  }
-
-  .arrivals .h-track > * {
-    flex-basis: 260px;
+  .arrivals__row-track > * {
+    flex-basis: 240px;
+    width: 240px;
   }
 }
-
 
 /* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 640px) {
-
   .arrivals {
     padding: 32px 0 38px;
   }
@@ -439,7 +257,6 @@
     font-size: 30px;
   }
 
-
   /* Filters remain one horizontal row */
 
   .arrivals__filters {
@@ -462,47 +279,27 @@
     font-size: 11px;
   }
 
-
   /* View all */
 
   .arrivals__viewall {
     font-size: 12px;
   }
 
-
-  /* Grid */
-
-  .arrivals__grid {
-    grid-template-columns: repeat(2, 1fr);
-
+  .arrivals__row-track {
     gap: 12px;
   }
 
-
-  /* Horizontal products */
-
-  .arrivals .h-sticky {
-    height: 85vh;
-  }
-
-  .arrivals .h-track {
-    gap: 16px;
-
-    padding: 0 20px;
-  }
-
-  .arrivals .h-track > * {
-    flex: 0 0 270px;
+  .arrivals__row-track > * {
+    flex-basis: 220px;
+    width: 220px;
   }
 }
-
 
 /* =========================================================
    SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 400px) {
-
   .arrivals {
     padding-top: 28px;
   }
@@ -510,28 +307,18 @@
   .arrivals__title {
     font-size: 28px;
   }
-
-  .arrivals .h-track > * {
-    flex-basis: 255px;
-  }
 }
-
 
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   .scroll-reveal {
     opacity: 1;
 
     transform: none;
 
     transition: none;
-  }
-
-  .arrivals .h-track {
-    will-change: auto;
   }
 }
