@@ -66,7 +66,7 @@ export const PRODUCTS = [
     purity: '22K Gold',
     weight: '12.6 g',
     price: 92000,
-    img: 'https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?q=80&w=700&auto=format&fit=crop',
+    img: 'https://images.pexels.com/photos/38780797/pexels-photo-38780797.jpeg',
     description: 'A traditional mangalsutra with black bead strands and a gold vati pendant, finished with a matching chain.',
   },
   {
