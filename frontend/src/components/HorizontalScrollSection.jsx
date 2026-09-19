@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
-
+import { useEffect, useRef, useState } from "react";
 
 const DESKTOP_BREAKPOINT = 900;
 
@@ -9,20 +8,40 @@ export default function HorizontalScrollSection({ children }) {
 
   const currentX = useRef(0);
   const targetX = useRef(0);
-  const frameRef = useRef(null);
+
+  const animationRef = useRef(null);
 
   const [isDesktop, setIsDesktop] = useState(
-    () => typeof window !== 'undefined' && window.innerWidth >= DESKTOP_BREAKPOINT
+    () =>
+      typeof window !== "undefined" &&
+      window.innerWidth >= DESKTOP_BREAKPOINT
   );
 
-  // Track the breakpoint so we can switch modes on resize/rotate.
+  /* =========================================
+     DESKTOP / MOBILE DETECTION
+  ========================================= */
+
   useEffect(() => {
-    const mql = window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`);
-    const handleChange = (e) => setIsDesktop(e.matches);
-    setIsDesktop(mql.matches);
-    mql.addEventListener('change', handleChange);
-    return () => mql.removeEventListener('change', handleChange);
+    const mediaQuery = window.matchMedia(
+      `(min-width: ${DESKTOP_BREAKPOINT}px)`
+    );
+
+    const handleChange = (event) => {
+      setIsDesktop(event.matches);
+    };
+
+    setIsDesktop(mediaQuery.matches);
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleChange);
+    };
   }, []);
+
+  /* =========================================
+     HORIZONTAL SCROLL ENGINE
+  ========================================= */
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -30,114 +49,339 @@ export default function HorizontalScrollSection({ children }) {
 
     if (!section || !track) return;
 
-    // Mobile/tablet: no scroll-jack, no forced height. Let the
-    // track scroll natively via CSS (see [data-mode="swipe"] rules).
+    /* =======================================
+       MOBILE / TABLET
+    ======================================= */
+
     if (!isDesktop) {
-      section.style.height = '';
-      track.style.transform = '';
+      section.style.height = "auto";
+      track.style.transform = "none";
+
+      currentX.current = 0;
+      targetX.current = 0;
+
       return;
     }
 
-    const updateHeight = () => {
-      /*
-       * Actual width of all cards + gaps + padding
-       */
-      const trackWidth = track.scrollWidth;
+    /* =======================================
+       GET HORIZONTAL DISTANCE
+    ======================================= */
 
-      /*
-       * How much the track needs to move
-       * before the LAST card reaches the viewport.
-       */
-      const horizontalDistance = Math.max(0, trackWidth - window.innerWidth);
-
-      /*
-       * Sticky viewport + horizontal distance, capped so a very
-       * wide track (lots of cards) can't blow up the page with
-       * several extra empty screens of scroll space.
-       */
-      const cappedDistance = Math.min(horizontalDistance, window.innerHeight * 2.5);
-
-      section.style.height = `${cappedDistance + window.innerHeight}px`;
+    const getMaxScroll = () => {
+      return Math.max(
+        0,
+        track.scrollWidth - window.innerWidth
+      );
     };
 
+    /* =======================================
+       SET SECTION HEIGHT
+    ======================================= */
+
+    const updateSectionHeight = () => {
+      const maxScroll = getMaxScroll();
+
+      /*
+       * Viewport height +
+       * exact horizontal distance
+       */
+
+      section.style.height = `${
+        window.innerHeight + maxScroll
+      }px`;
+    };
+
+    /* =======================================
+       ANIMATION
+    ======================================= */
+
     const animate = () => {
-      const rect = section.getBoundingClientRect();
+      const difference =
+        targetX.current - currentX.current;
 
-      const sectionHeight = section.offsetHeight;
-      const viewportHeight = window.innerHeight;
+      currentX.current += difference * 0.12;
 
-      const maxHorizontal = Math.max(0, track.scrollWidth - window.innerWidth);
-
-      /*
-       * How far we've travelled vertically
-       * inside the horizontal section.
-       */
-      const scrollDistance = sectionHeight - viewportHeight;
-
-      const scrolled = Math.min(Math.max(-rect.top, 0), scrollDistance);
-
-      /*
-       * Map scroll progress (0-1) to the horizontal distance the
-       * track actually needs to move, so the last card is always
-       * reachable even when the vertical scroll room was capped.
-       */
-      const progress = scrollDistance > 0 ? scrolled / scrollDistance : 0;
-      targetX.current = progress * maxHorizontal;
-
-      /*
-       * Smooth movement
-       */
-      currentX.current += (targetX.current - currentX.current) * 0.08;
-
-      /*
-       * Snap when extremely close
-       */
-      if (Math.abs(targetX.current - currentX.current) < 0.05) {
+      if (Math.abs(difference) < 0.05) {
         currentX.current = targetX.current;
       }
 
-      track.style.transform = `translate3d(${-currentX.current}px, 0, 0)`;
+      track.style.transform = `
+        translate3d(
+          ${-currentX.current}px,
+          0,
+          0
+        )
+      `;
 
-      frameRef.current = requestAnimationFrame(animate);
+      animationRef.current =
+        requestAnimationFrame(animate);
     };
 
-    updateHeight();
+    /* =======================================
+       CHECK IF SECTION IS ACTIVE
+    ======================================= */
 
-    /*
-     * Wait for images to load because image
-     * dimensions can change track width.
-     */
-    const images = track.querySelectorAll('img');
+    const isSectionActive = () => {
+      const rect = section.getBoundingClientRect();
 
-    images.forEach((img) => {
-      if (!img.complete) {
-        img.addEventListener('load', updateHeight);
+      /*
+       * Section has reached the top
+       * and is still occupying viewport.
+       */
+
+      return (
+        rect.top <= 1 &&
+        rect.bottom >= window.innerHeight - 1
+      );
+    };
+
+    /* =======================================
+       WHEEL HANDLER
+    ======================================= */
+
+    const handleWheel = (event) => {
+      const rect = section.getBoundingClientRect();
+
+      const maxScroll = getMaxScroll();
+
+      if (maxScroll <= 0) {
+        return;
+      }
+
+      const delta = event.deltaY;
+
+      /* =====================================
+         SCROLLING DOWN
+      ===================================== */
+
+      if (delta > 0) {
+        /*
+         * User is approaching section.
+         *
+         * Lock the section exactly at viewport top.
+         */
+
+        if (
+          rect.top > 0 &&
+          rect.top < window.innerHeight
+        ) {
+          event.preventDefault();
+
+          window.scrollTo({
+            top: window.scrollY + rect.top,
+            behavior: "instant",
+          });
+
+          targetX.current = Math.min(
+            maxScroll,
+            targetX.current + delta
+          );
+
+          return;
+        }
+
+        /*
+         * Section is pinned.
+         *
+         * Consume vertical wheel and convert
+         * it into horizontal movement.
+         */
+
+        if (
+          rect.top <= 1 &&
+          rect.bottom > window.innerHeight
+        ) {
+          /*
+           * Horizontal movement NOT finished.
+           */
+
+          if (targetX.current < maxScroll) {
+            event.preventDefault();
+
+            targetX.current = Math.min(
+              maxScroll,
+              targetX.current + delta
+            );
+
+            return;
+          }
+
+          /*
+           * Last card reached.
+           *
+           * DO NOT preventDefault.
+           *
+           * Browser can now continue down.
+           */
+
+          targetX.current = maxScroll;
+        }
+      }
+
+      /* =====================================
+         SCROLLING UP
+      ===================================== */
+
+      if (delta < 0) {
+        /*
+         * Section is active and horizontal
+         * position is greater than 0.
+         */
+
+        if (
+          rect.top <= 1 &&
+          rect.bottom >= window.innerHeight - 1
+        ) {
+          if (targetX.current > 0) {
+            event.preventDefault();
+
+            targetX.current = Math.max(
+              0,
+              targetX.current + delta
+            );
+
+            return;
+          }
+
+          /*
+           * First card reached.
+           *
+           * Allow browser to scroll
+           * to previous section.
+           */
+
+          targetX.current = 0;
+        }
+
+        /*
+         * User is coming back from below.
+         *
+         * If section is entering viewport,
+         * lock it and start horizontal reverse.
+         */
+
+        if (
+          rect.bottom > 0 &&
+          rect.bottom < window.innerHeight
+        ) {
+          event.preventDefault();
+
+          window.scrollTo({
+            top:
+              window.scrollY -
+              (window.innerHeight - rect.bottom),
+            behavior: "instant",
+          });
+
+          targetX.current = Math.max(
+            0,
+            targetX.current + delta
+          );
+
+          return;
+        }
+      }
+    };
+
+    /* =======================================
+       IMAGE LOAD
+    ======================================= */
+
+    const images = track.querySelectorAll("img");
+
+    const handleImageLoad = () => {
+      updateSectionHeight();
+    };
+
+    images.forEach((image) => {
+      if (!image.complete) {
+        image.addEventListener(
+          "load",
+          handleImageLoad
+        );
       }
     });
 
-    window.addEventListener('resize', updateHeight);
+    /* =======================================
+       RESIZE
+    ======================================= */
 
-    frameRef.current = requestAnimationFrame(animate);
+    window.addEventListener(
+      "resize",
+      updateSectionHeight
+    );
+
+    /* =======================================
+       WHEEL
+    ======================================= */
+
+    window.addEventListener(
+      "wheel",
+      handleWheel,
+      {
+        passive: false,
+      }
+    );
+
+    /* =======================================
+       INITIALIZE
+    ======================================= */
+
+    updateSectionHeight();
+
+    animationRef.current =
+      requestAnimationFrame(animate);
+
+    /* =======================================
+       CLEANUP
+    ======================================= */
 
     return () => {
-      window.removeEventListener('resize', updateHeight);
+      window.removeEventListener(
+        "resize",
+        updateSectionHeight
+      );
 
-      images.forEach((img) => {
-        img.removeEventListener('load', updateHeight);
+      window.removeEventListener(
+        "wheel",
+        handleWheel
+      );
+
+      images.forEach((image) => {
+        image.removeEventListener(
+          "load",
+          handleImageLoad
+        );
       });
 
-      cancelAnimationFrame(frameRef.current);
+      cancelAnimationFrame(
+        animationRef.current
+      );
+
+      section.style.height = "";
+      track.style.transform = "";
     };
   }, [children, isDesktop]);
+
+  /* =========================================
+     JSX
+  ========================================= */
 
   return (
     <section
       ref={sectionRef}
       className="h-section"
-      data-mode={isDesktop ? 'scroll-jack' : 'swipe'}
+      data-mode={
+        isDesktop
+          ? "scroll-jack"
+          : "swipe"
+      }
     >
       <div className="h-sticky">
-        <div ref={trackRef} className="h-track">
+        <div
+          ref={trackRef}
+          className="h-track"
+        >
           {children}
         </div>
       </div>
