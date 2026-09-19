@@ -17,7 +17,7 @@ export default function DiamondBanner() {
           <p className="diamond__eyebrow">A Symbol of<br />Love Forever</p>
           <h2 className="diamond__title">Diamond Collection</h2>
           <p className="diamond__desc">Brilliance that lasts a lifetime.</p>
-          <Link to="/category/diamond-jewellery" className="diamond__btn">Explore Now <ArrowRight size={16} /></Link>
+          <Link to="/category" className="diamond__btn">Explore Now <ArrowRight size={16} /></Link>
         </div>
 
         <div className="diamond__features">
