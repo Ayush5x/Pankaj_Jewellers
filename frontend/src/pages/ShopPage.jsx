@@ -385,7 +385,7 @@ export default function ShopPage() {
           poster="/contact-poster.png"
         >
           <source
-            src="/videos/contact-jewellery.mp4"
+            src="https://www.pexels.com/download/video/11353196/"
             type="video/mp4"
           />
 
