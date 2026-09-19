@@ -1,91 +1,739 @@
+/* =========================================================
+   DIAMOND EDITORIAL FEATURE
+   Burgundy • Beige • Gold • Luxury Editorial
+   ========================================================= */
+
 .diamond {
   position: relative;
-  border-radius: 6px;
-  overflow: hidden;
-  min-height: 300px;
+
+  min-height: 330px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 44px 56px;
-  gap: 24px;
-  flex-wrap: wrap;
+
+  gap: 40px;
+
+  padding: 52px 58px;
+
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  background: #2b1715;
+
+  isolation: isolate;
+
+  box-shadow:
+    0 18px 45px rgba(48, 25, 20, 0.12);
+
+  animation: diamondReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+
+/* =========================================================
+   BACKGROUND IMAGE
+   ========================================================= */
 
 .diamond__bg {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  inset: -3%;
+
+  width: 106%;
+  height: 106%;
+
   object-fit: cover;
+
+  opacity: 0.88;
+
+  transform: scale(1.03);
+
+  filter: saturate(0.78) contrast(1.03);
+
+  z-index: -3;
+
+  animation: diamondImageDrift 14s ease-in-out infinite alternate;
+
+  transition:
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s ease;
 }
+
+
+/* =========================================================
+   EDITORIAL OVERLAY
+   ========================================================= */
 
 .diamond__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(29,16,10,0.88) 10%, rgba(29,16,10,0.55) 48%, rgba(29,16,10,0.25) 75%);
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(38, 19, 17, 0.94) 0%,
+      rgba(52, 25, 22, 0.78) 38%,
+      rgba(58, 28, 24, 0.42) 68%,
+      rgba(35, 17, 15, 0.3) 100%
+    );
+
+  z-index: -2;
 }
+
+
+/* Subtle warm light */
+
+.diamond::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -120px;
+  top: -180px;
+
+  border-radius: 50%;
+
+  background: rgba(184, 137, 74, 0.12);
+
+  filter: blur(80px);
+
+  pointer-events: none;
+
+  animation: diamondGlow 7s ease-in-out infinite alternate;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   EDITORIAL FRAME
+   ========================================================= */
+
+.diamond::after {
+  content: "";
+
+  position: absolute;
+  inset: 14px;
+
+  border: 1px solid rgba(221, 190, 132, 0.24);
+
+  pointer-events: none;
+
+  z-index: 2;
+
+  transition:
+    inset 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.5s ease;
+}
+
+.diamond:hover::after {
+  inset: 10px;
+
+  border-color: rgba(221, 190, 132, 0.45);
+}
+
+
+/* =========================================================
+   COPY
+   ========================================================= */
 
 .diamond__copy {
   position: relative;
+
+  z-index: 3;
+
+  max-width: 450px;
+
   color: #fff;
-  max-width: 420px;
+
+  animation:
+    diamondCopyReveal
+    0.9s
+    0.15s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
 }
 
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
 .diamond__eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.16em;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 0 0 15px;
+
+  font-family: var(--font-body);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.22em;
+
   text-transform: uppercase;
-  color: var(--color-gold-light);
-  margin: 0 0 14px;
+
+  color: #d8b77b;
+
   line-height: 1.5;
 }
 
-.diamond__title {
-  font-family: var(--font-display);
-  font-size: 42px;
-  font-weight: 600;
-  margin: 0 0 12px;
+.diamond__eyebrow::before {
+  content: "";
+
+  width: 30px;
+  height: 1px;
+
+  background: #c69a5c;
+
+  transform-origin: left;
+
+  animation:
+    diamondLineReveal
+    0.8s
+    0.35s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
 }
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.diamond__title {
+  margin: 0 0 14px;
+
+  font-family: var(--font-display);
+
+  font-size: clamp(30px, 3.2vw, 42px);
+
+  font-weight: 500;
+
+  line-height: 1.08;
+
+  letter-spacing: -0.02em;
+
+  color: #fff;
+}
+
+.diamond__title em {
+  font-style: italic;
+
+  color: #e2c99d;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
 
 .diamond__desc {
-  font-size: 15px;
-  color: rgba(255,255,255,0.85);
-  margin: 0 0 26px;
+  max-width: 390px;
+
+  margin: 0 0 25px;
+
+  font-family: var(--font-body);
+
+  font-size: 13px;
+
+  line-height: 1.75;
+
+  color: rgba(255, 255, 255, 0.76);
 }
 
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
 .diamond__btn {
-  background: var(--color-maroon-dark);
-  color: #fff;
-  font-size: 14px;
-  padding: 14px 24px;
-  border-radius: 3px;
+  position: relative;
+
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+
+  gap: 9px;
+
+  padding: 12px 20px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(221, 190, 132, 0.5);
+
+  border-radius: 2px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: #fff;
+
+  font-family: var(--font-body);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  backdrop-filter: blur(8px);
+
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease;
 }
-.diamond__btn:hover { background: var(--color-maroon); }
+
+
+/* Button shine */
+
+.diamond__btn::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 80%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.18),
+      transparent
+    );
+
+  transform: skewX(-20deg);
+
+  transition: left 0.65s ease;
+}
+
+.diamond__btn:hover {
+  color: #2b1715;
+
+  background: #e0c38e;
+
+  border-color: #e0c38e;
+
+  transform: translateY(-2px);
+}
+
+.diamond__btn:hover::before {
+  left: 140%;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
 
 .diamond__features {
   position: relative;
+
+  z-index: 3;
+
   display: flex;
-  gap: 40px;
+  align-items: center;
+
+  gap: 36px;
+
   color: #fff;
+
+  animation:
+    diamondFeaturesReveal
+    0.9s
+    0.35s
+    cubic-bezier(0.16, 1, 0.3, 1)
+    both;
 }
+
+
+/* Vertical divider */
+
+.diamond__feature + .diamond__feature {
+  position: relative;
+}
+
+.diamond__feature + .diamond__feature::before {
+  content: "";
+
+  position: absolute;
+
+  left: -18px;
+  top: 10px;
+
+  width: 1px;
+  height: 38px;
+
+  background: rgba(221, 190, 132, 0.3);
+}
+
+
+/* =========================================================
+   FEATURE ITEM
+   ========================================================= */
 
 .diamond__feature {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  min-width: 72px;
+
   text-align: center;
-  gap: 10px;
-  font-size: 13px;
-  line-height: 1.4;
+
+  font-family: var(--font-body);
+
+  font-size: 10px;
+
+  line-height: 1.5;
+
+  letter-spacing: 0.06em;
+
+  text-transform: uppercase;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease;
 }
 
-.diamond__feature svg { color: var(--color-gold-light); }
+.diamond__feature svg {
+  width: 20px;
+  height: 20px;
+
+  color: #d5b477;
+
+  stroke-width: 1.3;
+
+  transition:
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.35s ease,
+    filter 0.35s ease;
+}
+
+
+/* Feature hover */
+
+.diamond__feature:hover {
+  color: #fff;
+
+  transform: translateY(-5px);
+}
+
+.diamond__feature:hover svg {
+  color: #e5c98f;
+
+  transform:
+    translateY(-3px)
+    rotate(-8deg);
+
+  filter:
+    drop-shadow(0 0 8px rgba(226, 201, 157, 0.45));
+}
+
+
+/* =========================================================
+   FLOATING DECORATIVE ORNAMENT
+   ========================================================= */
+
+.diamond__copy::after {
+  content: "✦";
+
+  position: absolute;
+
+  left: -26px;
+  top: -18px;
+
+  font-size: 9px;
+
+  color: rgba(221, 190, 132, 0.55);
+
+  animation:
+    diamondSparkle
+    4s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   HOVER IMAGE MOVEMENT
+   ========================================================= */
+
+.diamond:hover .diamond__bg {
+  transform: scale(1.07);
+
+  filter:
+    saturate(0.85)
+    contrast(1.04);
+}
+
+
+/* =========================================================
+   KEYFRAMES
+   ========================================================= */
+
+@keyframes diamondReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(24px)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+@keyframes diamondCopyReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+}
+
+
+@keyframes diamondFeaturesReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(25px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+}
+
+
+@keyframes diamondImageDrift {
+  from {
+    transform:
+      scale(1.03)
+      translate3d(0, 0, 0);
+  }
+
+  to {
+    transform:
+      scale(1.07)
+      translate3d(-10px, -5px, 0);
+  }
+}
+
+
+@keyframes diamondGlow {
+  from {
+    transform:
+      translate3d(0, 0, 0)
+      scale(0.9);
+
+    opacity: 0.5;
+  }
+
+  to {
+    transform:
+      translate3d(-25px, 20px, 0)
+      scale(1.1);
+
+    opacity: 1;
+  }
+}
+
+
+@keyframes diamondLineReveal {
+  from {
+    transform: scaleX(0);
+
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+
+    opacity: 1;
+  }
+}
+
+
+@keyframes diamondSparkle {
+  0%,
+  100% {
+    opacity: 0.35;
+
+    transform:
+      rotate(0deg)
+      scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      rotate(90deg)
+      scale(1.2);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .diamond {
+    padding: 44px 42px;
+
+    gap: 30px;
+  }
+
+  .diamond__features {
+    gap: 28px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 720px) {
-  .diamond { padding: 34px 26px; }
-  .diamond__title { font-size: 32px; }
-  .diamond__features { gap: 22px; }
+  .diamond {
+    min-height: 0;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    padding: 42px 28px;
+
+    gap: 34px;
+  }
+
+  .diamond__copy {
+    max-width: 100%;
+  }
+
+  .diamond__title {
+    font-size: 30px;
+  }
+
+  .diamond__desc {
+    max-width: 100%;
+
+    font-size: 12.5px;
+  }
+
+  .diamond__features {
+    width: 100%;
+
+    justify-content: space-between;
+
+    gap: 18px;
+  }
+
+  .diamond__feature {
+    min-width: 0;
+
+    flex: 1;
+  }
+
+  .diamond__feature + .diamond__feature::before {
+    left: -10px;
+  }
+
+  .diamond::after {
+    inset: 10px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .diamond {
+    padding: 36px 22px;
+  }
+
+  .diamond__title {
+    font-size: 27px;
+  }
+
+  .diamond__eyebrow {
+    font-size: 9px;
+  }
+
+  .diamond__features {
+    gap: 12px;
+  }
+
+  .diamond__feature {
+    font-size: 9px;
+  }
+
+  .diamond__feature svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .diamond__feature + .diamond__feature::before {
+    left: -6px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .diamond *,
+  .diamond::before,
+  .diamond::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

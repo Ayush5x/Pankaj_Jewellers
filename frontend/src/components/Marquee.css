@@ -1,0 +1,466 @@
+/* =========================================================
+   EDITORIAL MARQUEE — SEAMLESS CONTINUOUS LOOP
+   ========================================================= */
+
+.editorial-marquee {
+  --burgundy: #5b1f26;
+  --beige: #eee3d1;
+  --gold: #a77b35;
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  background: var(--beige);
+  color: var(--burgundy);
+
+  border-top: 1px solid rgba(91, 31, 38, 0.14);
+  border-bottom: 1px solid rgba(91, 31, 38, 0.14);
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   TOP LABEL
+   ========================================================= */
+
+.editorial-marquee__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 6px 15px 4px;
+
+  font-family: "Lato", sans-serif;
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 0.27em;
+  text-transform: uppercase;
+
+  color: var(--burgundy);
+
+  white-space: nowrap;
+}
+
+
+.editorial-marquee__line {
+  width: 27px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: var(--burgundy);
+
+  opacity: 0.4;
+}
+
+
+/* =========================================================
+   VIEWPORT
+   ========================================================= */
+
+.editorial-marquee__track-wrap {
+  position: relative;
+
+  width: 100%;
+  overflow: hidden;
+
+  border-top: 1px solid rgba(91, 31, 38, 0.07);
+  border-bottom: 1px solid rgba(91, 31, 38, 0.07);
+}
+
+
+/* =========================================================
+   EDGE FADE
+   ========================================================= */
+
+.editorial-marquee__track-wrap::before,
+.editorial-marquee__track-wrap::after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+
+  width: 55px;
+
+  z-index: 5;
+
+  pointer-events: none;
+}
+
+.editorial-marquee__track-wrap::before {
+  left: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--beige) 0%,
+      rgba(238, 227, 209, 0.85) 35%,
+      transparent 100%
+    );
+}
+
+.editorial-marquee__track-wrap::after {
+  right: 0;
+
+  background:
+    linear-gradient(
+      270deg,
+      var(--beige) 0%,
+      rgba(238, 227, 209, 0.85) 35%,
+      transparent 100%
+    );
+}
+
+
+/* =========================================================
+   TRACK
+   ========================================================= */
+
+.editorial-marquee__track {
+  display: flex;
+
+  width: max-content;
+
+  /*
+    IMPORTANT:
+    Both children have exactly the same structure,
+    so -50% represents exactly one complete set.
+  */
+
+  animation:
+    editorialMarquee 24s linear infinite;
+
+  will-change: transform;
+
+  backface-visibility: hidden;
+}
+
+
+/* =========================================================
+   CONTENT SET
+   ========================================================= */
+
+.editorial-marquee__content {
+  display: flex;
+  align-items: center;
+
+  flex: 0 0 auto;
+
+  gap: 22px;
+
+  padding: 7px 22px;
+
+  white-space: nowrap;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.editorial-marquee__content span {
+  display: inline-block;
+
+  flex: 0 0 auto;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(19px, 2.3vw, 30px);
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 0.10em;
+
+  color: var(--burgundy);
+
+  transition:
+    color 0.3s ease,
+    letter-spacing 0.3s ease;
+}
+
+
+.editorial-marquee__content span:hover {
+  color: var(--gold);
+
+  letter-spacing: 0.15em;
+}
+
+
+/* =========================================================
+   DIAMOND
+   ========================================================= */
+
+.editorial-marquee__content b {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  font-size: 8px;
+
+  line-height: 1;
+
+  font-weight: 400;
+
+  color: var(--gold);
+
+  animation:
+    editorialStar 2.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PERFECT LOOP
+   ========================================================= */
+
+@keyframes editorialMarquee {
+
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+}
+
+
+/* =========================================================
+   DIAMOND ANIMATION
+   ========================================================= */
+
+@keyframes editorialStar {
+
+  0%,
+  100% {
+    opacity: 0.45;
+
+    transform:
+      scale(0.8)
+      rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.2)
+      rotate(45deg);
+  }
+
+}
+
+
+/* =========================================================
+   HOVER PAUSE
+   ========================================================= */
+
+.editorial-marquee:hover
+.editorial-marquee__track {
+  animation-play-state: paused;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .editorial-marquee__top {
+    gap: 7px;
+
+    padding: 5px 10px 3px;
+
+    font-size: 6px;
+
+    letter-spacing: 0.21em;
+  }
+
+  .editorial-marquee__line {
+    width: 20px;
+  }
+
+  .editorial-marquee__content {
+    gap: 17px;
+
+    padding: 6px 18px;
+  }
+
+  .editorial-marquee__content span {
+    font-size: 18px;
+  }
+
+  .editorial-marquee__content b {
+    font-size: 7px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .editorial-marquee__top {
+    gap: 6px;
+
+    padding: 4px 8px 2px;
+
+    font-size: 5px;
+
+    letter-spacing: 0.18em;
+  }
+
+  .editorial-marquee__line {
+    width: 15px;
+  }
+
+  .editorial-marquee__content {
+    gap: 14px;
+
+    padding: 5px 14px;
+  }
+
+  .editorial-marquee__content span {
+    font-size: 16px;
+
+    letter-spacing: 0.05em;
+  }
+
+  .editorial-marquee__content b {
+    font-size: 6px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .editorial-marquee__track,
+  .editorial-marquee__content b {
+    animation: none;
+  }
+
+}.editorial-marquee__track {
+  display: flex;
+  width: max-content;
+
+  animation: editorialMarquee 25s linear infinite;
+
+  will-change: transform;
+}
+
+
+.editorial-marquee__content {
+  display: flex;
+  align-items: center;
+
+  /*
+   * CRITICAL
+   */
+  flex: 0 0 auto;
+
+  gap: 22px;
+
+  /*
+   * Same padding on BOTH sides
+   */
+  padding: 7px 22px;
+
+  white-space: nowrap;
+}
+
+
+/*
+ * Every item must NOT shrink.
+ */
+
+.editorial-marquee__content span,
+.editorial-marquee__content b {
+  flex: 0 0 auto;
+}
+
+
+/*
+ * Seamless movement
+ */
+
+@keyframes editorialMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}/* =========================================================
+   DIAMOND / STAR — LARGER BLINK
+   ========================================================= */
+
+.editorial-marquee__content b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  font-size: 8px;
+  line-height: 1;
+  font-weight: 400;
+
+  color: var(--gold);
+
+  animation: editorialStar 2.5s ease-in-out infinite;
+
+  transform-origin: center;
+}
+
+
+/* =========================================================
+   STAR ANIMATION
+   ========================================================= */
+
+@keyframes editorialStar {
+
+  0%,
+  100% {
+    opacity: 0.35;
+
+    transform:
+      scale(0.8)
+      rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.8)
+      rotate(45deg);
+  }
+
+}

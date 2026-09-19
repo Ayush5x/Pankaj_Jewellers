@@ -3,6 +3,7 @@ import Collections from '../components/Collections';
 import DiamondBanner from '../components/DiamondBanner';
 import NewArrivals from '../components/NewArrivals';
 import Testimonials from '../components/Testimonials';
+import EditorialMarquee from '../components/Marquee';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <DiamondBanner />
       <NewArrivals />
       <Testimonials/>
+      <EditorialMarquee/>
     </>
   );
 }
