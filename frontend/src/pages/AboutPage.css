@@ -25,6 +25,7 @@
 .about-page {
   position: relative;
   overflow: hidden;
+  margin-top: 80px;
   background: var(--beige);
   color: var(--ink);
   font-family: var(--sans);
@@ -229,10 +230,7 @@
   display: flex;
   align-items: center;
 
-  padding:
-    150px
-    0
-    100px;
+  padding: 150px 0 100px;
 
   isolation: isolate;
 }
@@ -300,11 +298,7 @@
 
   font-family: var(--serif);
 
-  font-size: clamp(
-    4rem,
-    7.6vw,
-    8rem
-  );
+  font-size: clamp(4rem, 7.6vw, 8rem);
 
   font-weight: 400;
 
@@ -421,13 +415,12 @@
 
   pointer-events: none;
 
-  background:
-    linear-gradient(
-      115deg,
-      transparent 25%,
-      rgba(255, 255, 255, 0.26) 48%,
-      transparent 68%
-    );
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.26) 48%,
+    transparent 68%
+  );
 
   transform: translateX(-120%);
 
@@ -626,11 +619,7 @@
 
   font-family: var(--serif);
 
-  font-size: clamp(
-    3rem,
-    5.2vw,
-    5.8rem
-  );
+  font-size: clamp(3rem, 5.2vw, 5.8rem);
 
   font-weight: 400;
 
@@ -689,8 +678,6 @@
 .marquee-section {
   overflow: hidden;
 
-
-
   background: var(--burgundy);
 
   color: var(--beige);
@@ -714,11 +701,7 @@
 .marquee-track span {
   font-family: var(--serif);
 
-  font-size: clamp(
-    0.5rem,
-    4vw,
-    2rem
-  );
+  font-size: clamp(0.5rem, 4vw, 2rem);
 
   font-style: italic;
 
@@ -759,11 +742,7 @@
 
   font-family: var(--serif);
 
-  font-size: clamp(
-    3.6rem,
-    7vw,
-    7.5rem
-  );
+  font-size: clamp(3.6rem, 7vw, 7.5rem);
 
   font-weight: 400;
 
@@ -921,11 +900,7 @@
 
   font-family: var(--serif);
 
-  font-size: clamp(
-    3.6rem,
-    6.2vw,
-    6.2rem
-  );
+  font-size: clamp(3.6rem, 6.2vw, 6.2rem);
 
   font-weight: 400;
 
@@ -1141,11 +1116,7 @@
 
   font-family: var(--serif);
 
-  font-size: clamp(
-    2.8rem,
-    4.5vw,
-    5.2rem
-  );
+  font-size: clamp(2.8rem, 4.5vw, 5.2rem);
 
   font-weight: 400;
 
@@ -1267,11 +1238,7 @@
 .number-item strong {
   font-family: var(--serif);
 
-  font-size: clamp(
-    4rem,
-    7vw,
-    7rem
-  );
+  font-size: clamp(4rem, 7vw, 7rem);
 
   font-weight: 400;
 
@@ -1415,11 +1382,7 @@
 
   font-family: var(--serif);
 
-  font-size: clamp(
-    3.6rem,
-    5.3vw,
-    6.2rem
-  );
+  font-size: clamp(3.6rem, 5.3vw, 6.2rem);
 
   font-weight: 400;
 
@@ -1694,10 +1657,7 @@
   .about-hero {
     min-height: auto;
 
-    padding:
-      125px
-      0
-      80px;
+    padding: 125px 0 80px;
   }
 
   .hero-grid {
@@ -1705,11 +1665,7 @@
   }
 
   .hero-intro h1 {
-    font-size: clamp(
-      4rem,
-      19vw,
-      6rem
-    );
+    font-size: clamp(4rem, 19vw, 6rem);
   }
 
   .hero-intro h1 span {
@@ -1776,11 +1732,7 @@
   }
 
   .story-content h2 {
-    font-size: clamp(
-      3rem,
-      15vw,
-      4.5rem
-    );
+    font-size: clamp(3rem, 15vw, 4.5rem);
   }
 
   .story-copy {
@@ -1792,11 +1744,7 @@
   }
 
   .section-heading-large h2 {
-    font-size: clamp(
-      3.7rem,
-      17vw,
-      5.8rem
-    );
+    font-size: clamp(3.7rem, 17vw, 5.8rem);
   }
 
   .craft-layout {
@@ -1840,11 +1788,7 @@
   }
 
   .philosophy-heading h2 {
-    font-size: clamp(
-      3.6rem,
-      17vw,
-      5rem
-    );
+    font-size: clamp(3.6rem, 17vw, 5rem);
   }
 
   .value-card {
@@ -1880,11 +1824,7 @@
   }
 
   .founder-content blockquote {
-    font-size: clamp(
-      3rem,
-      14vw,
-      4.5rem
-    );
+    font-size: clamp(3rem, 14vw, 4.5rem);
   }
 
   .numbers-grid {
@@ -1928,11 +1868,7 @@
   }
 
   .collection-copy h2 {
-    font-size: clamp(
-      3.7rem,
-      16vw,
-      5rem
-    );
+    font-size: clamp(3.7rem, 16vw, 5rem);
   }
 
   .collection-image {
