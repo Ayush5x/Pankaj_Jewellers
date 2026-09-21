@@ -18,7 +18,8 @@ import {
 import "../pages/pages-shared.css";
 import "./ContactPage.css";
 
-const API_URL = "http://localhost:5000/api/contact";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 const enquiryTypes = [
   "Bridal jewellery",
