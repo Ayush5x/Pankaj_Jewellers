@@ -1,4 +1,6 @@
 const express = require("express");
+const router = express.Router();
+
 const {
   createContact,
   getContacts,
@@ -6,12 +8,7 @@ const {
   updateContactStatus
 } = require("../controllers/contactController");
 
-const router = express.Router();
-
-// Public contact form
 router.post("/", createContact);
-
-// Admin/dashboard APIs
 router.get("/", getContacts);
 router.get("/:id", getContactById);
 router.patch("/:id/status", updateContactStatus);
