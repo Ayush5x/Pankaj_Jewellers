@@ -2143,3 +2143,26 @@ body,
   background: var(--site-background) !important;
   border: 1px solid rgba(184, 137, 74, 0.18);
 }
+
+/* Navbar च्या आजूबाजूचा भाग transparent */
+.navbar {
+  background: transparent !important;
+}
+
+/* Navbar pill पूर्ण white */
+.navbar__inner {
+  background: #ffffff !important;
+  background-image: none !important;
+
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  opacity: 1 !important;
+
+  border: 1px solid rgba(184, 137, 74, 0.18);
+
+  box-shadow:
+    0 16px 45px rgba(66, 7, 16, 0.065),
+    0 4px 14px rgba(66, 7, 16, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
