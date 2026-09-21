@@ -6,46 +6,33 @@
    ========================================================= */
 
 :root {
-  --wine: #5A0B17;
+  --wine: #5a0b17;
   --wine-dark: #420710;
   --wine-light: #741525;
 
-  --gold: #B8894A;
-  --gold-light: #C9A05D;
-  --gold-soft: rgba(184, 137, 74, 0.10);
+  --gold: #b8894a;
+  --gold-light: #c9a05d;
+  --gold-soft: rgba(184, 137, 74, 0.1);
 
-  --white: #FFFFFF;
-  --cream: #FCFAF7;
+  --white: #ffffff;
+  --cream: #fcfaf7;
 
-  --text: #2B1717;
-  --text-soft: #6F5A54;
+  --text: #2b1717;
+  --text-soft: #6f5a54;
 }
-
 
 /* =========================================================
    NAVBAR
    ========================================================= */
 
 .navbar {
-  position: fixed;
+  position: fixed !important;
   top: 0;
   left: 0;
-
+  right: 0;
   width: 100%;
-
-  padding: 16px 28px;
-
-  z-index: 9999;
-
-  background: transparent;
-
-  animation:
-    navbarAppear
-    1s
-    cubic-bezier(.16, 1, .3, 1)
-    both;
+  z-index: 99999;
 }
-
 
 /* =========================================================
    MAIN NAVBAR PILL
@@ -67,12 +54,11 @@
 
   border-radius: 100px;
 
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0.98),
-      rgba(252, 250, 247, 0.96)
-    );
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(252, 250, 247, 0.96)
+  );
 
   border: 1px solid rgba(184, 137, 74, 0.18);
 
@@ -87,13 +73,12 @@
   overflow: hidden;
 
   transition:
-    min-height 0.5s cubic-bezier(.16, 1, .3, 1),
+    min-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.5s ease,
-    transform 0.5s cubic-bezier(.16, 1, .3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
     background 0.5s ease,
-    padding 0.5s cubic-bezier(.16, 1, .3, 1);
+    padding 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 
 /* =========================================================
    GOLD LIGHT SWEEP
@@ -110,27 +95,21 @@
   width: 70%;
   height: 100%;
 
-  background:
-    linear-gradient(
-      100deg,
-      transparent 20%,
-      rgba(184, 137, 74, 0.03) 40%,
-      rgba(201, 160, 93, 0.16) 50%,
-      rgba(184, 137, 74, 0.03) 60%,
-      transparent 80%
-    );
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(184, 137, 74, 0.03) 40%,
+    rgba(201, 160, 93, 0.16) 50%,
+    rgba(184, 137, 74, 0.03) 60%,
+    transparent 80%
+  );
 
   transform: skewX(-20deg);
 
-  animation:
-    navbarShine
-    8s
-    ease-in-out
-    infinite;
+  animation: navbarShine 8s ease-in-out infinite;
 
   pointer-events: none;
 }
-
 
 /* =========================================================
    GOLD ANIMATED BORDER
@@ -147,23 +126,18 @@
 
   padding: 1px;
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(184, 137, 74, 0.28),
-      transparent,
-      rgba(184, 137, 74, 0.18),
-      transparent
-    );
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(184, 137, 74, 0.28),
+    transparent,
+    rgba(184, 137, 74, 0.18),
+    transparent
+  );
 
   background-size: 300% 100%;
 
-  animation:
-    borderFlow
-    7s
-    linear
-    infinite;
+  animation: borderFlow 7s linear infinite;
 
   pointer-events: none;
 
@@ -179,7 +153,6 @@
 
   -webkit-mask-composite: xor;
 }
-
 
 /* =========================================================
    LOGO
@@ -201,14 +174,8 @@
 
   z-index: 2;
 
-  animation:
-    navLogoIn
-    1s
-    cubic-bezier(.16, 1, .3, 1)
-    0.1s
-    both;
+  animation: navLogoIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
-
 
 /* Logo Icon */
 
@@ -219,26 +186,17 @@
   flex-shrink: 0;
 
   transition:
-    transform 0.7s cubic-bezier(.16, 1, .3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
     filter 0.5s ease;
 }
-
 
 /* Logo Hover */
 
 .navbar__logo:hover svg {
-  transform:
-    rotate(-8deg)
-    scale(1.1)
-    translateY(-2px);
+  transform: rotate(-8deg) scale(1.1) translateY(-2px);
 
-  filter:
-    drop-shadow(
-      0 4px 8px
-      rgba(184, 137, 74, 0.28)
-    );
+  filter: drop-shadow(0 4px 8px rgba(184, 137, 74, 0.28));
 }
-
 
 /* Logo Text */
 
@@ -251,14 +209,10 @@
   overflow: hidden;
 }
 
-
 /* PANKAJ */
 
 .navbar__logo-text strong {
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
   font-size: 21px;
 
@@ -275,21 +229,16 @@
     color 0.4s ease;
 }
 
-
 .navbar__logo:hover strong {
   letter-spacing: 0.105em;
 }
-
 
 /* Jewellers */
 
 .navbar__logo-text em {
   margin-top: 3px;
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
   font-size: 10px;
 
@@ -301,24 +250,19 @@
 
   white-space: nowrap;
 
-  transition:
-    transform 0.5s ease;
+  transition: transform 0.5s ease;
 }
-
 
 .navbar__logo:hover em {
   transform: translateX(3px);
 }
-
 
 /* Tagline */
 
 .navbar__logo-text small {
   margin-top: 3px;
 
-  font-family:
-    Arial,
-    sans-serif;
+  font-family: Arial, sans-serif;
 
   font-size: 5.5px;
 
@@ -326,11 +270,10 @@
 
   letter-spacing: 0.19em;
 
-  color: #8A746C;
+  color: #8a746c;
 
   white-space: nowrap;
 }
-
 
 /* =========================================================
    NAVIGATION
@@ -347,7 +290,6 @@
 
   z-index: 2;
 }
-
 
 /* Navigation Link */
 
@@ -366,10 +308,7 @@
 
   text-decoration: none;
 
-  font-family:
-    "Inter",
-    Arial,
-    sans-serif;
+  font-family: "Inter", Arial, sans-serif;
 
   font-size: 13px;
 
@@ -381,13 +320,12 @@
 
   overflow: hidden;
 
-  background-image:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--gold-light),
-      transparent
-    );
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-light),
+    transparent
+  );
 
   background-repeat: no-repeat;
 
@@ -397,17 +335,12 @@
 
   transition:
     color 0.4s ease,
-    transform 0.4s cubic-bezier(.16, 1, .3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     background-color 0.4s ease,
-    background-size 0.5s cubic-bezier(.16, 1, .3, 1);
+    background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 
-  animation:
-    navLinkIn
-    0.7s
-    cubic-bezier(.16, 1, .3, 1)
-    both;
+  animation: navLinkIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-
 
 /* =========================================================
    NAV LINK STAGGER
@@ -433,7 +366,6 @@
   animation-delay: 0.43s;
 }
 
-
 /* =========================================================
    NAV LINK HOVER GLOW
    ========================================================= */
@@ -447,12 +379,11 @@
 
   border-radius: inherit;
 
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(184, 137, 74, 0.12),
-      transparent 70%
-    );
+  background: radial-gradient(
+    circle at center,
+    rgba(184, 137, 74, 0.12),
+    transparent 70%
+  );
 
   opacity: 0;
 
@@ -460,9 +391,8 @@
 
   transition:
     opacity 0.4s ease,
-    transform 0.5s cubic-bezier(.16, 1, .3, 1);
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 
 .navbar__link:hover::before {
   opacity: 1;
@@ -470,16 +400,13 @@
   transform: scale(1.2);
 }
 
-
 .navbar__link:hover {
   color: var(--wine);
 
-  transform:
-    translateY(-2px);
+  transform: translateY(-2px);
 
   background-size: 46% 1px;
 }
-
 
 /* =========================================================
    ACTIVE NAV LINK
@@ -490,12 +417,11 @@
 
   background-color: transparent;
 
-  background-image:
-    linear-gradient(
-      135deg,
-      rgba(184, 137, 74, 0.11),
-      rgba(184, 137, 74, 0.035)
-    );
+  background-image: linear-gradient(
+    135deg,
+    rgba(184, 137, 74, 0.11),
+    rgba(184, 137, 74, 0.035)
+  );
 
   background-repeat: no-repeat;
 
@@ -503,10 +429,8 @@
 
   background-size: 100% 100%;
 
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
 }
-
 
 /* =========================================================
    ACTION AREA
@@ -522,14 +446,8 @@
 
   z-index: 3;
 
-  animation:
-    actionsIn
-    0.8s
-    cubic-bezier(.16, 1, .3, 1)
-    0.35s
-    both;
+  animation: actionsIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
 }
-
 
 /* =========================================================
    GOLD DIVIDER
@@ -541,24 +459,17 @@
 
   margin: 0 7px;
 
-  background:
-    linear-gradient(
-      to bottom,
-      transparent,
-      rgba(184, 137, 74, 0.45),
-      transparent
-    );
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(184, 137, 74, 0.45),
+    transparent
+  );
 
   transform-origin: center;
 
-  animation:
-    dividerIn
-    1s
-    ease
-    0.5s
-    both;
+  animation: dividerIn 1s ease 0.5s both;
 }
-
 
 /* =========================================================
    ICON BUTTONS
@@ -587,15 +498,13 @@
   transition:
     color 0.35s ease,
     background 0.35s ease,
-    transform 0.4s cubic-bezier(.16, 1, .3, 1);
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 
 .navbar__icon-btn svg {
   width: 17px;
   height: 17px;
 }
-
 
 /* Circular Gold Ring */
 
@@ -608,8 +517,7 @@
 
   border-radius: 50%;
 
-  border:
-    1px solid rgba(184, 137, 74, 0.28);
+  border: 1px solid rgba(184, 137, 74, 0.28);
 
   transform: scale(0.5);
 
@@ -620,28 +528,21 @@
     opacity 0.4s ease;
 }
 
-
 .navbar__icon-btn:hover::before {
   transform: scale(1);
 
   opacity: 1;
 }
 
-
 .navbar__icon-btn:hover {
   color: var(--wine);
 
-  transform:
-    translateY(-2px)
-    scale(1.05);
+  transform: translateY(-2px) scale(1.05);
 }
-
 
 .navbar__icon-btn:active {
-  transform:
-    scale(0.92);
+  transform: scale(0.92);
 }
-
 
 /* =========================================================
    BADGES
@@ -668,12 +569,9 @@
 
   color: var(--white);
 
-  border:
-    1.5px solid var(--white);
+  border: 1.5px solid var(--white);
 
-  font-family:
-    Arial,
-    sans-serif;
+  font-family: Arial, sans-serif;
 
   font-size: 7px;
 
@@ -681,22 +579,14 @@
 
   line-height: 1;
 
-  animation:
-    badgePop
-    0.7s
-    cubic-bezier(.16, 1.5, .3, 1)
-    both;
+  animation: badgePop 0.7s cubic-bezier(0.16, 1.5, 0.3, 1) both;
 
-  transition:
-    transform 0.3s ease;
+  transition: transform 0.3s ease;
 }
-
 
 .navbar__icon-btn:hover .navbar__badge {
-  transform:
-    scale(1.18);
+  transform: scale(1.18);
 }
-
 
 /* =========================================================
    BOOK A VISIT CTA
@@ -717,21 +607,13 @@
 
   border-radius: 100px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #4A0813,
-      #5A0B17
-    );
+  background: linear-gradient(135deg, #4a0813, #5a0b17);
 
   color: var(--white);
 
   text-decoration: none;
 
-  font-family:
-    "Inter",
-    Arial,
-    sans-serif;
+  font-family: "Inter", Arial, sans-serif;
 
   font-size: 12px;
 
@@ -743,17 +625,15 @@
 
   overflow: hidden;
 
-  box-shadow:
-    0 7px 20px rgba(90, 11, 23, 0.15);
+  box-shadow: 0 7px 20px rgba(90, 11, 23, 0.15);
 
   transition:
-    transform 0.45s cubic-bezier(.16, 1, .3, 1),
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.45s ease,
     background 0.4s ease;
 
   z-index: 1;
 }
-
 
 /* CTA Gold Border */
 
@@ -766,14 +646,12 @@
 
   border-radius: inherit;
 
-  border:
-    1px solid rgba(201, 160, 93, 0.35);
+  border: 1px solid rgba(201, 160, 93, 0.35);
 
   pointer-events: none;
 
   z-index: 2;
 }
-
 
 /* CTA Shine */
 
@@ -788,49 +666,33 @@
   width: 35%;
   height: 300%;
 
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.28),
-      transparent
-    );
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.28),
+    transparent
+  );
 
   transform: rotate(20deg);
 
-  animation:
-    ctaShine
-    5s
-    ease-in-out
-    infinite;
+  animation: ctaShine 5s ease-in-out infinite;
 
   z-index: 1;
 }
 
-
 .navbar__cta:hover {
-  background:
-    linear-gradient(
-      135deg,
-      #5A0B17,
-      #6A0E1D
-    );
+  background: linear-gradient(135deg, #5a0b17, #6a0e1d);
 
-  transform:
-    translateY(-2px)
-    scale(1.025);
+  transform: translateY(-2px) scale(1.025);
 
   box-shadow:
     0 12px 28px rgba(90, 11, 23, 0.22),
     0 0 18px rgba(184, 137, 74, 0.08);
 }
 
-
 .navbar__cta:active {
-  transform:
-    scale(0.97);
+  transform: scale(0.97);
 }
-
 
 /* =========================================================
    MOBILE BURGER
@@ -845,151 +707,115 @@
   align-items: center;
   justify-content: center;
 
-  border:
-    1px solid rgba(184, 137, 74, 0.20);
+  border: 1px solid rgba(184, 137, 74, 0.2);
 
   border-radius: 50%;
 
-  background:
-    rgba(184, 137, 74, 0.06);
+  background: rgba(184, 137, 74, 0.06);
 
   color: var(--wine);
 
   cursor: pointer;
 
   transition:
-    transform 0.4s cubic-bezier(.16, 1, .3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     background 0.3s ease;
 }
 
-
 .navbar__burger:hover {
-  transform:
-    rotate(8deg)
-    scale(1.05);
+  transform: rotate(8deg) scale(1.05);
 
-  background:
-    rgba(184, 137, 74, 0.12);
+  background: rgba(184, 137, 74, 0.12);
 }
-
 
 .navbar__burger svg {
   width: 19px;
   height: 19px;
 }
 
-
 /* =========================================================
    TABLET
    ========================================================= */
 
 @media (max-width: 1150px) {
-
   .navbar {
-    padding:
-      14px 20px;
+    padding: 14px 20px;
   }
-
 
   .navbar__inner {
     min-height: 62px;
 
-    padding:
-      6px 8px 6px 16px;
+    padding: 6px 8px 6px 16px;
   }
-
 
   .navbar__logo svg {
     width: 33px;
     height: 33px;
   }
 
-
   .navbar__logo-text strong {
     font-size: 19px;
   }
-
 
   .navbar__logo-text em {
     font-size: 9px;
   }
 
-
   .navbar__logo-text small {
     font-size: 5px;
   }
 
-
   .navbar__link {
     min-height: 38px;
 
-    padding:
-      9px 12px;
+    padding: 9px 12px;
 
     font-size: 12px;
   }
-
 
   .navbar__icon-btn {
     width: 36px;
     height: 36px;
   }
 
-
   .navbar__cta {
     min-height: 38px;
 
-    padding:
-      0 16px;
+    padding: 0 16px;
 
     font-size: 11px;
   }
 
-
   .navbar__divider {
-    margin:
-      0 5px;
+    margin: 0 5px;
   }
-
 }
-
 
 /* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 850px) {
-
   .navbar {
-    padding:
-      10px 14px;
+    padding: 10px 14px;
   }
 
-
   .navbar__inner {
-
     min-height: 58px;
 
-    padding:
-      6px
-      8px
-      6px
-      14px;
+    padding: 6px 8px 6px 14px;
 
     border-radius: 20px;
 
     overflow: visible;
   }
 
-
   /* Hide desktop navigation */
 
   .navbar__links {
-
     position: absolute;
 
-    top:
-      calc(100% + 10px);
+    top: calc(100% + 10px);
 
     left: 0;
     right: 0;
@@ -1006,53 +832,35 @@
 
     border-radius: 18px;
 
-    background:
-      rgba(255, 253, 249, 0.98);
+    background: rgba(255, 253, 249, 0.98);
 
-    border:
-      1px solid rgba(184, 137, 74, 0.20);
+    border: 1px solid rgba(184, 137, 74, 0.2);
 
-    box-shadow:
-      0 18px 45px rgba(66, 7, 16, 0.12);
+    box-shadow: 0 18px 45px rgba(66, 7, 16, 0.12);
 
-    backdrop-filter:
-      blur(24px);
+    backdrop-filter: blur(24px);
 
-    -webkit-backdrop-filter:
-      blur(24px);
+    -webkit-backdrop-filter: blur(24px);
   }
-
 
   .navbar__links.is-open {
-
     display: flex;
 
-    animation:
-      mobileMenuIn
-      0.45s
-      cubic-bezier(.16, 1, .3, 1)
-      both;
+    animation: mobileMenuIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-
 
   /* Mobile Link Animation */
 
   .navbar__links.is-open .navbar__link {
-
-    animation:
-      mobileLinkIn
-      0.45s
-      cubic-bezier(.16, 1, .3, 1)
-      both;
+    animation: mobileLinkIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-
 
   .navbar__links.is-open .navbar__link:nth-child(1) {
     animation-delay: 0.05s;
   }
 
   .navbar__links.is-open .navbar__link:nth-child(2) {
-    animation-delay: 0.10s;
+    animation-delay: 0.1s;
   }
 
   .navbar__links.is-open .navbar__link:nth-child(3) {
@@ -1060,222 +868,159 @@
   }
 
   .navbar__links.is-open .navbar__link:nth-child(4) {
-    animation-delay: 0.20s;
+    animation-delay: 0.2s;
   }
 
   .navbar__links.is-open .navbar__link:nth-child(5) {
     animation-delay: 0.25s;
   }
 
-
   .navbar__link {
-
     width: 100%;
 
     min-height: 42px;
 
-    justify-content:
-      flex-start;
+    justify-content: flex-start;
 
-    padding:
-      11px 16px;
+    padding: 11px 16px;
 
     font-size: 13px;
   }
-
 
   /* Hide actions */
 
   .navbar__icon-btn,
   .navbar__cta,
   .navbar__divider {
-
     display: none;
   }
-
 
   /* Burger */
 
   .navbar__burger {
-
     display: flex;
 
     width: 38px;
     height: 38px;
   }
 
-
   /* Logo */
 
   .navbar__logo svg {
-
     width: 33px;
     height: 33px;
   }
 
-
   .navbar__logo-text strong {
-
     font-size: 19px;
   }
 
-
   .navbar__logo-text em {
-
     font-size: 9px;
   }
 
-
   .navbar__logo-text small {
-
     font-size: 5px;
   }
-
 }
-
 
 /* =========================================================
    MOBILE MENU ANIMATIONS
    ========================================================= */
 
 @keyframes mobileMenuIn {
-
   from {
-
     opacity: 0;
 
-    transform:
-      translateY(-10px)
-      scale(0.96);
+    transform: translateY(-10px) scale(0.96);
 
-    filter:
-      blur(4px);
+    filter: blur(4px);
   }
 
   to {
-
     opacity: 1;
 
-    transform:
-      translateY(0)
-      scale(1);
+    transform: translateY(0) scale(1);
 
-    filter:
-      blur(0);
+    filter: blur(0);
   }
 }
-
 
 @keyframes mobileLinkIn {
-
   from {
-
     opacity: 0;
 
-    transform:
-      translateX(-15px);
+    transform: translateX(-15px);
   }
 
   to {
-
     opacity: 1;
 
-    transform:
-      translateX(0);
+    transform: translateX(0);
   }
 }
-
 
 /* =========================================================
    SMALL PHONES
    ========================================================= */
 
 @media (max-width: 480px) {
-
   .navbar {
-
-    padding:
-      8px 10px;
+    padding: 8px 10px;
   }
 
-
   .navbar__inner {
-
     min-height: 54px;
 
-    padding:
-      5px
-      7px
-      5px
-      12px;
+    padding: 5px 7px 5px 12px;
 
     border-radius: 18px;
   }
 
-
   .navbar__logo {
-
     gap: 6px;
   }
 
-
   .navbar__logo svg {
-
     width: 30px;
     height: 30px;
   }
 
-
   .navbar__logo-text strong {
-
     font-size: 17px;
 
-    letter-spacing:
-      0.065em;
+    letter-spacing: 0.065em;
   }
 
-
   .navbar__logo-text em {
-
     font-size: 8px;
 
     margin-top: 2px;
   }
 
-
   .navbar__logo-text small {
-
     display: none;
   }
 
-
   .navbar__burger {
-
     width: 36px;
     height: 36px;
   }
 
-
   .navbar__burger svg {
-
     width: 18px;
     height: 18px;
   }
-
 }
-
 
 /* =========================================================
    EXTRA SMALL PHONES
    ========================================================= */
 
 @media (max-width: 360px) {
-
   .navbar {
-    padding:
-      7px 8px;
+    padding: 7px 8px;
   }
-
 
   .navbar__inner {
     min-height: 52px;
@@ -1283,30 +1028,24 @@
     padding-left: 10px;
   }
 
-
   .navbar__logo svg {
     width: 28px;
     height: 28px;
   }
 
-
   .navbar__logo-text strong {
     font-size: 15px;
   }
-
 
   .navbar__logo-text em {
     font-size: 7px;
   }
 
-
   .navbar__burger {
     width: 34px;
     height: 34px;
   }
-
 }
-
 
 /* =========================================================
    ACCESSIBILITY
@@ -1316,35 +1055,25 @@
 .navbar__icon-btn:focus-visible,
 .navbar__cta:focus-visible,
 .navbar__burger:focus-visible {
+  outline: 2px solid var(--gold);
 
-  outline:
-    2px solid var(--gold);
-
-  outline-offset:
-    3px;
+  outline-offset: 3px;
 }
-
 
 /* =========================================================
    REDUCED MOTION
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   .navbar *,
   .navbar *::before,
   .navbar *::after {
+    animation-duration: 0.01ms !important;
 
-    animation-duration:
-      0.01ms !important;
+    animation-iteration-count: 1 !important;
 
-    animation-iteration-count:
-      1 !important;
-
-    transition-duration:
-      0.01ms !important;
+    transition-duration: 0.01ms !important;
   }
-
 }
 
 /* =========================================================
@@ -1370,8 +1099,7 @@
 
   border-radius: 50%;
 
-  background:
-    rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.75);
 
   color: var(--wine);
 
@@ -1380,12 +1108,11 @@
   position: relative;
 
   transition:
-    transform 0.4s cubic-bezier(.16, 1, .3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
     background 0.35s ease,
     border-color 0.35s ease,
     box-shadow 0.35s ease;
 }
-
 
 /* Inner gold ring */
 
@@ -1406,34 +1133,26 @@
 
   transition:
     opacity 0.35s ease,
-    transform 0.4s cubic-bezier(.16, 1, .3, 1);
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 
 /* Hover */
 
 .navbar__burger:hover {
-  transform:
-    translateY(-1px)
-    scale(1.04);
+  transform: translateY(-1px) scale(1.04);
 
-  background:
-    rgba(184, 137, 74, 0.07);
+  background: rgba(184, 137, 74, 0.07);
 
-  border-color:
-    rgba(184, 137, 74, 0.45);
+  border-color: rgba(184, 137, 74, 0.45);
 
-  box-shadow:
-    0 5px 15px rgba(90, 11, 23, 0.08);
+  box-shadow: 0 5px 15px rgba(90, 11, 23, 0.08);
 }
-
 
 .navbar__burger:hover::before {
   opacity: 1;
 
   transform: scale(1);
 }
-
 
 /* Icon */
 
@@ -1447,22 +1166,18 @@
 
   z-index: 2;
 
-  transition:
-    transform 0.35s cubic-bezier(.16, 1, .3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 
 .navbar__burger:hover svg {
   transform: scale(1.05);
 }
-
 
 /* =========================================================
    MOBILE
    ========================================================= */
 
 @media (max-width: 850px) {
-
   .navbar__burger {
     display: flex;
 
@@ -1471,16 +1186,13 @@
 
     margin-left: 6px;
   }
-
 }
-
 
 /* =========================================================
    SMALL PHONE
    ========================================================= */
 
 @media (max-width: 480px) {
-
   .navbar__burger {
     width: 36px;
     height: 36px;
@@ -1492,16 +1204,13 @@
     width: 17px;
     height: 17px;
   }
-
 }
-
 
 /* =========================================================
    VERY SMALL PHONE
    ========================================================= */
 
 @media (max-width: 360px) {
-
   .navbar__burger {
     width: 34px;
     height: 34px;
@@ -1513,9 +1222,7 @@
     width: 16px;
     height: 16px;
   }
-
 }
-
 
 /* =========================================================
    FINAL RESPONSIVE OVERRIDES
@@ -1529,13 +1236,11 @@
   box-sizing: border-box;
 }
 
-
 /* =========================================================
    LARGE DESKTOP — 1440px+
    ========================================================= */
 
 @media (min-width: 1440px) {
-
   .navbar {
     padding: 16px 32px;
   }
@@ -1556,13 +1261,11 @@
   }
 }
 
-
 /* =========================================================
    STANDARD DESKTOP — 1200px to 1439px
    ========================================================= */
 
 @media (min-width: 1200px) and (max-width: 1439px) {
-
   .navbar {
     padding: 14px 24px;
   }
@@ -1611,13 +1314,11 @@
   }
 }
 
-
 /* =========================================================
    SMALL DESKTOP / LAPTOP — 1025px to 1199px
    ========================================================= */
 
 @media (min-width: 1025px) and (max-width: 1199px) {
-
   .navbar {
     padding: 12px 18px;
   }
@@ -1689,14 +1390,12 @@
   }
 }
 
-
 /* =========================================================
    TABLET LANDSCAPE — 851px to 1024px
    Desktop layout remains, but becomes compact.
    ========================================================= */
 
 @media (min-width: 851px) and (max-width: 1024px) {
-
   .navbar {
     padding: 10px 14px;
   }
@@ -1773,13 +1472,11 @@
   }
 }
 
-
 /* =========================================================
    MOBILE — up to 850px
    ========================================================= */
 
 @media (max-width: 850px) {
-
   .navbar {
     width: 100%;
     padding: 10px 14px;
@@ -1862,13 +1559,11 @@
   }
 }
 
-
 /* =========================================================
    LARGE PHONES — 481px to 650px
    ========================================================= */
 
 @media (min-width: 481px) and (max-width: 650px) {
-
   .navbar {
     padding: 9px 12px;
   }
@@ -1903,13 +1598,11 @@
   }
 }
 
-
 /* =========================================================
    STANDARD PHONES — 361px to 480px
    ========================================================= */
 
 @media (max-width: 480px) {
-
   .navbar {
     padding: 8px 10px;
   }
@@ -1963,13 +1656,11 @@
   }
 }
 
-
 /* =========================================================
    SMALL PHONES — 321px to 360px
    ========================================================= */
 
 @media (max-width: 360px) {
-
   .navbar {
     padding: 7px 8px;
   }
@@ -2022,13 +1713,11 @@
   }
 }
 
-
 /* =========================================================
    VERY SMALL DEVICES — up to 320px
    ========================================================= */
 
 @media (max-width: 320px) {
-
   .navbar {
     padding: 6px;
   }
@@ -2068,13 +1757,11 @@
   }
 }
 
-
 /* =========================================================
    LANDSCAPE PHONES
    ========================================================= */
 
 @media (max-width: 850px) and (orientation: landscape) {
-
   .navbar {
     padding-top: 6px;
     padding-bottom: 6px;
@@ -2110,7 +1797,6 @@
   }
 }
 
-
 /* =========================================================
    PREVENT HORIZONTAL OVERFLOW
    ========================================================= */
@@ -2122,13 +1808,11 @@
   max-width: 100%;
 }
 
-
 /* =========================================================
    SAFE MOBILE POSITIONING
    ========================================================= */
 
 @media (max-width: 850px) {
-
   .navbar__inner {
     justify-content: flex-start;
   }
@@ -2136,83 +1820,123 @@
   .navbar__actions {
     margin-left: auto;
   }
-
 }
-
 
 /* =========================================================
    SAFE AREA — MODERN MOBILE DEVICES
    ========================================================= */
 
 @supports (padding: max(0px)) {
-
   @media (max-width: 850px) {
-
     .navbar {
-      padding-left:
-        max(10px, env(safe-area-inset-left));
+      padding-left: max(10px, env(safe-area-inset-left));
 
-      padding-right:
-        max(10px, env(safe-area-inset-right));
+      padding-right: max(10px, env(safe-area-inset-right));
 
-      padding-top:
-        max(8px, env(safe-area-inset-top));
+      padding-top: max(8px, env(safe-area-inset-top));
     }
-
   }
 }
-
 
 /* =========================================================
    ENTRANCE KEYFRAMES (referenced above)
    ========================================================= */
 
 @keyframes navbarAppear {
-  from { opacity: 0; transform: translateY(-14px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes navbarShine {
-  0%, 100% { left: -120%; }
-  50%      { left: 120%; }
+  0%,
+  100% {
+    left: -120%;
+  }
+  50% {
+    left: 120%;
+  }
 }
 
 @keyframes borderFlow {
-  0%   { background-position: 0% 0%; }
-  100% { background-position: 300% 0%; }
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 300% 0%;
+  }
 }
 
 @keyframes navLogoIn {
-  from { opacity: 0; transform: translateX(-10px) scale(0.94); }
-  to   { opacity: 1; transform: translateX(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateX(-10px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
 }
 
 @keyframes navLinkIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes actionsIn {
-  from { opacity: 0; transform: translateX(10px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes dividerIn {
-  from { opacity: 0; transform: scaleY(0); }
-  to   { opacity: 1; transform: scaleY(1); }
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
 }
 
 @keyframes badgePop {
-  0%   { transform: scale(0); }
-  60%  { transform: scale(1.25); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(0);
+  }
+  60% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes ctaShine {
-  0%, 100% { top: -100%; }
-  50%      { top: 100%; }
+  0%,
+  100% {
+    top: -100%;
+  }
+  50% {
+    top: 100%;
+  }
 }
-
 
 /* =========================================================================
    GAZAB ENHANCEMENTS — LUXURY MOTION LAYER
@@ -2234,15 +1958,14 @@
 
   padding: 5px 8px 5px 16px;
 
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255, 255, 255, 0.99),
-      rgba(252, 250, 247, 0.98)
-    );
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.99),
+    rgba(252, 250, 247, 0.98)
+  );
 
   box-shadow:
-    0 20px 50px rgba(66, 7, 16, 0.10),
+    0 20px 50px rgba(66, 7, 16, 0.1),
     0 6px 18px rgba(66, 7, 16, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 1);
 }
@@ -2250,7 +1973,6 @@
 .navbar.is-scrolled .navbar__logo svg {
   transform: scale(0.94);
 }
-
 
 /* ---- 3. CTA: a slow breathing gold halo behind "Book a Visit" ---- */
 
@@ -2290,8 +2012,15 @@
 }
 
 @keyframes ctaHalo {
-  0%, 100% { opacity: 0; transform: scale(0.92); }
-  50%      { opacity: 0.55; transform: scale(1.06); }
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(1.06);
+  }
 }
 
 /* If you'd rather not add a .navbar__cta-halo element, this pseudo
@@ -2303,10 +2032,14 @@
 }
 
 @keyframes ctaBorderGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(184, 137, 74, 0); }
-  50%      { box-shadow: 0 0 16px 1px rgba(184, 137, 74, 0.25); }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(184, 137, 74, 0);
+  }
+  50% {
+    box-shadow: 0 0 16px 1px rgba(184, 137, 74, 0.25);
+  }
 }
-
 
 /* ---- 4. Live badge: a single elegant sonar ring, not a garish blink ---- */
 /* Add class "navbar__badge--live" only to badges representing something
@@ -2330,14 +2063,19 @@
 
   opacity: 0.6;
 
-  animation: badgeSonar 2.4s cubic-bezier(.16, 1, .3, 1) infinite;
+  animation: badgeSonar 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
 }
 
 @keyframes badgeSonar {
-  0%   { transform: scale(1);   opacity: 0.55; }
-  100% { transform: scale(1.9); opacity: 0; }
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
 }
-
 
 /* ---- 5. Burger → close morph (optional markup upgrade) ---- */
 /* Works if the burger icon is built from two <span class="navbar__burger-line">
@@ -2354,11 +2092,17 @@
 
   border-radius: 2px;
 
-  transition: transform 0.4s cubic-bezier(.16, 1, .3, 1), opacity 0.3s ease;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease;
 }
 
-.navbar__burger-line:first-child { transform: translateY(-4px); }
-.navbar__burger-line:last-child  { transform: translateY(4px); }
+.navbar__burger-line:first-child {
+  transform: translateY(-4px);
+}
+.navbar__burger-line:last-child {
+  transform: translateY(4px);
+}
 
 .navbar__burger.is-open .navbar__burger-line:first-child {
   transform: translateY(0) rotate(45deg);
@@ -2368,14 +2112,34 @@
   transform: translateY(0) rotate(-45deg);
 }
 
-
 /* ---- 6. Respect reduced motion for every addition above ---- */
 
 @media (prefers-reduced-motion: reduce) {
-
   .navbar__cta-halo,
   .navbar__cta::after,
   .navbar__badge--live::before {
     animation: none !important;
   }
+}
+
+:root {
+  --site-background: #f5ecdf;
+}
+
+/* All pages background */
+html,
+body,
+#root {
+  background-color: var(--site-background);
+}
+
+/* Navbar background */
+.navbar {
+  background: var(--site-background) !important;
+}
+
+/* White gradient remove करून same background */
+.navbar__inner {
+  background: var(--site-background) !important;
+  border: 1px solid rgba(184, 137, 74, 0.18);
 }

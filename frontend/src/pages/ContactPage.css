@@ -10,12 +10,13 @@
   --gold: #b99559;
   --gold-light: #d2b276;
   --line: rgba(111, 0, 23, 0.16);
+  margin-top: 80px;
 
   position: relative;
   z-index: 1;
   width: 100%;
   overflow: hidden;
-  background: var(--beige);
+  background: #f5ecdf;
   color: var(--ink);
 }
 
