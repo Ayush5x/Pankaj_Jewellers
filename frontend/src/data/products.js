@@ -1,16 +1,16 @@
 export const CATEGORIES = [
-  { slug: 'rings', label: 'Rings', img: 'https://i.pinimg.com/736x/1f/20/97/1f20975033ae4b58249ea3bc185ca534.jpg', desc: 'Solitaires, bands and statement rings for everyday and engagement.' },
-  { slug: 'earrings', label: 'Earrings', img: 'https://i.pinimg.com/736x/44/91/6a/44916a32bb71ed16a26d24487da10fe1.jpg', desc: 'Studs, jhumkas and drops crafted in gold and diamond.' },
-  { slug: 'necklaces', label: 'Necklaces', img: 'https://i.pinimg.com/736x/de/39/4b/de394b825c63242cf1c8ac6725e23085.jpg', desc: 'Statement and layered necklaces for every occasion.' },
-  { slug: 'bangles', label: 'Bangles', img: 'https://i.pinimg.com/736x/df/6d/83/df6d83abe7d8da05afde8386a50a0dd8.jpg', desc: 'Traditional and modern bangles in 22K gold.' },
-  { slug: 'bracelets', label: 'Bracelets', img: 'https://i.pinimg.com/736x/fa/f5/cf/faf5cfc3d3290890d0811566900d29b9.jpg', desc: 'Everyday and occasion bracelets, gold and diamond.' },
-  { slug: 'pendants', label: 'Pendants', img: 'https://i.pinimg.com/736x/0f/68/4d/0f684db20dc97b1e7837548ef64e83c4.jpg', desc: 'Delicate pendants to layer or wear alone.' },
-  { slug: 'mangalsutra', label: 'Mangalsutra', img: 'https://i.pinimg.com/736x/45/e0/19/45e01945a269e19eb7042797f3b02113.jpg', desc: 'Traditional mangalsutra designs in black beads and gold.' },
-  { slug: 'chains', label: 'Chains', img: 'https://i.pinimg.com/736x/84/c6/0f/84c60f77bb07e1c90e984c8718ccedb6.jpg', desc: 'Classic gold chains for men and women.' },
-  { slug: 'bridal-jewellery', label: 'Bridal Jewellery', img: 'https://i.pinimg.com/736x/98/9d/d4/989dd49c49dfaf64c7582b8b8db51578.jpg', desc: 'Complete bridal sets for the big day.' },
-  { slug: 'diamond-jewellery', label: 'Diamond Jewellery', img: 'https://i.pinimg.com/736x/2f/5a/f6/2f5af664182dae24b566d81ae54d53c5.jpg', desc: 'Certified diamonds set in fine craftsmanship.' },
-  { slug: 'gold-jewellery', label: 'Gold Jewellery', img: 'https://i.pinimg.com/736x/d3/03/c9/d303c93844bc1a2f093dcbe142f3f30a.jpg', desc: 'Hallmarked gold jewellery across every category.' },
-  { slug: 'kids-jewellery', label: 'Kids Jewellery', img: 'https://i.pinimg.com/736x/7f/68/e2/7f68e2e36502650a15a54e90226bc0c3.jpg', desc: 'Lightweight, safe designs made for little ones.' },
+  { slug: 'rings', label: 'Rings', img: 'https://i.pinimg.com/736x/36/e9/1d/36e91dd31be28357fda913f2b8e538bc.jpg', desc: 'Solitaires, bands and statement rings for everyday and engagement.' },
+  { slug: 'earrings', label: 'Earrings', img: 'https://i.pinimg.com/736x/6e/a5/83/6ea583d3e1c74095a09607dda3e4247b.jpg', desc: 'Studs, jhumkas and drops crafted in gold and diamond.' },
+  { slug: 'necklaces', label: 'Necklaces', img: 'https://i.pinimg.com/736x/fb/33/cf/fb33cfcd6d1ca70ec4dd710209dbf1b8.jpg', desc: 'Statement and layered necklaces for every occasion.' },
+  { slug: 'bangles', label: 'Bangles', img: 'https://i.pinimg.com/736x/3d/c0/00/3dc000ea92bebfd8c592830f4f7f6d9e.jpg', desc: 'Traditional and modern bangles in 22K gold.' },
+  { slug: 'bracelets', label: 'Bracelets', img: 'https://i.pinimg.com/1200x/ee/67/9c/ee679c3b6886e090f003c9c98246ddad.jpg', desc: 'Everyday and occasion bracelets, gold and diamond.' },
+  { slug: 'pendants', label: 'Pendants', img: 'https://i.pinimg.com/736x/9e/4c/e5/9e4ce54052b54cc9a5e46e1c18552deb.jpg', desc: 'Delicate pendants to layer or wear alone.' },
+  { slug: 'mangalsutra', label: 'Mangalsutra', img: 'https://images.pexels.com/photos/38780797/pexels-photo-38780797.jpeg', desc: 'Traditional mangalsutra designs in black beads and gold.' },
+  { slug: 'chains', label: 'Chains', img: 'https://i.pinimg.com/1200x/19/87/9a/19879a0b1503ebe00909660a2ebd3480.jpg', desc: 'Classic gold chains for men and women.' },
+  { slug: 'bridal-jewellery', label: 'Bridal Jewellery', img: 'https://i.pinimg.com/736x/00/9e/d2/009ed273ae5a67eae00f6e471ad2172c.jpg', desc: 'Complete bridal sets for the big day.' },
+  { slug: 'diamond-jewellery', label: 'Diamond Jewellery', img: 'https://i.pinimg.com/1200x/2a/15/37/2a153719fb4f0baff6296f59bbde7377.jpg', desc: 'Certified diamonds set in fine craftsmanship.' },
+  { slug: 'gold-jewellery', label: 'Gold Jewellery', img: 'https://i.pinimg.com/736x/fb/33/cf/fb33cfcd6d1ca70ec4dd710209dbf1b8.jpg', desc: 'Hallmarked gold jewellery across every category.' },
+  { slug: 'kids-jewellery', label: 'Kids Jewellery', img: 'https://i.pinimg.com/1200x/16/6a/cd/166acd0e0848c7670707d59059d69b6c.jpg', desc: 'Lightweight, safe designs made for little ones.' },
 ];
 
 export const PRODUCTS = [
