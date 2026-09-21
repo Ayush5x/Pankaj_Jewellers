@@ -701,7 +701,7 @@ export default function ContactPage() {
           <div className="contact-final-cta__buttons">
 
             <a
-              href="https://wa.me/917796374853"
+              href="https://wa.me/917414974582"
               target="_blank"
               rel="noreferrer"
               className="cta-whatsapp"
@@ -711,7 +711,7 @@ export default function ContactPage() {
             </a>
 
             <a
-              href="tel:+917796374853"
+              href="tel:+917414974582"
               className="cta-call"
             >
               Call Us
